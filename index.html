@@ -89,9 +89,9 @@
             
             <!-- Desktop Navigation Links (For Homepage) -->
             <nav id="home-nav-links" class="hidden md:flex items-center space-x-6 text-sm font-medium">
-                <a href="#about" class="text-white hover:text-swift-gold transition-colors">About</a>
+                <a href="#why-us" class="text-white hover:text-swift-gold transition-colors">Why Us</a>
                 <a href="#instruments" class="text-white hover:text-swift-gold transition-colors">Markets</a>
-                <a href="#why-us" class="text-white hover:text-swift-gold transition-colors">Why Choose Us</a>
+                <a href="#about" class="text-white hover:text-swift-gold transition-colors">Trust & Safety</a>
             </nav>
 
             <!-- Auth Buttons (Visible on Home) -->
@@ -121,7 +121,7 @@
         </div>
 
         <!-- ============================================= -->
-        <!-- 1. HOMEPAGE VIEW -->
+        <!-- 1. HOMEPAGE VIEW (Expanded with more content) -->
         <!-- ============================================= -->
         <div id="page-home" class="min-h-screen">
             
@@ -133,7 +133,7 @@
                         <span class="block text-swift-gold mt-2">— Welcome to SwiftFX Trade Hub</span>
                     </h1>
                     <p class="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto mb-10 font-light">
-                        Join thousands of traders who trust our platform for **Forex, Crypto, and CFD trading**.
+                        Join thousands of traders who trust our platform for **Forex, Crypto, and CFD trading** with ultra-low latency and transparent pricing.
                     </p>
                     <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6">
                         <button onclick="showAuth('register')" class="px-8 py-3 rounded-full bg-swift-gold text-swift-dark font-semibold shadow-lg hover:bg-yellow-400 transition-colors">CREATE ACCOUNT</button>
@@ -149,24 +149,152 @@
                 </div>
             </section>
 
-            <!-- About The Broker -->
+            <!-- NEW SECTION: Why Choose Us (Features) -->
+            <section id="why-us" class="py-20 bg-swift-dark/50">
+                <div class="container mx-auto px-4 text-center">
+                    <h2 class="text-4xl font-bold mb-4 text-white">Why SwiftFX is the Right Choice</h2>
+                    <p class="text-lg text-gray-400 max-w-3xl mx-auto mb-12">Experience institutional-grade trading conditions combined with user-friendly access for every trader.</p>
+
+                    <div class="grid md:grid-cols-3 gap-8">
+                        <!-- Feature 1 -->
+                        <div class="bg-swift-navy p-6 rounded-xl shadow-xl border border-swift-gold/20 hover:border-swift-gold transition duration-300">
+                            <i data-lucide="zap" class="w-8 h-8 text-swift-gold mb-4 mx-auto md:mx-0"></i>
+                            <h3 class="text-xl font-semibold mb-2">Ultra-Low Latency</h3>
+                            <p class="text-gray-400 text-sm">Execute trades in milliseconds on our powerful infrastructure, minimizing slippage.</p>
+                        </div>
+                        <!-- Feature 2 -->
+                        <div class="bg-swift-navy p-6 rounded-xl shadow-xl border border-swift-gold/20 hover:border-swift-gold transition duration-300">
+                            <i data-lucide="shield-check" class="w-8 h-8 text-swift-gold mb-4 mx-auto md:mx-0"></i>
+                            <h3 class="text-xl font-semibold mb-2">Maximum Security</h3>
+                            <p class="text-gray-400 text-sm">Funds are protected in segregated accounts with advanced security protocols.</p>
+                        </div>
+                        <!-- Feature 3 -->
+                        <div class="bg-swift-navy p-6 rounded-xl shadow-xl border border-swift-gold/20 hover:border-swift-gold transition duration-300">
+                            <i data-lucide="bar-chart-3" class="w-8 h-8 text-swift-gold mb-4 mx-auto md:mx-0"></i>
+                            <h3 class="text-xl font-semibold mb-2">Competitive Spreads</h3>
+                            <p class="text-gray-400 text-sm">Access some of the tightest spreads in the industry across major and minor pairs.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- NEW SECTION: Supported Instruments -->
+            <section id="instruments" class="py-20 bg-swift-navy/50">
+                <div class="container mx-auto px-4 text-center">
+                    <h2 class="text-4xl font-bold mb-4 text-white">Trade Over 300 Global Instruments</h2>
+                    <p class="text-lg text-gray-400 max-w-3xl mx-auto mb-12">Diversify your portfolio with a wide range of assets available 24/5.</p>
+
+                    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                        <!-- Market 1: Forex -->
+                        <div class="bg-swift-dark p-6 rounded-xl shadow-lg border-t-4 border-swift-blue">
+                            <i data-lucide="globe" class="w-10 h-10 text-swift-blue mb-3"></i>
+                            <h3 class="text-2xl font-bold mb-1">Forex</h3>
+                            <p class="text-gray-400 text-sm">Trade 50+ currency pairs with deep liquidity.</p>
+                        </div>
+                        <!-- Market 2: Crypto -->
+                        <div class="bg-swift-dark p-6 rounded-xl shadow-lg border-t-4 border-swift-gold">
+                            <i data-lucide="bitcoin" class="w-10 h-10 text-swift-gold mb-3"></i>
+                            <h3 class="text-2xl font-bold mb-1">Cryptocurrency</h3>
+                            <p class="text-gray-400 text-sm">CFDs on Bitcoin, Ethereum, and major altcoins.</p>
+                        </div>
+                        <!-- Market 3: Indices -->
+                        <div class="bg-swift-dark p-6 rounded-xl shadow-lg border-t-4 border-red-500">
+                            <i data-lucide="trending-up" class="w-10 h-10 text-red-500 mb-3"></i>
+                            <h3 class="text-2xl font-bold mb-1">Indices</h3>
+                            <p class="text-gray-400 text-sm">Access global equity markets like NASDAQ and FTSE.</p>
+                        </div>
+                        <!-- Market 4: Commodities -->
+                        <div class="bg-swift-dark p-6 rounded-xl shadow-lg border-t-4 border-yellow-700">
+                            <i data-lucide="gem" class="w-10 h-10 text-yellow-700 mb-3"></i>
+                            <h3 class="text-2xl font-bold mb-1">Commodities</h3>
+                            <p class="text-gray-400 text-sm">Trade Gold, Oil, and other precious metals and energies.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- NEW SECTION: Testimonials -->
+            <section id="testimonials" class="py-20 bg-swift-dark">
+                <div class="container mx-auto px-4">
+                    <h2 class="text-4xl font-bold mb-12 text-center text-white">What Our Traders Say</h2>
+                    
+                    <div class="grid md:grid-cols-3 gap-8">
+                        <!-- Testimonial 1 -->
+                        <div class="bg-swift-navy p-6 rounded-xl shadow-lg border border-gray-700 relative">
+                            <i data-lucide="quote" class="w-8 h-8 text-swift-gold opacity-30 absolute top-4 left-4"></i>
+                            <p class="text-gray-300 italic mt-4 mb-4">"The execution speed is unmatched. I've used several brokers, but SwiftFX's low latency gives me a real edge during high volatility. Highly recommend for scalpers."</p>
+                            <div class="flex items-center">
+                                <span class="w-10 h-10 rounded-full bg-swift-gold flex items-center justify-center text-swift-dark font-bold text-lg mr-3">T</span>
+                                <div>
+                                    <p class="font-semibold text-white">Thomas A.</p>
+                                    <p class="text-xs text-gray-500">Professional Trader, London</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Testimonial 2 -->
+                        <div class="bg-swift-navy p-6 rounded-xl shadow-lg border border-gray-700 relative">
+                            <i data-lucide="quote" class="w-8 h-8 text-swift-gold opacity-30 absolute top-4 left-4"></i>
+                            <p class="text-gray-300 italic mt-4 mb-4">"Their customer support is brilliant. Had an issue with my deposit, and it was resolved in under 15 minutes. It’s comforting to know they're there 24/5."</p>
+                            <div class="flex items-center">
+                                <span class="w-10 h-10 rounded-full bg-swift-blue flex items-center justify-center text-white font-bold text-lg mr-3">M</span>
+                                <div>
+                                    <p class="font-semibold text-white">Maria S.</p>
+                                    <p class="text-xs text-gray-500">Part-Time Investor, Sydney</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Testimonial 3 -->
+                        <div class="bg-swift-navy p-6 rounded-xl shadow-lg border border-gray-700 relative">
+                            <i data-lucide="quote" class="w-8 h-8 text-swift-gold opacity-30 absolute top-4 left-4"></i>
+                            <p class="text-gray-300 italic mt-4 mb-4">"I appreciate the platform's stability. No unexpected freezes, and the interface is intuitive. It allowed me to transition easily from my old, clunky broker."</p>
+                            <div class="flex items-center">
+                                <span class="w-10 h-10 rounded-full bg-green-500 flex items-center justify-center text-white font-bold text-lg mr-3">A</span>
+                                <div>
+                                    <p class="font-semibold text-white">Adam C.</p>
+                                    <p class="text-xs text-gray-500">Crypto Enthusiast, Berlin</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+            <!-- Original Section: About The Broker (Now focused on Trust) -->
             <section id="about" class="py-20 bg-swift-navy/50">
                 <div class="container mx-auto px-4 grid md:grid-cols-2 gap-12 items-center">
                     <div>
-                        <h2 class="text-4xl font-bold mb-4 border-l-4 border-swift-gold pl-4">About the Broker</h2>
+                        <h2 class="text-4xl font-bold mb-4 border-l-4 border-swift-gold pl-4">Trust, Transparency, and Technology</h2>
                         <p class="text-lg text-gray-300 mb-6">
-                            SwiftFX Trade Hub is built on **trust, transparency, and technology**. Our mission is to provide an institutional-grade trading environment accessible to all.
+                            SwiftFX Trade Hub is built on **trust, transparency, and technology**. Our mission is to provide an institutional-grade trading environment accessible to all. We adhere to strict regulatory standards and deploy advanced encryption to protect your data and capital.
                         </p>
+                        <ul class="space-y-2 text-gray-400">
+                            <li class="flex items-center"><i data-lucide="check-circle" class="w-4 h-4 text-swift-gold mr-2"></i> Segregated Client Funds</li>
+                            <li class="flex items-center"><i data-lucide="check-circle" class="w-4 h-4 text-swift-gold mr-2"></i> Robust Data Encryption</li>
+                            <li class="flex items-center"><i data-lucide="check-circle" class="w-4 h-4 text-swift-gold mr-2"></i> Dedicated 24/5 Support</li>
+                        </ul>
                     </div>
                     <div class="hidden md:block">
                         <img src="https://placehold.co/600x400/0D0D19/FFD700?text=TRUSTED+PLATFORM" alt="Trust Image" class="rounded-xl shadow-2xl border-2 border-swift-gold/50">
                     </div>
                 </div>
             </section>
+            
+            <!-- NEW SECTION: Final Call To Action -->
+            <section class="py-20 bg-swift-gold text-swift-dark text-center">
+                <div class="container mx-auto px-4">
+                    <h2 class="text-4xl font-extrabold mb-4">Ready to Start Trading?</h2>
+                    <p class="text-xl mb-8 font-medium">It takes less than 3 minutes to open a live account and access the global markets.</p>
+                    <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6">
+                        <button onclick="showAuth('register')" class="px-8 py-3 rounded-full bg-swift-dark text-swift-gold font-semibold shadow-lg hover:bg-swift-navy transition-colors">OPEN LIVE ACCOUNT</button>
+                        <button onclick="showAuth('register')" class="px-8 py-3 rounded-full border-2 border-swift-dark text-swift-dark font-semibold transition-colors hover:bg-swift-dark hover:text-swift-gold">TRY DEMO</button>
+                    </div>
+                </div>
+            </section>
         </div>
 
         <!-- ============================================= -->
-        <!-- 2. REGISTRATION/LOGIN VIEW -->
+        <!-- 2. REGISTRATION/LOGIN VIEW (No changes here, kept functional) -->
         <!-- ============================================= -->
         <div id="page-register" class="hidden py-20 bg-swift-navy flex items-center justify-center min-h-screen w-full">
             <div id="auth-card" class="w-full max-w-xl bg-swift-dark p-8 md:p-10 rounded-xl shadow-lg border border-gray-700">
@@ -214,7 +342,7 @@
         </div>
 
         <!-- ============================================= -->
-        <!-- 3. USER DASHBOARD VIEW -->
+        <!-- 3. USER DASHBOARD VIEW (No changes here, kept functional) -->
         <!-- ============================================= -->
         <div id="page-dashboard" class="hidden pt-10 pb-20 bg-swift-navy min-h-screen w-full">
             <div class="container mx-auto px-4 grid lg:grid-cols-4 gap-8">
@@ -264,7 +392,7 @@
         </div>
         
         <!-- ============================================= -->
-        <!-- 4. DEPOSIT VIEW -->
+        <!-- 4. DEPOSIT VIEW (No changes here, kept functional) -->
         <!-- ============================================= -->
         <div id="page-deposit" class="hidden py-20 bg-swift-navy flex flex-col items-center justify-center min-h-screen w-full">
             <div class="w-full max-w-2xl bg-swift-dark p-8 md:p-10 rounded-xl shadow-lg border border-swift-gold/50 text-center">
@@ -347,6 +475,11 @@
             if (targetPage) {
                 targetPage.classList.remove('hidden');
                 currentViewId = pageId; // Update the global tracker
+                
+                // For smoother scrolling to the top of the new content
+                if (pageId === 'page-home') {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                }
             } else {
                 // Default to home if target not found
                 document.getElementById('page-home').classList.remove('hidden');
