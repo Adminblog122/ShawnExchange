@@ -50,16 +50,45 @@
             color: white;
         }
 
-        /* Animated Background (Subtle Chart Waves) */
+        /* Hero Section Styling for Animated Video Effect */
         .hero-bg {
-            background-image: linear-gradient(rgba(13, 13, 25, 0.95), rgba(13, 13, 25, 0.95)), url('https://placehold.co/1920x1080/0D0D19/1E3A8A?text=Abstract+Circuit+Grid');
-            background-size: cover;
-            animation: gradientShift 20s ease infinite alternate;
+            position: relative; /* Needed for the absolute overlay */
+            overflow: hidden;
+            background-color: theme('colors.swift-dark');
+        }
+        
+        /* Pseudo-element creates the animated data stream lines */
+        .hero-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 300%; /* Wider than normal for horizontal movement */
+            height: 100%;
+            /* Abstract Gradient simulates a moving data stream (Blue/Gold highlights) */
+            background: linear-gradient(90deg, 
+                rgba(10, 25, 49, 0) 0%, 
+                rgba(30, 58, 138, 0.5) 15%, 
+                rgba(255, 215, 0, 0.2) 30%, 
+                rgba(30, 58, 138, 0.5) 45%, 
+                rgba(10, 25, 49, 0) 60%
+            );
+            background-size: 50% 100%; /* Control the gradient repeat */
+            animation: dataFlow 25s linear infinite;
+            opacity: 0.3; /* Subtle transparency */
+            z-index: 1;
         }
 
-        @keyframes gradientShift {
-            0% { background-position: 0% 50%; }
-            100% { background-position: 100% 50%; }
+        /* Ensure content is above the pseudo-element */
+        .hero-bg > * {
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Animation for the data stream movement */
+        @keyframes dataFlow {
+            0% { transform: translateX(0%); }
+            100% { transform: translateX(-66.66%); } /* Moves the gradient smoothly to loop */
         }
 
         /* Loading Spinner */
@@ -87,17 +116,18 @@
                 SwiftFX<span class="text-white font-light">HUB</span>
             </a>
             
-            <!-- <!-- Desktop Navigation Links (For Homepage) -->
-            <!-- <nav id="home-nav-links" class="hidden md:flex items-center space-x-6 text-sm font-medium">
+            <!-- Desktop Navigation Links (For Homepage) -->
+            <nav id="home-nav-links" class="hidden md:flex items-center space-x-6 text-sm font-medium">
                 <a href="#why-us" class="text-white hover:text-swift-gold transition-colors">Why Us</a>
                 <a href="#instruments" class="text-white hover:text-swift-gold transition-colors">Markets</a>
                 <a href="#about" class="text-white hover:text-swift-gold transition-colors">Trust & Safety</a>
-            </nav> --> 
+            </nav>
 
-             <!-- Auth Buttons (Visible on Home)  -->
+            <!-- Auth Buttons (Visible on Home) -->
             <div id="auth-buttons" class="hidden md:flex items-center space-x-3">
                 <button onclick="showAuth('login')" class="px-5 py-2 rounded-full border-2 border-swift-gold text-swift-gold text-sm font-semibold transition-colors hover:bg-swift-gold/10">LOG IN</button>
-            </div> 
+                <button onclick="showAuth('register')" class="px-5 py-2 rounded-full bg-swift-gold text-swift-dark text-sm font-semibold transition-colors hover:bg-yellow-400">CREATE ACCOUNT</button>
+            </div>
 
             <!-- Dashboard Nav Links (Visible on Dashboard) -->
             <nav id="dashboard-nav-links" class="hidden items-center space-x-6 text-sm font-medium">
@@ -124,7 +154,7 @@
         <!-- ============================================= -->
         <div id="page-home" class="min-h-screen">
             
-            <!-- Hero Section -->
+            <!-- Hero Section with Animated Background -->
             <section class="hero-bg text-center pt-24 pb-32">
                 <div class="container mx-auto px-4">
                     <h1 class="text-5xl sm:text-6xl md:text-7xl font-extrabold mb-6 tracking-tight text-white">
