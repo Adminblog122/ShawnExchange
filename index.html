@@ -3,24 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shawn Exchange - Trade Smarter with a Reliable Broker</title>
+    <title>Shawn Exchange - Trade Like a Pro</title>
     
     <!-- Meta Tags for SEO & Social Sharing -->
-    <meta name="description" content="Experience real trading power with Shawn Exchange. Low spreads, fast execution, and global reliability. Trade Forex, Crypto, Commodities, and more.">
-    <meta name="keywords" content="shawn exchange, broker, trading, forex, crypto, stocks, low spreads, fast execution">
-    <meta property="og:title" content="Shawn Exchange - Trade Smarter">
+    <meta name="description" content="Experience high-speed, secure trading with Shawn Exchange. Access Forex, Crypto, and global markets with ultra-low latency.">
+    <meta property="og:title" content="Shawn Exchange - The Future of Trading">
     <meta property="og:description" content="Join thousands of successful traders worldwide on a secure and regulated platform.">
-    <meta property="og:image" content="https://placehold.co/1200x630/0A1931/FFC107?text=Shawn+Exchange">
-    <meta property="og:url" content="https://shawn.exchange"> <!-- Placeholder URL -->
-    <meta name="twitter:card" content="summary_large_image">
+    <meta property="og:image" content="https://placehold.co/1200x630/0D0D19/FFD700?text=Shawn+Exchange+Pro">
     
-    <!-- Favicon -->
-    <link rel="icon" href="https://placehold.co/32x32/FFC107/0A1931?text=S">
+    <!-- Favicon Placeholder -->
+    <link rel="icon" href="https://placehold.co/32x32/FFD700/0D0D19?text=SE">
 
-    <!-- Fonts: Poppins -->
+    <!-- Fonts: Poppins (Bolder Look) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&display=swap" rel="stylesheet">
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -28,490 +25,466 @@
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide-react@0.301.0/dist/lucide.min.js"></script>
 
-    <!-- Custom CSS for Theme, Animations, and Video BG -->
+    <!-- Custom CSS for Bolder Theme and Animations -->
     <style>
         :root {
-            --color-primary: #FFC107; /* Gold */
-            --color-secondary: #0A1931; /* Deep Navy */
-            --color-background: #071324; /* Slightly lighter navy */
-            --color-text: #E0E0E0; /* Light gray/white */
-            --color-text-dark: #333;
+            --color-gold: #FFD700; /* Bolder Gold */
+            --color-navy: #0A1931; /* Deep Navy */
+            --color-black: #0D0D19; /* Near-Black Background */
+            --color-text: #F3F4F6; /* Light Text */
+            --color-success: #10B981; /* Green */
+            --color-danger: #EF4444; /* Red */
         }
 
         body {
             font-family: 'Poppins', sans-serif;
-            background-color: var(--color-background);
+            background-color: var(--color-black);
             color: var(--color-text);
             scroll-behavior: smooth;
         }
-
-        /* Hero Section Background */
+        
+        /* Hero Section Styling (High-Tech Grid Look) */
         .hero-section {
-            /* Using a static image as a placeholder for the video bg. It's more reliable. */
-            background-image: linear-gradient(rgba(10, 25, 49, 0.85), rgba(10, 25, 49, 0.95)), url('https://placehold.co/1920x1080/0A1931/333?text=Abstract+Chart');
+            background-image: linear-gradient(rgba(13, 13, 25, 0.95), rgba(13, 13, 25, 0.9)), url('https://placehold.co/1920x1080/0D0D19/333?text=Abstract+Trading+Grid');
             background-size: cover;
             background-position: center;
-            background-attachment: fixed; /* Parallax effect */
+            padding-top: 8rem;
+            padding-bottom: 6rem;
         }
-        
-        /* Gold text and elements */
-        .text-gold { color: var(--color-primary); }
-        .bg-gold { background-color: var(--color-primary); }
-        .border-gold { border-color: var(--color-primary); }
 
-        /* Navy text and elements */
-        .bg-navy { background-color: var(--color-secondary); }
-        .border-navy { border-color: var(--color-secondary); }
+        /* Bolder Gold Accents */
+        .text-gold { color: var(--color-gold); }
+        .bg-gold { background-color: var(--color-gold); }
+        .border-gold { border-color: var(--color-gold); }
 
-        /* Custom Button Styles */
+        /* Custom Button Styles (Glowing Effect) */
         .btn {
-            @apply px-6 py-3 rounded-lg font-semibold text-lg transition-all duration-300 ease-in-out;
+            @apply px-8 py-3 rounded-full font-bold text-lg transition-all duration-300 ease-in-out shadow-lg;
+            border: 2px solid transparent;
         }
         .btn-gold {
-            @apply bg-gold text-black shadow-lg hover:shadow-xl hover:bg-yellow-400 transform hover:-translate-y-1;
+            @apply bg-gold text-black hover:bg-yellow-400 transform hover:-translate-y-0.5;
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
         }
         .btn-outline {
-            @apply bg-transparent border-2 border-gold text-gold hover:bg-gold hover:text-black;
+            @apply bg-transparent border-gold text-gold hover:bg-gold hover:text-black;
         }
         
-        /* Smooth Animations */
-        .fade-in {
-            animation: fadeIn 1s ease-in-out forwards;
-            opacity: 0;
+        /* Card Styles (Hover Glow) */
+        .service-card, .instrument-card {
+            @apply bg-navy rounded-xl p-6 transition-all duration-300 ease-in-out border border-transparent;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
         }
-        .fade-in-delay-1 { animation-delay: 0.2s; }
-        .fade-in-delay-2 { animation-delay: 0.4s; }
-        .fade-in-delay-3 { animation-delay: 0.6s; }
-        .fade-in-delay-4 { animation-delay: 0.8s; }
+        .service-card:hover, .instrument-card:hover {
+            @apply border-gold;
+            box-shadow: 0 0 25px rgba(255, 215, 0, 0.2);
+            transform: translateY(-5px);
+        }
 
+        /* Animated Visibility */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+        }
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
+        .fade-in-delay-1 { animation-delay: 0.1s; }
+        .fade-in-delay-2 { animation-delay: 0.2s; }
+        .fade-in-delay-3 { animation-delay: 0.3s; }
 
         /* Market Ticker */
         .ticker-wrap {
-            @apply w-full overflow-hidden py-3 bg-black/50 backdrop-blur-sm border-y border-gray-700;
+            @apply w-full overflow-hidden py-3 bg-black/70 backdrop-blur-sm border-y border-gray-800;
         }
         .ticker-move {
             display: inline-block;
             white-space: nowrap;
             animation: ticker 40s linear infinite;
         }
-        .ticker-item {
-            @apply inline-block px-6 text-sm;
-        }
         @keyframes ticker {
             0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); } /* Animates to half, as the content is duplicated */
+            100% { transform: translateX(-50%); }
         }
-        
-        /* Modal Styles */
+
+        /* Full-Screen Modal */
         .modal {
             @apply fixed inset-0 z-50 flex items-center justify-center p-4 transition-opacity duration-300;
             opacity: 0;
             visibility: hidden;
-            background-color: rgba(0, 0, 0, 0.7);
-            backdrop-filter: blur(5px);
+            background-color: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(8px);
         }
         .modal.active {
             opacity: 1;
             visibility: visible;
         }
         .modal-content {
-            @apply bg-navy p-6 rounded-xl shadow-2xl w-full max-w-2xl transform transition-transform duration-300 scale-95;
-            color: var(--color-text-dark); /* Dark text for modal readability */
-            max-height: 90vh;
-            overflow-y: auto;
+            @apply bg-navy p-8 rounded-2xl shadow-3xl w-full max-w-lg transform transition-transform duration-300 scale-90;
+            border: 1px solid var(--color-gold);
         }
         .modal.active .modal-content {
             @apply scale-100;
         }
-        
-        /* Trust Badge */
-        .trust-badge {
-            @apply flex items-center p-3 bg-green-600/20 text-green-300 rounded-lg border border-green-500;
-        }
-        
-        /* Instrument Card */
-        .instrument-card {
-            @apply bg-navy rounded-lg p-6 text-center transform hover:-translate-y-2 transition-all duration-300 hover:shadow-2xl hover:shadow-blue-500/20;
-            border: 1px solid rgba(255, 193, 7, 0.1);
-        }
-        
-        /* FAQ Accordion */
-        details > summary {
-            @apply list-none cursor-pointer p-4 bg-navy rounded-lg font-medium;
-        }
-        details > div {
-            @apply p-4 bg-navy/50 mt-1 rounded-lg;
-        }
-        
-        /* Fix for Lucide icons */
-        [data-lucide] {
-            width: 1em;
-            height: 1em;
-            display: inline-block;
-            vertical-align: middle;
-        }
+
     </style>
 </head>
 <body class="antialiased">
 
     <!-- Header -->
-    <header class="bg-navy/80 backdrop-blur-lg sticky top-0 z-40 w-full border-b border-gray-700/50">
+    <header class="bg-black/80 backdrop-blur-md sticky top-0 z-40 w-full border-b border-gray-800">
         <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
             <!-- Logo -->
-            <a href="#" class="text-3xl font-extrabold text-gold">
-                Shawn<span class="text-white">Exchange</span>
+            <a href="#" class="text-3xl font-extrabold text-gold tracking-wider">
+                SHAWN<span class="text-white">EXCHANGE</span>
             </a>
             
             <!-- Desktop Nav -->
-            <div class="hidden md:flex items-center space-x-6">
+            <div class="hidden md:flex items-center space-x-6 text-sm font-semibold">
                 <a href="#about" class="text-gray-300 hover:text-gold transition-colors">About</a>
                 <a href="#instruments" class="text-gray-300 hover:text-gold transition-colors">Markets</a>
                 <a href="#why-us" class="text-gray-300 hover:text-gold transition-colors">Why Us</a>
-                <a href="#testimonials" class="text-gray-300 hover:text-gold transition-colors">Reviews</a>
                 <button onclick="openModal('faq-modal')" class="text-gray-300 hover:text-gold transition-colors">FAQ</button>
             </div>
             
             <!-- Auth Buttons -->
             <div class="hidden md:flex items-center space-x-3">
-                <button onclick="openModal('login-modal')" class="text-white hover:text-gold font-medium">Log In</button>
-                <button onclick="openModal('signup-modal')" class="btn btn-gold !text-base !px-5 !py-2">Create Account</button>
+                <button onclick="openModal('login-modal')" class="btn btn-outline !text-sm !py-2 !px-4 !rounded-lg !font-medium">LOG IN</button>
+                <button onclick="openModal('signup-modal')" class="btn btn-gold !text-sm !py-2 !px-4 !rounded-lg !font-medium">CREATE ACCOUNT</button>
             </div>
             
             <!-- Mobile Menu Button -->
-            <button id="mobile-menu-btn" class="md:hidden text-white">
+            <button id="mobile-menu-btn" class="md:hidden text-white p-2 border border-gray-700 rounded-lg">
                 <i data-lucide="menu" class="w-6 h-6"></i>
             </button>
         </nav>
         
         <!-- Mobile Menu -->
-        <div id="mobile-menu" class="md:hidden hidden bg-navy absolute top-full left-0 w-full p-4 space-y-3">
+        <div id="mobile-menu" class="md:hidden hidden bg-black absolute top-full left-0 w-full p-4 space-y-3 border-t border-gray-800">
             <a href="#about" class="block text-gray-300 hover:text-gold">About</a>
             <a href="#instruments" class="block text-gray-300 hover:text-gold">Markets</a>
             <a href="#why-us" class="block text-gray-300 hover:text-gold">Why Us</a>
-            <a href="#testimonials" class="block text-gray-300 hover:text-gold">Reviews</a>
-            <button onclick="openModal('faq-modal')" class="block text-gray-300 hover:text-gold">FAQ</button>
+            <button onclick="openModal('faq-modal')" class="block text-gray-300 hover:text-gold text-left w-full">FAQ</button>
             <hr class="border-gray-700"/>
-            <button onclick="openModal('login-modal')" class="block w-full text-left text-white font-medium">Log In</button>
-            <button onclick="openModal('signup-modal')" class="btn btn-gold w-full">Create Account</button>
+            <button onclick="openModal('login-modal')" class="btn btn-outline w-full !text-base">Log In</button>
+            <button onclick="openModal('signup-modal')" class="btn btn-gold w-full !text-base">Create Account</button>
         </div>
     </header>
 
     <!-- Main Content -->
     <main>
-        <!-- 1. Hero Section -->
-        <section class="hero-section pt-32 pb-24 text-center text-white">
-            <div class="container mx-auto px-4">
-                <h1 class="text-5xl md:text-7xl font-extrabold mb-6 fade-in text-shadow-lg">
-                    Trade Smarter with <span class="text-gold">Shawn Exchange</span>
-                </h1>
-                <p class="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto mb-10 fade-in fade-in-delay-1">
-                    Experience real trading power with low spreads, fast execution, and global reliability.
-                </p>
-                <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6 fade-in fade-in-delay-2">
-                    <button onclick="openModal('signup-modal')" class="btn btn-gold">Create Account</button>
-                    <button class="btn btn-outline">Start Trading</button>
-                </div>
-                
-                <!-- Trust Badges -->
-                <div class="mt-16 flex flex-wrap justify-center gap-4 fade-in fade-in-delay-3">
-                    <div class="trust-badge">
-                        <i data-lucide="shield-check" class="w-5 h-5 mr-2"></i>
-                        <span>Regulated Broker (License #S123/F456-Demo)</span>
-                    </div>
-                    <div class="trust-badge">
-                        <i data-lucide="lock" class="w-5 h-5 mr-2"></i>
-                        <span>SSL Secure Payments</span>
-                    </div>
-                    <div class="trust-badge">
-                        <i data-lucide="award" class="w-5 h-5 mr-2"></i>
-                        <span>Best Trading Platform 2024</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 2. Live Market Prices Section -->
+        
+        <!-- Live Market Ticker -->
         <section class="ticker-wrap">
             <div class="ticker-move" id="ticker-content">
                 <!-- Content will be duplicated by JS for smooth loop -->
             </div>
         </section>
-        
-        <!-- 3. About Section -->
-        <section id="about" class="py-24 bg-navy">
-            <div class="container mx-auto px-4 grid md:grid-cols-2 gap-12 items-center">
-                <div class="fade-in">
-                    <img src="https://placehold.co/600x400/0A1931/FFC107?text=Our+Global+Office" alt="Shawn Exchange Office" class="rounded-lg shadow-2xl border-4 border-gold/20">
-                </div>
-                <div class="fade-in fade-in-delay-1">
-                    <h2 class="text-4xl font-bold mb-4">Welcome to <span class="text-gold">Shawn Exchange</span></h2>
-                    <p class="text-lg text-gray-400 mb-6">
-                        Founded in 2020, Shawn Exchange has grown into a global leader in online trading. We are on a mission to provide transparent, reliable, and innovative trading services to clients worldwide.
-                    </p>
-                    <p class="text-gray-400 mb-6">
-                        Our vision is to be the most trusted and client-centric broker in the industry. We are licensed and regulated by the Demo Financial Services Authority (DFSA) under license number S123/F456-Demo, ensuring your funds are secure.
-                    </p>
-                    <div class="flex space-x-4">
-                        <div class="bg-gray-800/50 p-4 rounded-lg">
-                            <i data-lucide="globe" class="w-8 h-8 text-gold mb-2"></i>
-                            <h3 class="text-xl font-semibold">150+ Countries</h3>
-                            <p class="text-gray-400">Serving clients globally.</p>
-                        </div>
-                        <div class="bg-gray-800/50 p-4 rounded-lg">
-                            <i data-lucide="users" class="w-8 h-8 text-gold mb-2"></i>
-                            <h3 class="text-xl font-semibold">5M+ Traders</h3>
-                            <p class="text-gray-400">Trusted by millions.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <!-- 4. Trading Instruments -->
-        <section id="instruments" class="py-24">
+
+        <!-- 1. Hero Section -->
+        <section class="hero-section text-center text-white">
             <div class="container mx-auto px-4">
-                <h2 class="text-4xl font-bold text-center mb-4 fade-in">Trade Your Favorite Markets</h2>
-                <p class="text-lg text-gray-400 text-center max-w-2xl mx-auto mb-12 fade-in fade-in-delay-1">
-                    Access over 1,200 instruments across Forex, Crypto, Stocks, and more. All with low spreads and ultra-fast execution.
+                <h1 class="text-5xl sm:text-6xl md:text-8xl font-extrabold mb-6 fade-in tracking-tight">
+                    Trade Smarter with <span class="text-gold">Ultra-Low</span> Latency
+                </h1>
+                <p class="text-xl md:text-2xl text-gray-300 max-w-4xl mx-auto mb-10 fade-in fade-in-delay-1 font-light">
+                    Experience real trading power with low spreads, fast execution, and **secure, global reliability**.
                 </p>
-                <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6">
-                    <!-- Forex -->
-                    <div class="instrument-card fade-in fade-in-delay-1">
-                        <i data-lucide="dollar-sign" class="w-12 h-12 text-gold mx-auto mb-4"></i>
-                        <h3 class="text-2xl font-semibold mb-2">Forex</h3>
-                        <p class="text-gray-400 mb-4">Trade 50+ currency pairs like EUR/USD & USD/JPY.</p>
-                        <a href="#" class="font-medium text-gold hover:underline">Trade Now &rarr;</a>
+                <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6 fade-in fade-in-delay-2">
+                    <button onclick="openModal('signup-modal')" class="btn btn-gold">Create Account</button>
+                    <button onclick="openModal('login-modal')" class="btn btn-outline">Start Trading</button>
+                </div>
+                
+                <!-- Trust Badges -->
+                <div class="mt-16 flex flex-wrap justify-center gap-4 fade-in fade-in-delay-3">
+                    <div class="flex items-center p-3 bg-navy rounded-lg border border-gold/50 text-green-400">
+                        <i data-lucide="shield-check" class="w-5 h-5 mr-2"></i>
+                        <span class="text-sm">Regulated Broker (DFSA: S123/F456-Demo)</span>
                     </div>
-                    <!-- Crypto -->
-                    <div class="instrument-card fade-in fade-in-delay-2">
-                        <i data-lucide="bitcoin" class="w-12 h-12 text-gold mx-auto mb-4"></i>
-                        <h3 class="text-2xl font-semibold mb-2">Crypto</h3>
-                        <p class="text-gray-400 mb-4">Buy & Sell BTC, ETH, SOL and 20+ other cryptos.</p>
-                        <a href="#" class="font-medium text-gold hover:underline">Trade Now &rarr;</a>
-                    </div>
-                    <!-- Commodities -->
-                    <div class="instrument-card fade-in fade-in-delay-3">
-                        <i data-lucide="gem" class="w-12 h-12 text-gold mx-auto mb-4"></i>
-                        <h3 class="text-2xl font-semibold mb-2">Commodities</h3>
-                        <p class="text-gray-400 mb-4">Speculate on Gold, Silver, Oil, and Natural Gas.</p>
-                        <a href="#" class="font-medium text-gold hover:underline">Trade Now &rarr;</a>
-                    </div>
-                    <!-- Indices -->
-                    <div class="instrument-card fade-in fade-in-delay-4">
-                        <i data-lucide="trending-up" class="w-12 h-12 text-gold mx-auto mb-4"></i>
-                        <h3 class="text-2xl font-semibold mb-2">Indices</h3>
-                        <p class="text-gray-400 mb-4">Access global indices like US100, S&P 500, and UK100.</p>
-                        <a href="#" class="font-medium text-gold hover:underline">Trade Now &rarr;</a>
-                    </div>
-                    <!-- Stocks -->
-                    <div class="instrument-card fade-in fade-in-delay-5">
-                        <i data-lucide="briefcase" class="w-12 h-12 text-gold mx-auto mb-4"></i>
-                        <h3 class="text-2xl font-semibold mb-2">Stocks</h3>
-                        <p class="text-gray-400 mb-4">Trade CFDs on top companies like Apple, Tesla, & Amazon.</p>
-                        <a href="#" class="font-medium text-gold hover:underline">Trade Now &rarr;</a>
+                    <div class="flex items-center p-3 bg-navy rounded-lg border border-gold/50 text-white">
+                        <i data-lucide="lock" class="w-5 h-5 mr-2"></i>
+                        <span class="text-sm">256-bit SSL Secure Payments</span>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- 5. Why Choose Us Section -->
-        <section id="why-us" class="py-24 bg-navy">
+        <!-- 2. About Section -->
+        <section id="about" class="py-24 bg-navy/50">
             <div class="container mx-auto px-4 grid md:grid-cols-2 gap-12 items-center">
                 <div class="fade-in">
-                    <h2 class="text-4xl font-bold mb-6">The <span class="text-gold">Shawn Exchange</span> Difference</h2>
-                    <p class="text-lg text-gray-400 mb-8">
-                        We are not just a platform; we are your partner in trading. We've built our ecosystem around what traders need most: speed, security, and support.
+                    <h2 class="text-4xl font-bold mb-4">Our <span class="text-gold">Commitment</span>: Trust & Transparency</h2>
+                    <p class="text-lg text-gray-400 mb-6">
+                        Established in 2020, Shawn Exchange was founded on the principle of providing an institutional-grade trading experience to everyone. We believe **transparency** is the bedrock of finance.
                     </p>
-                    <ul class="space-y-4">
+                    <p class="text-gray-400 mb-6">
+                        We are a licensed entity (DFSA - Demo Financial Services Authority) committed to innovation, security, and making sure our traders have the most favorable trading conditions available globally.
+                    </p>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="service-card p-4">
+                            <i data-lucide="scan-line" class="w-8 h-8 text-gold mb-2"></i>
+                            <h3 class="text-xl font-semibold">Mission</h3>
+                            <p class="text-gray-400 text-sm">To democratize professional trading tools.</p>
+                        </div>
+                        <div class="service-card p-4">
+                            <i data-lucide="rocket" class="w-8 h-8 text-gold mb-2"></i>
+                            <h3 class="text-xl font-semibold">Vision</h3>
+                            <p class="text-gray-400 text-sm">The world's most trusted global brokerage.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="fade-in fade-in-delay-1 hidden md:block">
+                    <img src="https://placehold.co/600x400/0A1931/FFD700?text=Global+Financial+Hub" alt="Financial Office" class="rounded-lg shadow-2xl border-4 border-gold/20">
+                </div>
+            </div>
+        </section>
+        
+        <!-- 3. Trading Instruments -->
+        <section id="instruments" class="py-24">
+            <div class="container mx-auto px-4">
+                <h2 class="text-4xl font-bold text-center mb-4 fade-in">Global Markets, <span class="text-gold">Instant Access</span></h2>
+                <p class="text-lg text-gray-400 text-center max-w-2xl mx-auto mb-12 fade-in fade-in-delay-1">
+                    Trade high-liquidity assets across the globe with tight spreads and no hidden fees.
+                </p>
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+                    <!-- Forex -->
+                    <div class="instrument-card fade-in fade-in-delay-1">
+                        <i data-lucide="bar-chart-3" class="w-10 h-10 text-gold mx-auto mb-3"></i>
+                        <h3 class="text-xl font-semibold mb-1">Forex</h3>
+                        <p class="text-gray-400 text-sm">50+ major and exotic pairs.</p>
+                        <a href="#" class="font-medium text-gold text-sm hover:underline mt-2 inline-block">Trade &rarr;</a>
+                    </div>
+                    <!-- Crypto -->
+                    <div class="instrument-card fade-in fade-in-delay-2">
+                        <i data-lucide="bitcoin" class="w-10 h-10 text-gold mx-auto mb-3"></i>
+                        <h3 class="text-xl font-semibold mb-1">Crypto</h3>
+                        <p class="text-gray-400 text-sm">BTC, ETH, and other top digital assets.</p>
+                        <a href="#" class="font-medium text-gold text-sm hover:underline mt-2 inline-block">Trade &rarr;</a>
+                    </div>
+                    <!-- Commodities -->
+                    <div class="instrument-card fade-in fade-in-delay-3">
+                        <i data-lucide="factory" class="w-10 h-10 text-gold mx-auto mb-3"></i>
+                        <h3 class="text-xl font-semibold mb-1">Commodities</h3>
+                        <p class="text-gray-400 text-sm">Precious metals (Gold/Silver) & Energy.</p>
+                        <a href="#" class="font-medium text-gold text-sm hover:underline mt-2 inline-block">Trade &rarr;</a>
+                    </div>
+                    <!-- Indices -->
+                    <div class="instrument-card fade-in fade-in-delay-4">
+                        <i data-lucide="line-chart" class="w-10 h-10 text-gold mx-auto mb-3"></i>
+                        <h3 class="text-xl font-semibold mb-1">Indices</h3>
+                        <p class="text-gray-400 text-sm">Global stock market indices (NASDAQ, S&P).</p>
+                        <a href="#" class="font-medium text-gold text-sm hover:underline mt-2 inline-block">Trade &rarr;</a>
+                    </div>
+                    <!-- Stocks -->
+                    <div class="instrument-card fade-in fade-in-delay-5">
+                        <i data-lucide="briefcase" class="w-10 h-10 text-gold mx-auto mb-3"></i>
+                        <h3 class="text-xl font-semibold mb-1">Stocks</h3>
+                        <p class="text-gray-400 text-sm">CFDs on major international companies.</p>
+                        <a href="#" class="font-medium text-gold text-sm hover:underline mt-2 inline-block">Trade &rarr;</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. Why Choose Us Section -->
+        <section id="why-us" class="py-24 bg-navy">
+            <div class="container mx-auto px-4 grid md:grid-cols-2 gap-12 items-center">
+                <div class="fade-in order-2 md:order-1">
+                    <img src="https://placehold.co/600x600/0A1931/FFD700?text=Secure+Payment+System" alt="Secure Trading" class="rounded-full shadow-2xl border-8 border-gold/20">
+                </div>
+                <div class="fade-in fade-in-delay-1 order-1 md:order-2">
+                    <h2 class="text-4xl font-bold mb-6">Why <span class="text-gold">Choose</span> Shawn Exchange?</h2>
+                    <ul class="space-y-6">
                         <li class="flex items-start">
-                            <i data-lucide="check-circle" class="w-6 h-6 text-green-400 mr-3 shrink-0 mt-1"></i>
+                            <i data-lucide="gavel" class="w-6 h-6 text-gold mr-3 shrink-0 mt-1"></i>
                             <div>
-                                <h4 class="text-xl font-semibold">Regulated & Secure</h4>
-                                <p class="text-gray-400">Client funds are held in segregated accounts with top-tier banks. Fully regulated by DFSA.</p>
+                                <h4 class="text-xl font-semibold">Fully Regulated Broker</h4>
+                                <p class="text-gray-400">Operate within a trusted framework with transparent practices and segregated client funds.</p>
                             </div>
                         </li>
                         <li class="flex items-start">
-                            <i data-lucide="check-circle" class="w-6 h-6 text-green-400 mr-3 shrink-0 mt-1"></i>
+                            <i data-lucide="zap" class="w-6 h-6 text-gold mr-3 shrink-0 mt-1"></i>
                             <div>
-                                <h4 class="text-xl font-semibold">Low Spreads & Fast Execution</h4>
-                                <p class="text-gray-400">Get spreads from 0.0 pips and execution speeds under 0.01s. No requotes.</p>
+                                <h4 class="text-xl font-semibold">Execution Speed: $lt; 0.01s</h4>
+                                <p class="text-gray-400">Lightning-fast execution on all trades, ensuring you get the best market price every time.</p>
                             </div>
                         </li>
                         <li class="flex items-start">
-                            <i data-lucide="check-circle" class="w-6 h-6 text-green-400 mr-3 shrink-0 mt-1"></i>
+                            <i data-lucide="credit-card" class="w-6 h-6 text-gold mr-3 shrink-0 mt-1"></i>
                             <div>
-                                <h4 class="text-xl font-semibold">24/7 Customer Support</h4>
-                                <p class="text-gray-400">Our expert support team is available around the clock via live chat, email, and phone.</p>
+                                <h4 class="text-xl font-semibold">Secure & Flexible Payments</h4>
+                                <p class="text-gray-400">Instant deposits via Crypto (BTC, USDT, ETH) and local payment gateways.</p>
                             </div>
                         </li>
                         <li class="flex items-start">
-                            <i data-lucide="check-circle" class="w-6 h-6 text-green-400 mr-3 shrink-0 mt-1"></i>
-<div>
-                                <h4 class="text-xl font-semibold">Referral & Partnership Program</h4>
-                                <p class="text-gray-400">Earn commissions by referring friends or becoming an Introducing Broker (IB).</p>
+                            <i data-lucide="refresh-cw" class="w-6 h-6 text-gold mr-3 shrink-0 mt-1"></i>
+                            <div>
+                                <h4 class="text-xl font-semibold">Dedicated 24/7 Support</h4>
+                                <p class="text-gray-400">Real people, ready to help you trade confidently at any time, day or night.</p>
                             </div>
                         </li>
                     </ul>
                 </div>
-                <div class="fade-in fade-in-delay-1">
-                    <img src="https://placehold.co/600x600/0A1931/FFC107?text=Secure+Trading+App" alt="Trading App" class="rounded-full shadow-2xl border-8 border-gold/20">
-                </div>
             </div>
         </section>
 
-        <!-- 6. Testimonials Section -->
+        <!-- 5. Testimonials Section -->
         <section id="testimonials" class="py-24">
             <div class="container mx-auto px-4">
                 <h2 class="text-4xl font-bold text-center mb-12 fade-in">What Our <span class="text-gold">Traders Say</span></h2>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                     <!-- Testimonial 1 -->
-                    <div class="bg-navy p-6 rounded-lg border border-gray-700/50 fade-in fade-in-delay-1">
-                        <div class="flex items-center mb-4">
-                            <img src="https://placehold.co/50x50/FFC107/000?text=JD" alt="User" class="w-12 h-12 rounded-full mr-4">
+                    <div class="service-card fade-in fade-in-delay-1">
+                        <p class="text-gray-300 italic mb-4">"Absolutely superior platform. The execution speed is unmatched, and I feel completely secure with my investments here. Withdrawal process is seamless."</p>
+                        <div class="flex items-center">
+                            <img src="https://placehold.co/40x40/FFD700/0D0D19?text=JD" alt="User" class="w-10 h-10 rounded-full mr-3">
                             <div>
-                                <h4 class="text-lg font-semibold">John D.</h4>
-                                <p class="text-sm text-gray-400">New York, USA</p>
+                                <h4 class="font-semibold">John D.</h4>
+                                <div class="flex text-gold">
+                                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                                </div>
                             </div>
                         </div>
-                        <div class="flex text-gold mb-2">
-                            <i data-lucide="star" class="w-5 h-5 fill-current"></i>
-                            <i data-lucide="star" class="w-5 h-5 fill-current"></i>
-                            <i data-lucide="star" class="w-5 h-5 fill-current"></i>
-                            <i data-lucide="star" class="w-5 h-5 fill-current"></i>
-                            <i data-lucide="star" class="w-5 h-5 fill-current"></i>
-                        </div>
-                        <p class="text-gray-300 italic">"The best broker I've ever used. Withdrawals are fast, and the support team is incredibly helpful. 10/10."</p>
                     </div>
                     <!-- Testimonial 2 -->
-                    <div class="bg-navy p-6 rounded-lg border border-gray-700/50 fade-in fade-in-delay-2">
-                        <div class="flex items-center mb-4">
-                            <img src="https://placehold.co/50x50/FFC107/000?text=AS" alt="User" class="w-12 h-12 rounded-full mr-4">
+                    <div class="service-card fade-in fade-in-delay-2">
+                        <p class="text-gray-300 italic mb-4">"I appreciate the low crypto spreads and the dedication to customer support. It's the professionalism that sets Shawn Exchange apart from the rest."</p>
+                        <div class="flex items-center">
+                            <img src="https://placehold.co/40x40/FFD700/0D0D19?text=AS" alt="User" class="w-10 h-10 rounded-full mr-3">
                             <div>
-                                <h4 class="text-lg font-semibold">Aisha S.</h4>
-                                <p class="text-sm text-gray-400">Lagos, Nigeria</p>
+                                <h4 class="font-semibold">Aisha S.</h4>
+                                <div class="flex text-gold">
+                                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                                    <i data-lucide="star-half" class="w-4 h-4 fill-current"></i>
+                                </div>
                             </div>
                         </div>
-                        <div class="flex text-gold mb-2">
-                            <i data-lucide="star" class="w-5 h-5 fill-current"></i>
-                            <i data-lucide="star" class="w-5 h-5 fill-current"></i>
-                            <i data-lucide="star" class="w-5 h-5 fill-current"></i>
-                            <i data-lucide="star" class="w-5 h-5 fill-current"></i>
-                            <i data-lucide="star-half" class="w-5 h-5 fill-current"></i>
-                        </div>
-                        <p class="text-gray-300 italic">"Low spreads on crypto and forex are a game-changer. The platform is stable even during high volatility."</p>
                     </div>
                     <!-- Testimonial 3 -->
-                    <div class="bg-navy p-6 rounded-lg border border-gray-700/50 fade-in fade-in-delay-3">
-                        <div class="flex items-center mb-4">
-                            <img src="https://placehold.co/50x50/FFC107/000?text=MR" alt="User" class="w-12 h-12 rounded-full mr-4">
+                    <div class="service-card fade-in fade-in-delay-3">
+                        <p class="text-gray-300 italic mb-4">"The platform is extremely intuitive, even for a beginner. The resources are great, and I've already recommended the affiliate program to my network."</p>
+                        <div class="flex items-center">
+                            <img src="https://placehold.co/40x40/FFD700/0D0D19?text=MR" alt="User" class="w-10 h-10 rounded-full mr-3">
                             <div>
-                                <h4 class="text-lg font-semibold">Mike R.</h4>
-                                <p class="text-sm text-gray-400">London, UK</p>
+                                <h4 class="font-semibold">Mike R.</h4>
+                                <div class="flex text-gold">
+                                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                                </div>
                             </div>
                         </div>
-                        <div class="flex text-gold mb-2">
-                            <i data-lucide="star" class="w-5 h-5 fill-current"></i>
-                            <i data-lucide="star" class="w-5 h-5 fill-current"></i>
-                            <i data-lucide="star" class="w-5 h-5 fill-current"></i>
-                            <i data-lucide="star" class="w-5 h-5 fill-current"></i>
-                            <i data-lucide="star" class="w-5 h-5 fill-current"></i>
-                        </div>
-                        <p class="text-gray-300 italic">"I joined for the affiliate program and stayed for the trading conditions. Highly recommend Shawn Exchange."</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- 7. Call-to-Action -->
-        <section class="py-24 bg-gradient-to-r from-gold to-yellow-400 text-black text-center">
-            <div class="container mx-auto px-4 fade-in">
-                <h2 class="text-4xl md:text-5xl font-extrabold mb-6">Join Thousands of Successful Traders Worldwide</h2>
-                <p class="text-xl text-gray-800 max-w-2xl mx-auto mb-8">
-                    Get started in minutes. Open your account, fund your wallet, and start trading on the world's most reliable platform.
+        <!-- 6. Call-to-Action / Newsletter -->
+        <section class="py-24 bg-navy/80">
+            <div class="container mx-auto px-4 text-center">
+                <h2 class="text-4xl md:text-5xl font-extrabold text-gold mb-4">Ready to Start Trading?</h2>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
+                    Join thousands of successful traders. Open your free account now and access global markets.
                 </p>
                 <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6">
-                    <button onclick="openModal('signup-modal')" class="btn bg-navy text-white hover:bg-gray-800 transform hover:-translate-y-1">Open Account Now</button>
-                    <a href="https://t.me/yourchannel" target="_blank" rel="noopener noreferrer" class="btn bg-transparent border-2 border-black text-black hover:bg-black hover:text-white">
-                        Join Telegram Channel
+                    <button onclick="openModal('signup-modal')" class="btn btn-gold !text-black">Open Account Now</button>
+                    <a href="https://t.me/yourchannel" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
+                        <i data-lucide="send" class="w-5 h-5 mr-2 inline-block"></i> Join Our Telegram
                     </a>
+                </div>
+                
+                <!-- Newsletter Subscription -->
+                <div class="mt-12 max-w-xl mx-auto">
+                    <h3 class="text-2xl font-semibold mb-4">Subscribe for Market Insights</h3>
+                    <form onsubmit="event.preventDefault(); alert('Subscribed to newsletter!');" class="flex flex-col sm:flex-row gap-2">
+                        <input type="email" placeholder="Enter your email address" class="w-full p-4 rounded-full bg-black/50 border border-gray-700 text-white focus:ring-2 focus:ring-gold outline-none" required>
+                        <button type="submit" class="btn btn-gold !py-3 !px-6 !text-base">Subscribe</button>
+                    </form>
                 </div>
             </div>
         </section>
     </main>
 
-    <!-- 8. Footer -->
-    <footer class="bg-navy pt-16 pb-8">
+    <!-- 7. Footer -->
+    <footer class="bg-black pt-16 pb-8">
         <div class="container mx-auto px-4">
-            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 mb-8">
-                <!-- Column 1: Logo & Socials -->
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 mb-8 border-b border-gray-800 pb-8">
+                <!-- Column 1: Logo & Contact -->
                 <div class="col-span-2 lg:col-span-1">
-                    <a href="#" class="text-3xl font-extrabold text-gold mb-4 block">
-                        Shawn<span class="text-white">Exchange</span>
+                    <a href="#" class="text-3xl font-extrabold text-gold tracking-wider mb-4 block">
+                        SHAWN<span class="text-white">EXCHANGE</span>
                     </a>
-                    <p class="text-gray-400 mb-4">Your trusted partner in global financial markets.</p>
-                    <div class="flex space-x-4">
+                    <p class="text-gray-500 mb-4 text-sm">Regulated, secure, and fast trading for the modern investor.</p>
+                    <p class="text-gray-400 font-semibold">Contact:</p>
+                    <p class="text-gray-500 text-sm">support@shawn.exchange (demo)</p>
+                    <div class="flex space-x-4 mt-3">
                         <a href="https://t.me/youradmin" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-gold"><i data-lucide="send" class="w-6 h-6"></i></a>
                         <a href="#" class="text-gray-400 hover:text-gold"><i data-lucide="twitter" class="w-6 h-6"></i></a>
-                        <a href="#" class="text-gray-400 hover:text-gold"><i data-lucide="youtube" class="w-6 h-6"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-gold"><i data-lucide="linkedin" class="w-6 h-6"></i></a>
                     </div>
                 </div>
                 
                 <!-- Column 2: Trading -->
                 <div>
                     <h5 class="text-lg font-semibold text-white mb-4">Trading</h5>
-                    <ul class="space-y-2">
+                    <ul class="space-y-2 text-sm">
                         <li><a href="#instruments" class="text-gray-400 hover:text-gold">Markets</a></li>
-                        <li><a href="#" onclick="openModal('signup-modal')" class="text-gray-400 hover:text-gold">Account Types</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-gold">Platforms</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-gold">Referral Program</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-gold">Trading Platforms</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-gold">Account Types</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-gold">Affiliate Program</a></li>
                     </ul>
                 </div>
 
                 <!-- Column 3: Company -->
                 <div>
                     <h5 class="text-lg font-semibold text-white mb-4">Company</h5>
-                    <ul class="space-y-2">
+                    <ul class="space-y-2 text-sm">
                         <li><a href="#about" class="text-gray-400 hover:text-gold">About Us</a></li>
+                        <li><a href="#testimonials" class="text-gray-400 hover:text-gold">Testimonials</a></li>
                         <li><a href="#" class="text-gray-400 hover:text-gold">Careers</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-gold">Partnerships</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-gold">Press</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-gold">News</a></li>
                     </ul>
                 </div>
                 
                 <!-- Column 4: Legal -->
                 <div>
                     <h5 class="text-lg font-semibold text-white mb-4">Legal</h5>
-                    <ul class="space-y-2">
+                    <ul class="space-y-2 text-sm">
                         <li><button onclick="openModal('terms-modal')" class="text-gray-400 hover:text-gold text-left">Terms & Conditions</button></li>
                         <li><button onclick="openModal('privacy-modal')" class="text-gray-400 hover:text-gold text-left">Privacy Policy</button></li>
                         <li><button onclick="openModal('risk-modal')" class="text-gray-400 hover:text-gold text-left">Risk Disclosure</button></li>
+                        <li><button onclick="openModal('faq-modal')" class="text-gray-400 hover:text-gold text-left">FAQ Page</button></li>
                     </ul>
                 </div>
                 
                 <!-- Column 5: Support -->
                 <div>
                     <h5 class="text-lg font-semibold text-white mb-4">Support</h5>
-                    <ul class="space-y-2">
-                        <li><button onclick="openModal('faq-modal')" class="text-gray-400 hover:text-gold text-left">FAQ</button></li>
+                    <ul class="space-y-2 text-sm">
                         <li><button onclick="openModal('support-modal')" class="text-gray-400 hover:text-gold text-left">Contact Support</button></li>
-                        <li><a href="#" class="text-gray-400 hover:text-gold">Live Chat</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-gold">Live Chat (External)</a></li>
+                        <li><a href="https://t.me/youradmin" target="_blank" class="text-gray-400 hover:text-gold">Telegram Support</a></li>
                     </ul>
                 </div>
             </div>
             
-            <hr class="border-gray-700/50 mb-8"/>
-            
             <!-- Risk Disclaimer -->
-            <div class="text-xs text-gray-500 text-center">
-                <p class="font-bold mb-2">Risk Disclosure:</p>
-                <p>Trading in financial markets, including Contracts for Difference (CFDs), involves a high level of risk and may not be suitable for all investors. The high degree of leverage can work against you as well as for you. Before deciding to trade, you should carefully consider your investment objectives, level of experience, and risk appetite. Only invest what you can afford to lose.</p>
+            <div class="text-xs text-gray-600 text-center pt-8">
+                <p class="font-bold text-red-400 mb-2">RISK WARNING</p>
+                <p>Trading Contracts for Difference (CFDs) involves significant risk to your capital and may result in losses that exceed your initial deposit. Please ensure you fully understand the risks involved and take measures to manage your exposure.</p>
                 <p class="mt-4">
                     &copy; <span id="current-year"></span> Shawn Exchange. All rights reserved. 
-                    Shawn Exchange is a demo website. (License #S123/F456-Demo)
+                    This is a demonstration website. Regulated by DFSA (Demo License #S123/F456-Demo).
                 </p>
             </div>
         </div>
@@ -523,150 +496,187 @@
     ============================================================
     -->
 
-    <!-- Modal: Login -->
+    <!-- Modal: Login (Only visible when active) -->
     <div id="login-modal" class="modal" onclick="closeModal('login-modal')">
-        <div class="modal-content !bg-white" onclick="event.stopPropagation()">
-            <h2 class="text-3xl font-bold text-navy mb-6 text-center">Welcome Back</h2>
-            <!-- Form placeholder for Phase 2 -->
-            <form action="#" onsubmit="event.preventDefault(); alert('Phase 2: Login logic goes here')">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-3xl font-bold text-gold">Welcome Back</h2>
+                <button onclick="closeModal('login-modal')" class="text-gray-400 hover:text-gold">
+                    <i data-lucide="x" class="w-6 h-6"></i>
+                </button>
+            </div>
+            <!-- Login Form (Phase 2: Firebase Integration) -->
+            <form action="#" onsubmit="event.preventDefault(); console.log('Login attempt'); alert('Phase 2: Login logic goes here')">
                 <div class="mb-4">
-                    <label for="login-email" class="block text-sm font-medium text-gray-700">Email</label>
-                    <input type="email" id="login-email" placeholder="you@example.com" class="w-full mt-1 p-3 border border-gray-300 rounded-lg" required>
+                    <label for="login-email" class="block text-sm font-medium text-gray-300">Email Address</label>
+                    <input type="email" id="login-email" placeholder="you@example.com" class="w-full mt-1 p-4 bg-black/50 border border-gray-700 rounded-lg text-white focus:border-gold focus:ring-1 focus:ring-gold" required>
                 </div>
                 <div class="mb-6">
-                    <label for="login-password" class="block text-sm font-medium text-gray-700">Password</label>
-                    <input type="password" id="login-password" placeholder="••••••••" class="w-full mt-1 p-3 border border-gray-300 rounded-lg" required>
+                    <label for="login-password" class="block text-sm font-medium text-gray-300">Password</label>
+                    <input type="password" id="login-password" placeholder="••••••••" class="w-full mt-1 p-4 bg-black/50 border border-gray-700 rounded-lg text-white focus:border-gold focus:ring-1 focus:ring-gold" required>
                 </div>
-                <button type="submit" class="btn btn-gold w-full !text-black">Log In</button>
+                <button type="submit" class="btn btn-gold w-full">SECURE LOG IN</button>
             </form>
-            <p class="text-center text-gray-600 mt-4">
-                Don't have an account? <button onclick="closeModal('login-modal'); openModal('signup-modal')" class="text-indigo-600 font-medium">Sign Up</button>
+            <p class="text-center text-gray-400 mt-6">
+                Don't have an account? <button onclick="closeModal('login-modal'); openModal('signup-modal')" class="text-gold font-medium hover:underline">Sign Up Now</button>
             </p>
         </div>
     </div>
     
-    <!-- Modal: Sign Up -->
+    <!-- Modal: Sign Up (Only visible when active) -->
     <div id="signup-modal" class="modal" onclick="closeModal('signup-modal')">
-        <div class="modal-content !bg-white" onclick="event.stopPropagation()">
-            <h2 class="text-3xl font-bold text-navy mb-6 text-center">Create Your Account</h2>
-            <!-- Form placeholder for Phase 2 -->
-            <form action="#" onsubmit="event.preventDefault(); alert('Phase 2: Registration logic and Firebase Auth goes here')">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-3xl font-bold text-gold">Create Your Account</h2>
+                <button onclick="closeModal('signup-modal')" class="text-gray-400 hover:text-gold">
+                    <i data-lucide="x" class="w-6 h-6"></i>
+                </button>
+            </div>
+            <!-- Registration Form (Phase 2: Firebase Integration) -->
+            <form action="#" onsubmit="event.preventDefault(); console.log('Registration attempt'); alert('Phase 2: Registration logic and Firebase Auth goes here')">
                 <div class="mb-4">
-                    <label for="signup-name" class="block text-sm font-medium text-gray-700">Full Name</label>
-                    <input type="text" id="signup-name" placeholder="Shawn Rider" class="w-full mt-1 p-3 border border-gray-300 rounded-lg" required>
+                    <label for="signup-name" class="block text-sm font-medium text-gray-300">Full Name</label>
+                    <input type="text" id="signup-name" placeholder="John Doe" class="w-full mt-1 p-4 bg-black/50 border border-gray-700 rounded-lg text-white focus:border-gold focus:ring-1 focus:ring-gold" required>
                 </div>
                 <div class="mb-4">
-                    <label for="signup-email" class="block text-sm font-medium text-gray-700">Email</label>
-                    <input type="email" id="signup-email" placeholder="you@example.com" class="w-full mt-1 p-3 border border-gray-300 rounded-lg" required>
+                    <label for="signup-email" class="block text-sm font-medium text-gray-300">Email</label>
+                    <input type="email" id="signup-email" placeholder="you@example.com" class="w-full mt-1 p-4 bg-black/50 border border-gray-700 rounded-lg text-white focus:border-gold focus:ring-1 focus:ring-gold" required>
                 </div>
                 <div class="mb-4">
-                    <label for="signup-password" class="block text-sm font-medium text-gray-700">Password</label>
-                    <input type="password" id="signup-password" placeholder="Create a strong password" class="w-full mt-1 p-3 border border-gray-300 rounded-lg" required>
+                    <label for="signup-password" class="block text-sm font-medium text-gray-300">Password</label>
+                    <input type="password" id="signup-password" placeholder="Min. 8 characters" class="w-full mt-1 p-4 bg-black/50 border border-gray-700 rounded-lg text-white focus:border-gold focus:ring-1 focus:ring-gold" required>
                 </div>
                 <div class="mb-6 text-xs text-gray-500">
-                    <input type="checkbox" id="agree-terms" class="mr-1" required>
-                    I agree to the <button type="button" onclick="openModal('terms-modal')" class="text-indigo-600 underline">Terms & Conditions</button>
-                    and <button type="button" onclick="openModal('privacy-modal')" class="text-indigo-600 underline">Privacy Policy</button>.
+                    <input type="checkbox" id="agree-terms" class="mr-2 accent-gold" required>
+                    I confirm I have read and agree to the <button type="button" onclick="openModal('terms-modal')" class="text-gold underline hover:no-underline">Terms & Conditions</button>.
                 </div>
-                <button type="submit" class="btn btn-gold w-full !text-black">Create Account</button>
+                <button type="submit" class="btn btn-gold w-full">CREATE ACCOUNT</button>
             </form>
-            <p class="text-center text-gray-600 mt-4">
-                Already have an account? <button onclick="closeModal('signup-modal'); openModal('login-modal')" class="text-indigo-600 font-medium">Log In</button>
+            <p class="text-center text-gray-400 mt-6">
+                Already registered? <button onclick="closeModal('signup-modal'); openModal('login-modal')" class="text-gold font-medium hover:underline">Log In</button>
             </p>
         </div>
     </div>
 
-    <!-- Modal: FAQ -->
+    <!-- Modal: FAQ (Content Pages) -->
     <div id="faq-modal" class="modal" onclick="closeModal('faq-modal')">
-        <div class="modal-content !bg-white" onclick="event.stopPropagation()">
-            <h2 class="text-3xl font-bold text-navy mb-6">Frequently Asked Questions</h2>
-            <div class="space-y-4 text-left">
-                <details>
-                    <summary>1. What is Shawn Exchange?</summary>
-                    <div class_="">
-                        <p class="text-gray-700">Shawn Exchange is a global, multi-asset broker offering reliable trading services in Forex, Crypto, Stocks, and more. We focus on low spreads, fast execution, and top-tier customer support.</p>
-                    </div>
-                </details>
-                <details>
-                    <summary>2. How do I deposit funds?</summary>
-                    <div>
-                        <p class="text-gray-700">We support deposits via Crypto Wallets (BTC, ETH, USDT), and local bank transfers. Once you create an account, you can visit the "Deposit" section in your dashboard for instructions.</p>
-                    </div>
-                </details>
-                <details>
-                    <summary>3. How long do withdrawals take?</summary>
-                    <div>
-                        <p class="text-gray-700">We process all withdrawal requests within 24 business hours. The time it takes for funds to reach you depends on your chosen method (e.g., crypto is usually faster).</p>
-                    </div>
-                </details>
-                <details>
-                    <summary>4. Is my money safe?</summary>
-                    <div>
-                        <p class="text-gray-700">Yes. Client funds are held in segregated bank accounts, separate from our company's operational funds. We also use top-tier SSL encryption for all data.</p>
-                    </div>
-                </details>
+        <div class="modal-content !max-w-4xl" onclick="event.stopPropagation()">
+            <div class="flex justify-between items-center mb-6 border-b border-gray-700 pb-3">
+                <h2 class="text-3xl font-bold text-gold">Frequently Asked Questions</h2>
+                <button onclick="closeModal('faq-modal')" class="text-gray-400 hover:text-gold"><i data-lucide="x" class="w-6 h-6"></i></button>
             </div>
-            <button onclick="closeModal('faq-modal')" class="btn btn-gold !text-black mt-6">Close</button>
+            <div class="space-y-4 text-left max-h-[70vh] overflow-y-auto pr-2">
+                <details class="group">
+                    <summary class="list-none cursor-pointer p-4 bg-black/50 rounded-lg font-semibold flex justify-between items-center hover:bg-black/70 transition-colors">
+                        What is the minimum deposit?
+                        <i data-lucide="chevron-down" class="w-5 h-5 transition-transform group-open:rotate-180"></i>
+                    </summary>
+                    <div class="p-4 bg-navy/50 mt-1 rounded-lg text-gray-300">
+                        <p>The minimum initial deposit to open a live trading account is **$100 USD** (or cryptocurrency equivalent). We aim to make professional trading accessible to everyone.</p>
+                    </div>
+                </details>
+                <details class="group">
+                    <summary class="list-none cursor-pointer p-4 bg-black/50 rounded-lg font-semibold flex justify-between items-center hover:bg-black/70 transition-colors">
+                        How long do withdrawals take?
+                        <i data-lucide="chevron-down" class="w-5 h-5 transition-transform group-open:rotate-180"></i>
+                    </summary>
+                    <div class="p-4 bg-navy/50 mt-1 rounded-lg text-gray-300">
+                        <p>All withdrawal requests are **processed within 24 business hours**. Cryptocurrency transfers are typically reflected in your wallet instantly after processing, while bank transfers may take 3-5 business days.</p>
+                    </div>
+                </details>
+                <details class="group">
+                    <summary class="list-none cursor-pointer p-4 bg-black/50 rounded-lg font-semibold flex justify-between items-center hover:bg-black/70 transition-colors">
+                        Is Shawn Exchange regulated?
+                        <i data-lucide="chevron-down" class="w-5 h-5 transition-transform group-open:rotate-180"></i>
+                    </summary>
+                    <div class="p-4 bg-navy/50 mt-1 rounded-lg text-gray-300">
+                        <p>Yes, Shawn Exchange operates under the supervision of the Demo Financial Services Authority (DFSA) under license S123/F456-Demo. We strictly adhere to global regulatory standards to ensure client protection.</p>
+                    </div>
+                </details>
+                <!-- Other content modals follow the same structure -->
+            </div>
         </div>
     </div>
     
-    <!-- Modal: Terms & Conditions -->
+    <!-- Modal: Terms & Conditions (Content Pages) -->
     <div id="terms-modal" class="modal" onclick="closeModal('terms-modal')">
-        <div class="modal-content !bg-white" onclick="event.stopPropagation()">
-            <h2 class="text-3xl font-bold text-navy mb-6">Terms & Conditions</h2>
-            <div class="space-y-4 text-gray-700 text-sm">
-                <p>Welcome to Shawn Exchange. These terms and conditions outline the rules and regulations for the use of Shawn Exchange's Website, located at shawn.exchange.</p>
-                <h3 class="font-bold text-lg">1. Acceptance of Terms</h3>
-                <p>By accessing this website, we assume you accept these terms and conditions. Do not continue to use Shawn Exchange if you do not agree to all of the terms and conditions stated on this page.</p>
-                <h3 class="font-bold text-lg">2. Risk Disclosure</h3>
-                <p>Trading financial instruments involves significant risk and can result in the loss of your invested capital. You should not invest more than you can afford to lose. You must be aware of the risks and be willing to accept them in order to trade in these markets.</p>
-                <h3 class="font-bold text-lg">3. User Account</h3>
-                <p>You must be at least 18 years of age to open an account. You are responsible for maintaining the confidentiality of your account and password and for restricting access to your computer.</p>
-                <p>(This is placeholder text. A real broker would have extensive legal terms.)</p>
+        <div class="modal-content !max-w-4xl" onclick="event.stopPropagation()">
+            <div class="flex justify-between items-center mb-6 border-b border-gray-700 pb-3">
+                <h2 class="text-3xl font-bold text-gold">Terms & Conditions (T&C)</h2>
+                <button onclick="closeModal('terms-modal')" class="text-gray-400 hover:text-gold"><i data-lucide="x" class="w-6 h-6"></i></button>
             </div>
-            <button onclick="closeModal('terms-modal')" class="btn btn-gold !text-black mt-6">Close</button>
+            <div class="space-y-4 text-gray-300 text-sm max-h-[70vh] overflow-y-auto pr-2">
+                <p><strong>Effective Date:</strong> October 25, 2024</p>
+                <h3 class="font-bold text-lg text-gold mt-4">1. General Agreement</h3>
+                <p>By registering for an account with Shawn Exchange, you acknowledge that you have read, understood, and agree to be legally bound by all terms and conditions contained herein. If you do not agree to these terms, you are prohibited from using the platform.</p>
+                <h3 class="font-bold text-lg text-gold mt-4">2. Risk Acknowledgement</h3>
+                <p>You acknowledge that trading leveraged products carries a substantial risk of loss. You accept that Shawn Exchange is solely an execution venue and not a financial advisor. It is your sole responsibility to ensure that you are financially capable of withstanding the risks associated with CFDs and Forex trading.</p>
+                <h3 class="font-bold text-lg text-gold mt-4">3. Account Usage and Security</h3>
+                <p>You are solely responsible for maintaining the confidentiality of your account credentials. Any activities occurring under your account will be deemed to be conducted by you. You must notify Shawn Exchange immediately of any unauthorized use.</p>
+            </div>
         </div>
     </div>
     
-    <!-- Modal: Privacy Policy -->
+    <!-- Modal: Privacy Policy (Content Pages) -->
     <div id="privacy-modal" class="modal" onclick="closeModal('privacy-modal')">
-        <div class="modal-content !bg-white" onclick="event.stopPropagation()">
-            <h2 class="text-3xl font-bold text-navy mb-6">Privacy Policy</h2>
-            <div class="space-y-4 text-gray-700 text-sm">
-                <p>Your privacy is important to us. It is Shawn Exchange's policy to respect your privacy regarding any information we may collect from you across our website.</p>
-                <h3 class="font-bold text-lg">1. Information We Collect</h3>
-                <p>We only ask for personal information when we truly need it to provide a service to you (e.g., for KYC/AML regulations). We collect it by fair and lawful means, with your knowledge and consent.</p>
-                <h3 class="font-bold text-lg">2. How We Use Your Information</h3>
-                <p>We use the information we collect to operate, maintain, and improve our services, to process transactions, and to send you related information, including confirmations and support messages.</p>
-                <h3 class="font-bold text-lg">3. Security</h3>
-                <p>We are committed to protecting your data. We use commercially acceptable means to protect your Personal Information, but remember that no method of transmission over the Internet is 100% secure.</p>
+        <div class="modal-content !max-w-4xl" onclick="event.stopPropagation()">
+            <div class="flex justify-between items-center mb-6 border-b border-gray-700 pb-3">
+                <h2 class="text-3xl font-bold text-gold">Privacy Policy</h2>
+                <button onclick="closeModal('privacy-modal')" class="text-gray-400 hover:text-gold"><i data-lucide="x" class="w-6 h-6"></i></button>
             </div>
-            <button onclick="closeModal('privacy-modal')" class="btn btn-gold !text-black mt-6">Close</button>
+            <div class="space-y-4 text-gray-300 text-sm max-h-[70vh] overflow-y-auto pr-2">
+                <p>Shawn Exchange is committed to protecting the privacy and security of your personal data. This policy describes how we collect, use, and share your information.</p>
+                <h3 class="font-bold text-lg text-gold mt-4">1. Data Collection</h3>
+                <p>We collect personal information such as name, email, contact details, and financial data (e.g., wallet addresses) for account registration, regulatory compliance (KYC), and transaction processing.</p>
+                <h3 class="font-bold text-lg text-gold mt-4">2. Data Usage</h3>
+                <p>Your data is used exclusively to: provide trading services, process deposits and withdrawals, comply with anti-money laundering regulations, and improve the user experience on our platform.</p>
+                <h3 class="font-bold text-lg text-gold mt-4">3. Data Security</h3>
+                <p>We implement advanced security measures, including data encryption and secured servers, to prevent unauthorized access, disclosure, modification, or destruction of your personal information.</p>
+            </div>
         </div>
     </div>
     
-    <!-- Modal: Support -->
+    <!-- Modal: Support (Content Pages) -->
     <div id="support-modal" class="modal" onclick="closeModal('support-modal')">
-        <div class="modal-content !bg-white" onclick="event.stopPropagation()">
-            <h2 class="text-3xl font-bold text-navy mb-6">Contact Support</h2>
-            <div class="space-y-4 text-gray-700 text-left">
-                <p>Our team is available 24/7 to help you.</p>
-                <p><strong>Email:</strong> support@shawn.exchange (demo)</p>
-                <p><strong>Telegram Support:</strong> <a href="https://t.me/youradmin" target="_blank" class="text-indigo-600">@ShawnExchangeAdmin</a></p>
-                <p><strong>Live Chat:</strong> Click the chat icon at the bottom right of your screen (feature to be added in Phase 2).</p>
+        <div class="modal-content !max-w-2xl" onclick="event.stopPropagation()">
+            <div class="flex justify-between items-center mb-6 border-b border-gray-700 pb-3">
+                <h2 class="text-3xl font-bold text-gold">Dedicated Support Center</h2>
+                <button onclick="closeModal('support-modal')" class="text-gray-400 hover:text-gold"><i data-lucide="x" class="w-6 h-6"></i></button>
             </div>
-            <button onclick="closeModal('support-modal')" class="btn btn-gold !text-black mt-6">Close</button>
+            <div class="space-y-4 text-gray-300 text-left">
+                <p class="text-lg">Need immediate assistance? Our support team is available 24 hours a day, 7 days a week.</p>
+                
+                <div class="p-4 bg-navy rounded-lg border border-gold/50">
+                    <h4 class="font-semibold text-xl text-white flex items-center mb-2"><i data-lucide="mail" class="w-6 h-6 text-gold mr-3"></i> Email Support</h4>
+                    <p class="text-gray-400">Send us a detailed message at: **support@shawn.exchange** (demo)</p>
+                </div>
+                
+                <div class="p-4 bg-navy rounded-lg border border-gold/50">
+                    <h4 class="font-semibold text-xl text-white flex items-center mb-2"><i data-lucide="send" class="w-6 h-6 text-gold mr-3"></i> Live Telegram Support</h4>
+                    <p class="text-gray-400">For fast, direct communication, reach our admin on Telegram: <a href="https://t.me/youradmin" target="_blank" class="text-gold underline hover:no-underline font-mono">@ShawnExchangeAdmin</a></p>
+                </div>
+
+                <div class="p-4 bg-navy rounded-lg border border-gold/50">
+                    <h4 class="font-semibold text-xl text-white flex items-center mb-2"><i data-lucide="message-square" class="w-6 h-6 text-gold mr-3"></i> Live Chat Widget</h4>
+                    <p class="text-gray-400">Our live chat service is available 24/7 on the bottom right of the dashboard (will be integrated in Phase 2).</p>
+                </div>
+            </div>
         </div>
     </div>
     
-    <!-- Modal: Risk Disclosure -->
+    <!-- Modal: Risk Disclosure (Content Pages) -->
     <div id="risk-modal" class="modal" onclick="closeModal('risk-modal')">
-        <div class="modal-content !bg-white" onclick="event.stopPropagation()">
-            <h2 class="text-3xl font-bold text-red-700 mb-6">Risk Disclosure</h2>
-            <div class="space-y-4 text-gray-700 text-sm">
-                <p>Trading in financial markets, including Contracts for Difference (CFDs), involves a high level of risk and may not be suitable for all investors. The high degree of leverage can work against you as well as for you. Before deciding to trade, you should carefully consider your investment objectives, level of experience, and risk appetite. Only invest what you can afford to lose. Past performance is not indicative of future results.</p>
+        <div class="modal-content !max-w-xl" onclick="event.stopPropagation()">
+            <div class="flex justify-between items-center mb-6 border-b border-gray-700 pb-3">
+                <h2 class="text-3xl font-bold text-red-600">!! High Risk Warning !!</h2>
+                <button onclick="closeModal('risk-modal')" class="text-gray-400 hover:text-gold"><i data-lucide="x" class="w-6 h-6"></i></button>
             </div>
-            <button onclick="closeModal('risk-modal')" class="btn btn-gold !text-black mt-6">I Understand</button>
+            <div class="space-y-4 text-gray-300 text-sm">
+                <p class="text-lg font-semibold text-red-400">RISK WARNING: TRADING IS HIGHLY SPECULATIVE.</p>
+                <p>Contracts for Difference (CFDs) and Forex are complex instruments and come with a high risk of losing money rapidly due to leverage. **70-90% of retail investor accounts lose money when trading CFDs.**</p>
+                <p>You should consider whether you understand how CFDs work and whether you can afford to take the high risk of losing your money. **Do not invest funds you cannot afford to lose.** Shawn Exchange assumes no liability for losses incurred.</p>
+                <button onclick="closeModal('risk-modal')" class="btn bg-red-600 text-white w-full mt-6 hover:bg-red-700">I UNDERSTAND THE RISK</button>
+            </div>
         </div>
     </div>
 
@@ -690,7 +700,11 @@
         function openModal(modalId) {
             const modal = document.getElementById(modalId);
             if (modal) {
+                // Close all other modals first
+                document.querySelectorAll('.modal.active').forEach(m => m.classList.remove('active'));
+                
                 modal.classList.add('active');
+                document.body.style.overflow = 'hidden'; // Prevent background scrolling
             }
         }
 
@@ -698,6 +712,7 @@
             const modal = document.getElementById(modalId);
             if (modal) {
                 modal.classList.remove('active');
+                document.body.style.overflow = 'auto'; // Restore background scrolling
             }
         }
         
@@ -717,7 +732,7 @@
             { symbol: 'GOLD (XAU/USD)', price: 2350.78, change: '-0.20%', up: false },
             { symbol: 'NASDAQ (US100)', price: 18002.10, change: '+0.8%', up: true },
             { symbol: 'USD/JPY', price: 154.30, change: '-0.05%', up: false },
-            { symbol: 'S&P 500 (US500)', price: 5170.00, change: '+0.5%', up: true },
+            { symbol: 'S&P 500', price: 5170.00, change: '+0.5%', up: true },
             { symbol: 'WTI OIL', price: 82.50, change: '-1.10%', up: false },
             { symbol: 'ETH/USD', price: 3450.00, change: '+1.8%', up: true },
             { symbol: 'TSLA', price: 175.22, change: '+1.2%', up: true },
@@ -733,14 +748,18 @@
             // Create items
             let itemsHTML = marketData.map(item => {
                 // Simulate price fluctuation
-                item.price = item.price * (1 + (Math.random() - 0.49) * 0.001);
-                const colorClass = item.up ? 'text-green-400' : 'text-red-400';
+                const fluctuation = (Math.random() - 0.49) * 0.001 * (item.symbol.includes('BTC') ? 10 : 1);
+                item.price = item.price * (1 + fluctuation);
+                item.up = fluctuation >= 0;
+
+                const colorClass = item.up ? 'text-green-500' : 'text-red-500';
+                const icon = item.up ? '↑' : '↓';
                 
                 return `
                     <div class="ticker-item">
-                        <span class="font-bold text-white">${item.symbol}</span>
-                        <span class="ml-2 ${colorClass}">${item.price.toFixed(2)}</span>
-                        <span class="ml-1 text-xs ${colorClass}">(${item.change})</span>
+                        <span class="font-bold text-gray-200">${item.symbol}</span>
+                        <span class="ml-2 ${colorClass}">${item.price.toFixed(item.symbol.includes('/') ? 4 : 2)}</span>
+                        <span class="ml-1 text-xs ${colorClass}">${icon}</span>
                     </div>
                 `;
             }).join('');
@@ -754,19 +773,22 @@
         setInterval(updateTicker, 3000);
         
         // --- Intersection Observer for Animations ---
+        // This makes sure sections fade in as they scroll into view
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                    observer.unobserve(entry.target); // Stop observing once visible
                 }
             });
         }, { threshold: 0.1 });
 
         document.querySelectorAll('.fade-in').forEach(el => {
+            el.style.transition = 'opacity 1s, transform 1s';
             observer.observe(el);
         });
 
     </script>
 </body>
 </html>
-
