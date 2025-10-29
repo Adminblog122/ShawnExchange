@@ -3,792 +3,781 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shawn Exchange - Trade Like a Pro</title>
+    <title>SwiftFX Trade Hub - Trade Smarter, Earn Faster</title>
     
-    <!-- Meta Tags for SEO & Social Sharing -->
-    <meta name="description" content="Experience high-speed, secure trading with Shawn Exchange. Access Forex, Crypto, and global markets with ultra-low latency.">
-    <meta property="og:title" content="Shawn Exchange - The Future of Trading">
-    <meta property="og:description" content="Join thousands of successful traders worldwide on a secure and regulated platform.">
-    <meta property="og:image" content="https://placehold.co/1200x630/0D0D19/FFD700?text=Shawn+Exchange+Pro">
-    
-    <!-- Favicon Placeholder -->
-    <link rel="icon" href="https://placehold.co/32x32/FFD700/0D0D19?text=SE">
+    <!-- Meta Tags for SEO -->
+    <meta name="description" content="Join thousands of traders who trust SwiftFX Trade Hub for Forex, Crypto, and CFD trading with ultra-low latency.">
+    <meta property="og:title" content="SwiftFX Trade Hub - The Next Generation of Trading">
+    <meta property="og:image" content="https://placehold.co/1200x630/0A1931/FFD700?text=SWIFTFX+TRADE+HUB">
+    <link rel="icon" href="https://placehold.co/32x32/FFD700/0A1931?text=SFX">
 
-    <!-- Fonts: Poppins (Bolder Look) -->
+    <!-- Fonts: Poppins for modern professionalism -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     
-    <!-- Tailwind CSS -->
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Lucide Icons -->
-    <script src="https://unpkg.com/lucide-react@0.301.0/dist/lucide.min.js"></script>
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
 
-    <!-- Custom CSS for Bolder Theme and Animations -->
-    <style>
-        :root {
-            --color-gold: #FFD700; /* Bolder Gold */
-            --color-navy: #0A1931; /* Deep Navy */
-            --color-black: #0D0D19; /* Near-Black Background */
-            --color-text: #F3F4F6; /* Light Text */
-            --color-success: #10B981; /* Green */
-            --color-danger: #EF4444; /* Red */
+    <!-- Custom Tailwind Configuration (for gold/navy theme) -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'swift-navy': '#0A1931',
+                        'swift-dark': '#0D0D19',
+                        'swift-gold': '#FFD700',
+                        'swift-blue': '#1E3A8A',
+                    },
+                    boxShadow: {
+                        'gold-glow': '0 0 15px rgba(255, 215, 0, 0.5)',
+                        'blue-glow': '0 0 15px rgba(30, 58, 138, 0.8)',
+                    }
+                }
+            }
         }
+    </script>
 
+    <!-- Custom CSS for Glowing Effects and Animations -->
+    <style>
         body {
             font-family: 'Poppins', sans-serif;
-            background-color: var(--color-black);
-            color: var(--color-text);
-            scroll-behavior: smooth;
+            background-color: theme('colors.swift-dark');
+            color: white;
+            transition: background-color 0.5s ease;
         }
-        
-        /* Hero Section Styling (High-Tech Grid Look) */
-        .hero-section {
-            background-image: linear-gradient(rgba(13, 13, 25, 0.95), rgba(13, 13, 25, 0.9)), url('https://placehold.co/1920x1080/0D0D19/333?text=Abstract+Trading+Grid');
+
+        /* Animated Background (Subtle Chart Waves) */
+        .hero-bg {
+            background-image: linear-gradient(rgba(13, 13, 25, 0.95), rgba(13, 13, 25, 0.95)), url('https://placehold.co/1920x1080/0D0D19/1E3A8A?text=Abstract+Circuit+Grid');
             background-size: cover;
-            background-position: center;
-            padding-top: 8rem;
-            padding-bottom: 6rem;
+            animation: gradientShift 20s ease infinite alternate;
         }
 
-        /* Bolder Gold Accents */
-        .text-gold { color: var(--color-gold); }
-        .bg-gold { background-color: var(--color-gold); }
-        .border-gold { border-color: var(--color-gold); }
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
+        }
 
-        /* Custom Button Styles (Glowing Effect) */
-        .btn {
-            @apply px-8 py-3 rounded-full font-bold text-lg transition-all duration-300 ease-in-out shadow-lg;
-            border: 2px solid transparent;
+        /* Glowing Button Effect */
+        .btn-gold-glow {
+            @apply shadow-lg bg-swift-gold text-swift-dark font-semibold transition-all duration-300;
         }
-        .btn-gold {
-            @apply bg-gold text-black hover:bg-yellow-400 transform hover:-translate-y-0.5;
-            box-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
-        }
-        .btn-outline {
-            @apply bg-transparent border-gold text-gold hover:bg-gold hover:text-black;
+        .btn-gold-glow:hover {
+            @apply bg-yellow-400 shadow-gold-glow transform scale-[1.02];
         }
         
-        /* Card Styles (Hover Glow) */
-        .service-card, .instrument-card {
-            @apply bg-navy rounded-xl p-6 transition-all duration-300 ease-in-out border border-transparent;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        /* Outline Button Effect */
+        .btn-outline-gold {
+            @apply border-2 border-swift-gold text-swift-gold bg-transparent font-semibold transition-all duration-300;
         }
-        .service-card:hover, .instrument-card:hover {
-            @apply border-gold;
-            box-shadow: 0 0 25px rgba(255, 215, 0, 0.2);
-            transform: translateY(-5px);
+        .btn-outline-gold:hover {
+            @apply bg-swift-gold/10 shadow-gold-glow;
         }
 
-        /* Animated Visibility */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeIn 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+        /* Card Hover Effect */
+        .card-hover {
+            @apply transition-all duration-300 border-2 border-transparent;
+        }
+        .card-hover:hover {
+            @apply border-swift-gold shadow-gold-glow/50;
+        }
+
+        /* Page Content Containers (Used for multi-page simulation) */
+        .page-content {
+            display: none;
+            min-height: 100vh;
+        }
+        .page-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease-out;
         }
         @keyframes fadeIn {
+            from { opacity: 0.5; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        .fade-in-delay-1 { animation-delay: 0.1s; }
-        .fade-in-delay-2 { animation-delay: 0.2s; }
-        .fade-in-delay-3 { animation-delay: 0.3s; }
 
-        /* Market Ticker */
-        .ticker-wrap {
-            @apply w-full overflow-hidden py-3 bg-black/70 backdrop-blur-sm border-y border-gray-800;
+        /* Loading Spinner */
+        .loader {
+            border: 8px solid #f3f3f3;
+            border-top: 8px solid theme('colors.swift-gold');
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            animation: spin 1s linear infinite;
         }
-        .ticker-move {
-            display: inline-block;
-            white-space: nowrap;
-            animation: ticker 40s linear infinite;
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
-        @keyframes ticker {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-        }
-
-        /* Full-Screen Modal */
-        .modal {
-            @apply fixed inset-0 z-50 flex items-center justify-center p-4 transition-opacity duration-300;
-            opacity: 0;
-            visibility: hidden;
-            background-color: rgba(0, 0, 0, 0.9);
-            backdrop-filter: blur(8px);
-        }
-        .modal.active {
-            opacity: 1;
-            visibility: visible;
-        }
-        .modal-content {
-            @apply bg-navy p-8 rounded-2xl shadow-3xl w-full max-w-lg transform transition-transform duration-300 scale-90;
-            border: 1px solid var(--color-gold);
-        }
-        .modal.active .modal-content {
-            @apply scale-100;
-        }
-
     </style>
 </head>
-<body class="antialiased">
+<body onload="checkPageHash()">
 
-    <!-- Header -->
-    <header class="bg-black/80 backdrop-blur-md sticky top-0 z-40 w-full border-b border-gray-800">
-        <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
+    <!-- Main Header Component (Always visible) -->
+    <header id="main-header" class="sticky top-0 z-50 bg-swift-dark/95 backdrop-blur-sm border-b border-swift-navy shadow-xl">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-3 flex justify-between items-center">
             <!-- Logo -->
-            <a href="#" class="text-3xl font-extrabold text-gold tracking-wider">
-                SHAWN<span class="text-white">EXCHANGE</span>
+            <a href="#home" class="text-3xl font-extrabold tracking-wider text-swift-gold" onclick="setPage('home')">
+                SwiftFX<span class="text-white font-light">HUB</span>
             </a>
             
-            <!-- Desktop Nav -->
-            <div class="hidden md:flex items-center space-x-6 text-sm font-semibold">
-                <a href="#about" class="text-gray-300 hover:text-gold transition-colors">About</a>
-                <a href="#instruments" class="text-gray-300 hover:text-gold transition-colors">Markets</a>
-                <a href="#why-us" class="text-gray-300 hover:text-gold transition-colors">Why Us</a>
-                <button onclick="openModal('faq-modal')" class="text-gray-300 hover:text-gold transition-colors">FAQ</button>
+            <!-- Desktop Navigation Links (For Homepage) -->
+            <nav id="home-nav-links" class="hidden md:flex items-center space-x-6 text-sm font-medium">
+                <a href="#about" class="text-white hover:text-swift-gold transition-colors">About</a>
+                <a href="#instruments" class="text-white hover:text-swift-gold transition-colors">Markets</a>
+                <a href="#why-us" class="text-white hover:text-swift-gold transition-colors">Why Choose Us</a>
+            </nav>
+
+            <!-- Auth Buttons (Visible on Home/Register) -->
+            <div id="auth-buttons" class="hidden md:flex items-center space-x-3">
+                <button onclick="setPage('login')" class="px-5 py-2 rounded-full text-sm btn-outline-gold">LOG IN</button>
+                <button onclick="setPage('register')" class="px-5 py-2 rounded-full text-sm btn-gold-glow">CREATE ACCOUNT</button>
             </div>
-            
-            <!-- Auth Buttons -->
-            <div class="hidden md:flex items-center space-x-3">
-                <button onclick="openModal('login-modal')" class="btn btn-outline !text-sm !py-2 !px-4 !rounded-lg !font-medium">LOG IN</button>
-                <button onclick="openModal('signup-modal')" class="btn btn-gold !text-sm !py-2 !px-4 !rounded-lg !font-medium">CREATE ACCOUNT</button>
-            </div>
-            
-            <!-- Mobile Menu Button -->
-            <button id="mobile-menu-btn" class="md:hidden text-white p-2 border border-gray-700 rounded-lg">
-                <i data-lucide="menu" class="w-6 h-6"></i>
-            </button>
-        </nav>
-        
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="md:hidden hidden bg-black absolute top-full left-0 w-full p-4 space-y-3 border-t border-gray-800">
-            <a href="#about" class="block text-gray-300 hover:text-gold">About</a>
-            <a href="#instruments" class="block text-gray-300 hover:text-gold">Markets</a>
-            <a href="#why-us" class="block text-gray-300 hover:text-gold">Why Us</a>
-            <button onclick="openModal('faq-modal')" class="block text-gray-300 hover:text-gold text-left w-full">FAQ</button>
-            <hr class="border-gray-700"/>
-            <button onclick="openModal('login-modal')" class="btn btn-outline w-full !text-base">Log In</button>
-            <button onclick="openModal('signup-modal')" class="btn btn-gold w-full !text-base">Create Account</button>
+
+            <!-- Dashboard Nav Links (Visible on Dashboard) -->
+            <nav id="dashboard-nav-links" class="hidden items-center space-x-6 text-sm font-medium">
+                <a href="#dashboard" class="px-3 py-2 rounded-lg bg-swift-blue text-white">Dashboard</a>
+                <a href="#" class="text-white hover:text-swift-gold transition-colors">Transactions</a>
+                <a href="#" class="text-white hover:text-swift-gold transition-colors">Settings</a>
+                <button onclick="setPage('home')" class="px-3 py-2 rounded-lg text-red-400 hover:bg-swift-dark transition-colors flex items-center">
+                    <i data-lucide="log-out" class="w-4 h-4 mr-1"></i> Logout
+                </button>
+            </nav>
         </div>
     </header>
 
-    <!-- Main Content -->
     <main>
         
-        <!-- Live Market Ticker -->
-        <section class="ticker-wrap">
-            <div class="ticker-move" id="ticker-content">
-                <!-- Content will be duplicated by JS for smooth loop -->
-            </div>
-        </section>
-
-        <!-- 1. Hero Section -->
-        <section class="hero-section text-center text-white">
-            <div class="container mx-auto px-4">
-                <h1 class="text-5xl sm:text-6xl md:text-8xl font-extrabold mb-6 fade-in tracking-tight">
-                    Trade Smarter with <span class="text-gold">Ultra-Low</span> Latency
-                </h1>
-                <p class="text-xl md:text-2xl text-gray-300 max-w-4xl mx-auto mb-10 fade-in fade-in-delay-1 font-light">
-                    Experience real trading power with low spreads, fast execution, and **secure, global reliability**.
-                </p>
-                <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6 fade-in fade-in-delay-2">
-                    <button onclick="openModal('signup-modal')" class="btn btn-gold">Create Account</button>
-                    <button onclick="openModal('login-modal')" class="btn btn-outline">Start Trading</button>
-                </div>
-                
-                <!-- Trust Badges -->
-                <div class="mt-16 flex flex-wrap justify-center gap-4 fade-in fade-in-delay-3">
-                    <div class="flex items-center p-3 bg-navy rounded-lg border border-gold/50 text-green-400">
-                        <i data-lucide="shield-check" class="w-5 h-5 mr-2"></i>
-                        <span class="text-sm">Regulated Broker (DFSA: S123/F456-Demo)</span>
-                    </div>
-                    <div class="flex items-center p-3 bg-navy rounded-lg border border-gold/50 text-white">
-                        <i data-lucide="lock" class="w-5 h-5 mr-2"></i>
-                        <span class="text-sm">256-bit SSL Secure Payments</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 2. About Section -->
-        <section id="about" class="py-24 bg-navy/50">
-            <div class="container mx-auto px-4 grid md:grid-cols-2 gap-12 items-center">
-                <div class="fade-in">
-                    <h2 class="text-4xl font-bold mb-4">Our <span class="text-gold">Commitment</span>: Trust & Transparency</h2>
-                    <p class="text-lg text-gray-400 mb-6">
-                        Established in 2020, Shawn Exchange was founded on the principle of providing an institutional-grade trading experience to everyone. We believe **transparency** is the bedrock of finance.
+        <!-- ============================================= -->
+        <!-- 1. HOMEPAGE CONTENT (index.html) -->
+        <!-- ============================================= -->
+        <div id="page-home" class="page-content active">
+            
+            <!-- Hero Section -->
+            <section class="hero-bg text-center pt-24 pb-32">
+                <div class="container mx-auto px-4">
+                    <h1 class="text-5xl sm:text-6xl md:text-7xl font-extrabold mb-6 tracking-tight text-white animate-in zoom-in duration-500">
+                        Trade Smarter, Earn Faster
+                        <span class="block text-swift-gold mt-2">— Welcome to SwiftFX Trade Hub</span>
+                    </h1>
+                    <p class="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto mb-10 font-light animate-in fade-in delay-200">
+                        Join thousands of traders who trust our platform for **Forex, Crypto, and CFD trading**.
                     </p>
-                    <p class="text-gray-400 mb-6">
-                        We are a licensed entity (DFSA - Demo Financial Services Authority) committed to innovation, security, and making sure our traders have the most favorable trading conditions available globally.
-                    </p>
-                    <div class="grid grid-cols-2 gap-4">
-                        <div class="service-card p-4">
-                            <i data-lucide="scan-line" class="w-8 h-8 text-gold mb-2"></i>
-                            <h3 class="text-xl font-semibold">Mission</h3>
-                            <p class="text-gray-400 text-sm">To democratize professional trading tools.</p>
-                        </div>
-                        <div class="service-card p-4">
-                            <i data-lucide="rocket" class="w-8 h-8 text-gold mb-2"></i>
-                            <h3 class="text-xl font-semibold">Vision</h3>
-                            <p class="text-gray-400 text-sm">The world's most trusted global brokerage.</p>
-                        </div>
+                    <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6">
+                        <button onclick="setPage('register')" class="px-8 py-3 rounded-full btn-gold-glow">CREATE ACCOUNT</button>
+                        <button onclick="setPage('login')" class="px-8 py-3 rounded-full btn-outline-gold">LOG IN</button>
                     </div>
                 </div>
-                <div class="fade-in fade-in-delay-1 hidden md:block">
-                    <img src="https://placehold.co/600x400/0A1931/FFD700?text=Global+Financial+Hub" alt="Financial Office" class="rounded-lg shadow-2xl border-4 border-gold/20">
-                </div>
-            </div>
-        </section>
-        
-        <!-- 3. Trading Instruments -->
-        <section id="instruments" class="py-24">
-            <div class="container mx-auto px-4">
-                <h2 class="text-4xl font-bold text-center mb-4 fade-in">Global Markets, <span class="text-gold">Instant Access</span></h2>
-                <p class="text-lg text-gray-400 text-center max-w-2xl mx-auto mb-12 fade-in fade-in-delay-1">
-                    Trade high-liquidity assets across the globe with tight spreads and no hidden fees.
-                </p>
-                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
-                    <!-- Forex -->
-                    <div class="instrument-card fade-in fade-in-delay-1">
-                        <i data-lucide="bar-chart-3" class="w-10 h-10 text-gold mx-auto mb-3"></i>
-                        <h3 class="text-xl font-semibold mb-1">Forex</h3>
-                        <p class="text-gray-400 text-sm">50+ major and exotic pairs.</p>
-                        <a href="#" class="font-medium text-gold text-sm hover:underline mt-2 inline-block">Trade &rarr;</a>
-                    </div>
-                    <!-- Crypto -->
-                    <div class="instrument-card fade-in fade-in-delay-2">
-                        <i data-lucide="bitcoin" class="w-10 h-10 text-gold mx-auto mb-3"></i>
-                        <h3 class="text-xl font-semibold mb-1">Crypto</h3>
-                        <p class="text-gray-400 text-sm">BTC, ETH, and other top digital assets.</p>
-                        <a href="#" class="font-medium text-gold text-sm hover:underline mt-2 inline-block">Trade &rarr;</a>
-                    </div>
-                    <!-- Commodities -->
-                    <div class="instrument-card fade-in fade-in-delay-3">
-                        <i data-lucide="factory" class="w-10 h-10 text-gold mx-auto mb-3"></i>
-                        <h3 class="text-xl font-semibold mb-1">Commodities</h3>
-                        <p class="text-gray-400 text-sm">Precious metals (Gold/Silver) & Energy.</p>
-                        <a href="#" class="font-medium text-gold text-sm hover:underline mt-2 inline-block">Trade &rarr;</a>
-                    </div>
-                    <!-- Indices -->
-                    <div class="instrument-card fade-in fade-in-delay-4">
-                        <i data-lucide="line-chart" class="w-10 h-10 text-gold mx-auto mb-3"></i>
-                        <h3 class="text-xl font-semibold mb-1">Indices</h3>
-                        <p class="text-gray-400 text-sm">Global stock market indices (NASDAQ, S&P).</p>
-                        <a href="#" class="font-medium text-gold text-sm hover:underline mt-2 inline-block">Trade &rarr;</a>
-                    </div>
-                    <!-- Stocks -->
-                    <div class="instrument-card fade-in fade-in-delay-5">
-                        <i data-lucide="briefcase" class="w-10 h-10 text-gold mx-auto mb-3"></i>
-                        <h3 class="text-xl font-semibold mb-1">Stocks</h3>
-                        <p class="text-gray-400 text-sm">CFDs on major international companies.</p>
-                        <a href="#" class="font-medium text-gold text-sm hover:underline mt-2 inline-block">Trade &rarr;</a>
-                    </div>
-                </div>
-            </div>
-        </section>
+            </section>
 
-        <!-- 4. Why Choose Us Section -->
-        <section id="why-us" class="py-24 bg-navy">
-            <div class="container mx-auto px-4 grid md:grid-cols-2 gap-12 items-center">
-                <div class="fade-in order-2 md:order-1">
-                    <img src="https://placehold.co/600x600/0A1931/FFD700?text=Secure+Payment+System" alt="Secure Trading" class="rounded-full shadow-2xl border-8 border-gold/20">
+            <!-- Live Market Ticker/Prices -->
+            <section class="py-4 bg-swift-dark border-y border-swift-gold/20">
+                <div id="live-prices" class="container mx-auto px-4 flex justify-between overflow-x-auto whitespace-nowrap space-x-8 text-sm">
+                    <!-- Data injected by JS -->
                 </div>
-                <div class="fade-in fade-in-delay-1 order-1 md:order-2">
-                    <h2 class="text-4xl font-bold mb-6">Why <span class="text-gold">Choose</span> Shawn Exchange?</h2>
-                    <ul class="space-y-6">
-                        <li class="flex items-start">
-                            <i data-lucide="gavel" class="w-6 h-6 text-gold mr-3 shrink-0 mt-1"></i>
-                            <div>
-                                <h4 class="text-xl font-semibold">Fully Regulated Broker</h4>
-                                <p class="text-gray-400">Operate within a trusted framework with transparent practices and segregated client funds.</p>
-                            </div>
-                        </li>
-                        <li class="flex items-start">
-                            <i data-lucide="zap" class="w-6 h-6 text-gold mr-3 shrink-0 mt-1"></i>
-                            <div>
-                                <h4 class="text-xl font-semibold">Execution Speed: $lt; 0.01s</h4>
-                                <p class="text-gray-400">Lightning-fast execution on all trades, ensuring you get the best market price every time.</p>
-                            </div>
-                        </li>
-                        <li class="flex items-start">
-                            <i data-lucide="credit-card" class="w-6 h-6 text-gold mr-3 shrink-0 mt-1"></i>
-                            <div>
-                                <h4 class="text-xl font-semibold">Secure & Flexible Payments</h4>
-                                <p class="text-gray-400">Instant deposits via Crypto (BTC, USDT, ETH) and local payment gateways.</p>
-                            </div>
-                        </li>
-                        <li class="flex items-start">
-                            <i data-lucide="refresh-cw" class="w-6 h-6 text-gold mr-3 shrink-0 mt-1"></i>
-                            <div>
-                                <h4 class="text-xl font-semibold">Dedicated 24/7 Support</h4>
-                                <p class="text-gray-400">Real people, ready to help you trade confidently at any time, day or night.</p>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </section>
+            </section>
 
-        <!-- 5. Testimonials Section -->
-        <section id="testimonials" class="py-24">
-            <div class="container mx-auto px-4">
-                <h2 class="text-4xl font-bold text-center mb-12 fade-in">What Our <span class="text-gold">Traders Say</span></h2>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <!-- Testimonial 1 -->
-                    <div class="service-card fade-in fade-in-delay-1">
-                        <p class="text-gray-300 italic mb-4">"Absolutely superior platform. The execution speed is unmatched, and I feel completely secure with my investments here. Withdrawal process is seamless."</p>
-                        <div class="flex items-center">
-                            <img src="https://placehold.co/40x40/FFD700/0D0D19?text=JD" alt="User" class="w-10 h-10 rounded-full mr-3">
-                            <div>
-                                <h4 class="font-semibold">John D.</h4>
-                                <div class="flex text-gold">
-                                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                                </div>
-                            </div>
-                        </div>
+            <!-- About The Broker -->
+            <section id="about" class="py-20 bg-swift-navy/50">
+                <div class="container mx-auto px-4 grid md:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <h2 class="text-4xl font-bold mb-4 border-l-4 border-swift-gold pl-4">About the Broker</h2>
+                        <p class="text-lg text-gray-300 mb-6">
+                            SwiftFX Trade Hub is built on **trust, transparency, and technology**. Our mission is to provide an institutional-grade trading environment accessible to all.
+                        </p>
+                        <ul class="space-y-4 text-gray-400">
+                            <li class="flex items-start">
+                                <i data-lucide="shield-check" class="w-6 h-6 text-swift-gold mr-3 mt-1"></i>
+                                <div><strong class="text-white">Our Mission:</strong> To democratize high-speed, secure global financial markets.</div>
+                            </li>
+                            <li class="flex items-start">
+                                <i data-lucide="zap" class="w-6 h-6 text-swift-gold mr-3 mt-1"></i>
+                                <div><strong class="text-white">Our Vision:</strong> To be the most reliable and fastest trade execution platform globally.</div>
+                            </li>
+                            <li class="flex items-start">
+                                <i data-lucide="fingerprint" class="w-6 h-6 text-swift-gold mr-3 mt-1"></i>
+                                <div><strong class="text-white">Trust Badges:</strong> Client funds segregated. Regulated for compliance and security.</div>
+                            </li>
+                        </ul>
                     </div>
-                    <!-- Testimonial 2 -->
-                    <div class="service-card fade-in fade-in-delay-2">
-                        <p class="text-gray-300 italic mb-4">"I appreciate the low crypto spreads and the dedication to customer support. It's the professionalism that sets Shawn Exchange apart from the rest."</p>
-                        <div class="flex items-center">
-                            <img src="https://placehold.co/40x40/FFD700/0D0D19?text=AS" alt="User" class="w-10 h-10 rounded-full mr-3">
-                            <div>
-                                <h4 class="font-semibold">Aisha S.</h4>
-                                <div class="flex text-gold">
-                                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                                    <i data-lucide="star-half" class="w-4 h-4 fill-current"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Testimonial 3 -->
-                    <div class="service-card fade-in fade-in-delay-3">
-                        <p class="text-gray-300 italic mb-4">"The platform is extremely intuitive, even for a beginner. The resources are great, and I've already recommended the affiliate program to my network."</p>
-                        <div class="flex items-center">
-                            <img src="https://placehold.co/40x40/FFD700/0D0D19?text=MR" alt="User" class="w-10 h-10 rounded-full mr-3">
-                            <div>
-                                <h4 class="font-semibold">Mike R.</h4>
-                                <div class="flex text-gold">
-                                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="hidden md:block">
+                        <img src="https://placehold.co/600x400/0D0D19/FFD700?text=TRUSTED+PLATFORM" alt="Trust Image" class="rounded-xl shadow-2xl border-2 border-swift-gold/50">
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
 
-        <!-- 6. Call-to-Action / Newsletter -->
-        <section class="py-24 bg-navy/80">
-            <div class="container mx-auto px-4 text-center">
-                <h2 class="text-4xl md:text-5xl font-extrabold text-gold mb-4">Ready to Start Trading?</h2>
-                <p class="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
-                    Join thousands of successful traders. Open your free account now and access global markets.
-                </p>
-                <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6">
-                    <button onclick="openModal('signup-modal')" class="btn btn-gold !text-black">Open Account Now</button>
-                    <a href="https://t.me/yourchannel" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
-                        <i data-lucide="send" class="w-5 h-5 mr-2 inline-block"></i> Join Our Telegram
-                    </a>
+            <!-- Trading Instruments -->
+            <section id="instruments" class="py-20">
+                <div class="container mx-auto px-4 text-center">
+                    <h2 class="text-4xl font-bold mb-12">Trade <span class="text-swift-gold">Global Instruments</span></h2>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <!-- Forex -->
+                        <div class="p-6 bg-swift-navy rounded-xl card-hover shadow-lg">
+                            <i data-lucide="bar-chart-3" class="w-10 h-10 text-swift-gold mx-auto mb-3"></i>
+                            <h3 class="text-2xl font-semibold mb-2">Forex</h3>
+                            <p class="text-gray-400">Ultra-low spreads on 50+ major, minor, and exotic currency pairs.</p>
+                        </div>
+                        <!-- Crypto -->
+                        <div class="p-6 bg-swift-navy rounded-xl card-hover shadow-lg">
+                            <i data-lucide="bitcoin" class="w-10 h-10 text-swift-gold mx-auto mb-3"></i>
+                            <h3 class="text-2xl font-semibold mb-2">Crypto</h3>
+                            <p class="text-gray-400">Trade Bitcoin, Ethereum, and altcoins 24/7 with deep liquidity.</p>
+                        </div>
+                        <!-- Commodities -->
+                        <div class="p-6 bg-swift-navy rounded-xl card-hover shadow-lg">
+                            <i data-lucide="gem" class="w-10 h-10 text-swift-gold mx-auto mb-3"></i>
+                            <h3 class="text-2xl font-semibold mb-2">Commodities</h3>
+                            <p class="text-gray-400">Gold, Silver, and Oil—hedge against inflation with essential assets.</p>
+                        </div>
+                    </div>
                 </div>
-                
-                <!-- Newsletter Subscription -->
-                <div class="mt-12 max-w-xl mx-auto">
-                    <h3 class="text-2xl font-semibold mb-4">Subscribe for Market Insights</h3>
-                    <form onsubmit="event.preventDefault(); alert('Subscribed to newsletter!');" class="flex flex-col sm:flex-row gap-2">
-                        <input type="email" placeholder="Enter your email address" class="w-full p-4 rounded-full bg-black/50 border border-gray-700 text-white focus:ring-2 focus:ring-gold outline-none" required>
-                        <button type="submit" class="btn btn-gold !py-3 !px-6 !text-base">Subscribe</button>
+            </section>
+
+            <!-- Why Choose Us -->
+            <section id="why-us" class="py-20 bg-swift-navy/50">
+                <div class="container mx-auto px-4">
+                    <h2 class="text-4xl font-bold text-center mb-12">Why Traders <span class="text-swift-gold">Choose SwiftFX</span></h2>
+                    <div class="grid md:grid-cols-3 gap-8">
+                        <div class="text-center p-6">
+                            <i data-lucide="gauge" class="w-12 h-12 text-swift-gold mx-auto mb-4"></i>
+                            <h3 class="text-xl font-semibold mb-2">Lightning Fast</h3>
+                            <p class="text-gray-400">Execution speed under 10ms. Never miss a market move.</p>
+                        </div>
+                        <div class="text-center p-6">
+                            <i data-lucide="lock-open" class="w-12 h-12 text-swift-gold mx-auto mb-4"></i>
+                            <h3 class="text-xl font-semibold mb-2">Zero Hidden Fees</h3>
+                            <p class="text-gray-400">Transparent pricing model with no surprise commissions or markups.</p>
+                        </div>
+                        <div class="text-center p-6">
+                            <i data-lucide="globe" class="w-12 h-12 text-swift-gold mx-auto mb-4"></i>
+                            <h3 class="text-xl font-semibold mb-2">24/7 Global Support</h3>
+                            <p class="text-gray-400">Dedicated multi-lingual support, available around the clock.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Testimonials -->
+            <section id="testimonials" class="py-20">
+                <div class="container mx-auto px-4">
+                    <h2 class="text-4xl font-bold text-center mb-12">Trusted by <span class="text-swift-gold">Real Traders</span></h2>
+                    <div class="grid md:grid-cols-3 gap-8">
+                        <div class="bg-swift-navy p-6 rounded-lg shadow-xl">
+                            <i data-lucide="quote" class="w-6 h-6 text-swift-gold mb-3"></i>
+                            <p class="text-gray-300 italic mb-4">"The platform stability is incredible. Fast deposits and withdrawals make trading frictionless."</p>
+                            <p class="font-semibold text-swift-gold">Alex J. - Professional Trader</p>
+                        </div>
+                        <div class="bg-swift-navy p-6 rounded-lg shadow-xl">
+                            <i data-lucide="quote" class="w-6 h-6 text-swift-gold mb-3"></i>
+                            <p class="text-gray-300 italic mb-4">"I appreciate the low latency execution. It's the professionalism that sets SwiftFX apart."</p>
+                            <p class="font-semibold text-swift-gold">Maria L. - Crypto Investor</p>
+                        </div>
+                        <div class="bg-swift-navy p-6 rounded-lg shadow-xl">
+                            <i data-lucide="quote" class="w-6 h-6 text-swift-gold mb-3"></i>
+                            <p class="text-gray-300 italic mb-4">"Great customer service and fantastic mobile trading experience. Highly recommended."</p>
+                            <p class="font-semibold text-swift-gold">David K. - Full-time Analyst</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Footer -->
+            <footer class="bg-swift-dark pt-12 pb-8 border-t border-swift-gold/10">
+                <div class="container mx-auto px-4">
+                    <div class="grid grid-cols-2 md:grid-cols-5 gap-8 mb-8">
+                        <div>
+                            <h5 class="text-xl font-extrabold text-swift-gold mb-4">SwiftFXHUB</h5>
+                            <p class="text-gray-500 text-sm">Innovating global finance.</p>
+                        </div>
+                        <div>
+                            <h5 class="font-semibold mb-4">Trading</h5>
+                            <ul class="space-y-2 text-sm text-gray-400">
+                                <li><a href="#instruments" class="hover:text-swift-gold">Markets</a></li>
+                                <li><a href="#" class="hover:text-swift-gold">Platforms</a></li>
+                                <li><a href="#" class="hover:text-swift-gold">Spreads</a></li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h5 class="font-semibold mb-4">Company</h5>
+                            <ul class="space-y-2 text-sm text-gray-400">
+                                <li><a href="#about" class="hover:text-swift-gold">About Us</a></li>
+                                <li><a href="#" class="hover:text-swift-gold">Contact</a></li>
+                                <li><a href="#" class="hover:text-swift-gold">Careers</a></li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h5 class="font-semibold mb-4">Legal</h5>
+                            <ul class="space-y-2 text-sm text-gray-400">
+                                <li><a href="#" class="hover:text-swift-gold">Terms & Conditions</a></li>
+                                <li><a href="#" class="hover:text-swift-gold">Privacy Policy</a></li>
+                                <li><a href="#" class="hover:text-swift-gold">Risk Disclosure</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-span-2 md:col-span-1">
+                            <h5 class="font-semibold mb-4">Follow Us</h5>
+                            <div class="flex space-x-3">
+                                <i data-lucide="send" class="w-6 h-6 text-gray-400 hover:text-swift-gold cursor-pointer"></i>
+                                <i data-lucide="twitter" class="w-6 h-6 text-gray-400 hover:text-swift-gold cursor-pointer"></i>
+                                <i data-lucide="linkedin" class="w-6 h-6 text-gray-400 hover:text-swift-gold cursor-pointer"></i>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="text-center text-xs text-gray-600 pt-8 border-t border-gray-800">
+                        <p class="font-bold text-red-500 mb-2">RISK WARNING</p>
+                        <p class="max-w-4xl mx-auto">
+                            Trading involves risk. Invest only what you can afford to lose. Trading leveraged financial products carries a significant risk of losing your capital. Please ensure you fully understand the risks involved before proceeding.
+                        </p>
+                        <p class="mt-4">&copy; 2024 SwiftFX Trade Hub. All rights reserved.</p>
+                    </div>
+                </div>
+            </footer>
+        </div>
+
+        <!-- ============================================= -->
+        <!-- 2. REGISTRATION/LOGIN CONTENT (register.html) -->
+        <!-- ============================================= -->
+        <div id="page-register" class="page-content py-20 bg-swift-navy flex items-center justify-center">
+            <div id="auth-card" class="w-full max-w-xl bg-swift-dark p-8 md:p-10 rounded-xl shadow-gold-glow/50 border border-swift-gold/50">
+                <h2 class="text-3xl font-bold text-swift-gold mb-2" id="auth-title">Create Your SwiftFX Account</h2>
+                <p class="text-gray-400 mb-6" id="auth-subtitle">Fill in your details to start trading.</p>
+
+                <!-- Forms Container -->
+                <div id="forms-container">
+                    
+                    <!-- Registration Form -->
+                    <form id="registration-form" onsubmit="handleRegistration(event)">
+                        <div class="space-y-4">
+                            <!-- Full Name -->
+                            <input type="text" id="reg-name" placeholder="Full Name" class="w-full p-3 bg-swift-navy border border-gray-700 rounded-lg focus:ring-swift-gold focus:border-swift-gold" required>
+                            <!-- Email -->
+                            <input type="email" id="reg-email" placeholder="Email Address" class="w-full p-3 bg-swift-navy border border-gray-700 rounded-lg focus:ring-swift-gold focus:border-swift-gold" required>
+                            <!-- Phone Number -->
+                            <input type="tel" id="reg-phone" placeholder="Phone Number" class="w-full p-3 bg-swift-navy border border-gray-700 rounded-lg focus:ring-swift-gold focus:border-swift-gold" required>
+                            <!-- Country -->
+                            <select id="reg-country" class="w-full p-3 bg-swift-navy border border-gray-700 rounded-lg focus:ring-swift-gold focus:border-swift-gold text-gray-400" required>
+                                <option value="" disabled selected>Select Country</option>
+                                <option value="USA">United States</option>
+                                <option value="UK">United Kingdom</option>
+                                <option value="GER">Germany</option>
+                                <option value="AUS">Australia</option>
+                                <option value="OTHER">Other</option>
+                            </select>
+                            <!-- Password -->
+                            <input type="password" id="reg-password" placeholder="Password (Min 8 characters)" class="w-full p-3 bg-swift-navy border border-gray-700 rounded-lg focus:ring-swift-gold focus:border-swift-gold" required minlength="8">
+                            <!-- Confirm Password -->
+                            <input type="password" id="reg-confirm-password" placeholder="Confirm Password" class="w-full p-3 bg-swift-navy border border-gray-700 rounded-lg focus:ring-swift-gold focus:border-swift-gold" required>
+                            
+                            <!-- ID Upload -->
+                            <div class="pt-2">
+                                <label for="reg-id-upload" class="block text-sm font-medium text-gray-400 mb-2">ID Upload (Driver’s License or Passport)</label>
+                                <input type="file" id="reg-id-upload" accept=".pdf, .jpg, .png" class="w-full text-sm text-gray-400 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-swift-gold/10 file:text-swift-gold hover:file:bg-swift-gold/20" required>
+                            </div>
+                            
+                            <!-- Terms Checkbox -->
+                            <div class="flex items-start pt-4">
+                                <input id="reg-agree-terms" type="checkbox" class="w-4 h-4 text-swift-gold bg-swift-navy border-gray-700 rounded mt-1 accent-swift-gold" required>
+                                <label for="reg-agree-terms" class="ml-2 text-sm text-gray-400">
+                                    I agree to the <a href="#" class="text-swift-gold hover:underline">Terms & Conditions</a>
+                                </label>
+                            </div>
+                        </div>
+                        <button type="submit" class="w-full mt-8 py-3 rounded-full btn-gold-glow">CREATE ACCOUNT</button>
+                    </form>
+
+                    <!-- Login Form (Initially hidden) -->
+                    <form id="login-form" onsubmit="handleLogin(event)" class="hidden">
+                        <div class="space-y-4">
+                            <!-- Email -->
+                            <input type="email" id="login-email" placeholder="Email Address" class="w-full p-3 bg-swift-navy border border-gray-700 rounded-lg focus:ring-swift-gold focus:border-swift-gold" required>
+                            <!-- Password -->
+                            <input type="password" id="login-password" placeholder="Password" class="w-full p-3 bg-swift-navy border border-gray-700 rounded-lg focus:ring-swift-gold focus:border-swift-gold" required>
+                        </div>
+                        <button type="submit" class="w-full mt-8 py-3 rounded-full btn-gold-glow">SECURE LOGIN</button>
                     </form>
                 </div>
+                
+                <!-- Toggle Link -->
+                <div class="mt-6 text-center text-sm">
+                    <p class="text-gray-400" id="auth-toggle-text">
+                        Already have an account? 
+                        <button type="button" onclick="showForm('login')" class="text-swift-gold hover:underline font-semibold">Log In</button>
+                    </p>
+                </div>
             </div>
-        </section>
+
+            <!-- Loading Overlay -->
+            <div id="loading-overlay" class="fixed inset-0 bg-swift-dark/95 backdrop-blur-md hidden flex flex-col items-center justify-center z-50">
+                <div class="loader mb-6"></div>
+                <p class="text-xl font-semibold text-swift-gold" id="loading-message">Creating your account securely...</p>
+                <p class="text-gray-400 mt-2 text-sm">Please wait. Redirecting to your personal dashboard.</p>
+            </div>
+        </div>
+
+        <!-- ============================================= -->
+        <!-- 3. DASHBOARD CONTENT (dashboard.html) -->
+        <!-- ============================================= -->
+        <div id="page-dashboard" class="page-content pt-10 pb-20 bg-swift-navy">
+            <div class="container mx-auto px-4 grid lg:grid-cols-4 gap-8">
+                
+                <!-- Left Sidebar / User Info (Simulated) -->
+                <aside class="lg:col-span-1 bg-swift-dark p-6 rounded-xl shadow-xl h-fit">
+                    <div class="text-center pb-4 border-b border-gray-800">
+                        <i data-lucide="user-circle" class="w-16 h-16 text-swift-gold mx-auto mb-2"></i>
+                        <h3 class="text-2xl font-bold text-white" id="dashboard-user-name">Welcome, Trader! 👋</h3>
+                        <p class="text-gray-400 text-sm">swiftfx.trader@hub.com (Simulated)</p>
+                    </div>
+                    
+                    <div class="mt-6 space-y-4">
+                        <button class="w-full py-3 rounded-lg bg-swift-gold text-swift-dark font-bold hover:bg-yellow-400 flex items-center justify-center">
+                            <i data-lucide="wallet" class="w-5 h-5 mr-2"></i> Deposit Funds
+                        </button>
+                        <button class="w-full py-3 rounded-lg bg-swift-blue text-white font-bold hover:bg-blue-800 flex items-center justify-center">
+                            <i data-lucide="banknote" class="w-5 h-5 mr-2"></i> Withdraw
+                        </button>
+                        <button class="w-full py-3 rounded-lg bg-green-600 text-white font-bold hover:bg-green-700 flex items-center justify-center">
+                            <i data-lucide="zap" class="w-5 h-5 mr-2"></i> Open Trade Terminal
+                        </button>
+                    </div>
+                </aside>
+
+                <!-- Main Content Area -->
+                <div class="lg:col-span-3 space-y-8">
+                    
+                    <!-- Account Overview & Balance Card -->
+                    <div class="grid sm:grid-cols-3 gap-6">
+                        <div class="bg-swift-dark p-6 rounded-xl shadow-blue-glow/50 border border-swift-blue/50">
+                            <p class="text-gray-400 text-sm">Account Balance</p>
+                            <h4 class="text-4xl font-extrabold text-swift-gold mt-1">$45,890.34</h4>
+                            <span class="text-sm text-green-500 flex items-center mt-2">
+                                <i data-lucide="trending-up" class="w-4 h-4 mr-1"></i> +2.15% (24H)
+                            </span>
+                        </div>
+                        <div class="bg-swift-dark p-6 rounded-xl shadow-blue-glow/50 border border-swift-blue/50">
+                            <p class="text-gray-400 text-sm">Margin Available</p>
+                            <h4 class="text-3xl font-bold text-white mt-1">$38,000.00</h4>
+                            <span class="text-sm text-gray-500 mt-2">Leverage 1:500</span>
+                        </div>
+                        <div class="bg-swift-dark p-6 rounded-xl shadow-blue-glow/50 border border-swift-blue/50">
+                            <p class="text-gray-400 text-sm">P&L Today</p>
+                            <h4 class="text-3xl font-bold text-green-500 mt-1">+$980.55</h4>
+                            <span class="text-sm text-white mt-2">Positive returns</span>
+                        </div>
+                    </div>
+
+                    <!-- Live Chart Placeholder (TradingView Simulation) -->
+                    <div class="bg-swift-dark p-6 rounded-xl shadow-xl border border-gray-800">
+                        <h4 class="text-2xl font-bold mb-4 flex items-center">
+                            <i data-lucide="area-chart" class="w-6 h-6 text-swift-gold mr-3"></i> BTC/USD Live Chart
+                        </h4>
+                        <div class="h-96 bg-swift-navy rounded-lg flex items-center justify-center text-gray-500 text-lg border border-gray-700">
+                            [ Placeholder: Actual TradingView Widget would load here ]
+                        </div>
+                    </div>
+
+                    <!-- Recent Transactions Table -->
+                    <div class="bg-swift-dark p-6 rounded-xl shadow-xl border border-gray-800">
+                        <h4 class="text-2xl font-bold mb-4 flex items-center">
+                            <i data-lucide="list-ordered" class="w-6 h-6 text-swift-gold mr-3"></i> Recent Transactions
+                        </h4>
+                        <div class="overflow-x-auto">
+                            <table class="min-w-full text-left text-sm">
+                                <thead>
+                                    <tr class="uppercase text-gray-400 border-b border-gray-700">
+                                        <th class="py-3 px-2">Time</th>
+                                        <th class="py-3 px-2">Type</th>
+                                        <th class="py-3 px-2">Instrument</th>
+                                        <th class="py-3 px-2">Volume</th>
+                                        <th class="py-3 px-2">P&L</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="border-b border-gray-800 hover:bg-swift-navy/50">
+                                        <td class="py-3 px-2 text-gray-300">10:30 AM</td>
+                                        <td class="py-3 px-2 text-green-400">BUY</td>
+                                        <td class="py-3 px-2">EURUSD</td>
+                                        <td class="py-3 px-2">1.50 Lot</td>
+                                        <td class="py-3 px-2 text-green-400">+$125.00</td>
+                                    </tr>
+                                    <tr class="border-b border-gray-800 hover:bg-swift-navy/50">
+                                        <td class="py-3 px-2 text-gray-300">09:45 AM</td>
+                                        <td class="py-3 px-2 text-red-400">SELL</td>
+                                        <td class="py-3 px-2">XAUUSD (Gold)</td>
+                                        <td class="py-3 px-2">0.50 Lot</td>
+                                        <td class="py-3 px-2 text-red-400">-$65.20</td>
+                                    </tr>
+                                    <tr class="hover:bg-swift-navy/50">
+                                        <td class="py-3 px-2 text-gray-300">08:00 AM</td>
+                                        <td class="py-3 px-2 text-green-400">BUY</td>
+                                        <td class="py-3 px-2">BTCUSD</td>
+                                        <td class="py-3 px-2">0.10 BTC</td>
+                                        <td class="py-3 px-2 text-green-400">+$920.79</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    
+                    <!-- Referral Link Section -->
+                    <div class="bg-swift-dark p-6 rounded-xl shadow-xl border border-gray-800">
+                        <h4 class="text-2xl font-bold mb-4 flex items-center">
+                            <i data-lucide="users" class="w-6 h-6 text-swift-gold mr-3"></i> Referral Program
+                        </h4>
+                        <p class="text-gray-400 mb-4">Invite your friends and earn a commission on their trades.</p>
+                        <div class="flex flex-col sm:flex-row gap-2">
+                            <input type="text" id="referral-link" value="https://swiftfxtradehub.com/ref/USER12345" readonly class="w-full p-3 bg-swift-navy border border-gray-700 rounded-lg text-swift-gold font-mono text-sm">
+                            <button onclick="copyToClipboard('referral-link')" class="py-3 px-6 rounded-lg bg-swift-blue text-white font-semibold hover:bg-blue-800 flex-shrink-0">
+                                Copy Link
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </main>
 
-    <!-- 7. Footer -->
-    <footer class="bg-black pt-16 pb-8">
-        <div class="container mx-auto px-4">
-            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 mb-8 border-b border-gray-800 pb-8">
-                <!-- Column 1: Logo & Contact -->
-                <div class="col-span-2 lg:col-span-1">
-                    <a href="#" class="text-3xl font-extrabold text-gold tracking-wider mb-4 block">
-                        SHAWN<span class="text-white">EXCHANGE</span>
-                    </a>
-                    <p class="text-gray-500 mb-4 text-sm">Regulated, secure, and fast trading for the modern investor.</p>
-                    <p class="text-gray-400 font-semibold">Contact:</p>
-                    <p class="text-gray-500 text-sm">support@shawn.exchange (demo)</p>
-                    <div class="flex space-x-4 mt-3">
-                        <a href="https://t.me/youradmin" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-gold"><i data-lucide="send" class="w-6 h-6"></i></a>
-                        <a href="#" class="text-gray-400 hover:text-gold"><i data-lucide="twitter" class="w-6 h-6"></i></a>
-                        <a href="#" class="text-gray-400 hover:text-gold"><i data-lucide="linkedin" class="w-6 h-6"></i></a>
-                    </div>
-                </div>
-                
-                <!-- Column 2: Trading -->
-                <div>
-                    <h5 class="text-lg font-semibold text-white mb-4">Trading</h5>
-                    <ul class="space-y-2 text-sm">
-                        <li><a href="#instruments" class="text-gray-400 hover:text-gold">Markets</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-gold">Trading Platforms</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-gold">Account Types</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-gold">Affiliate Program</a></li>
-                    </ul>
-                </div>
-
-                <!-- Column 3: Company -->
-                <div>
-                    <h5 class="text-lg font-semibold text-white mb-4">Company</h5>
-                    <ul class="space-y-2 text-sm">
-                        <li><a href="#about" class="text-gray-400 hover:text-gold">About Us</a></li>
-                        <li><a href="#testimonials" class="text-gray-400 hover:text-gold">Testimonials</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-gold">Careers</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-gold">News</a></li>
-                    </ul>
-                </div>
-                
-                <!-- Column 4: Legal -->
-                <div>
-                    <h5 class="text-lg font-semibold text-white mb-4">Legal</h5>
-                    <ul class="space-y-2 text-sm">
-                        <li><button onclick="openModal('terms-modal')" class="text-gray-400 hover:text-gold text-left">Terms & Conditions</button></li>
-                        <li><button onclick="openModal('privacy-modal')" class="text-gray-400 hover:text-gold text-left">Privacy Policy</button></li>
-                        <li><button onclick="openModal('risk-modal')" class="text-gray-400 hover:text-gold text-left">Risk Disclosure</button></li>
-                        <li><button onclick="openModal('faq-modal')" class="text-gray-400 hover:text-gold text-left">FAQ Page</button></li>
-                    </ul>
-                </div>
-                
-                <!-- Column 5: Support -->
-                <div>
-                    <h5 class="text-lg font-semibold text-white mb-4">Support</h5>
-                    <ul class="space-y-2 text-sm">
-                        <li><button onclick="openModal('support-modal')" class="text-gray-400 hover:text-gold text-left">Contact Support</button></li>
-                        <li><a href="#" class="text-gray-400 hover:text-gold">Live Chat (External)</a></li>
-                        <li><a href="https://t.me/youradmin" target="_blank" class="text-gray-400 hover:text-gold">Telegram Support</a></li>
-                    </ul>
-                </div>
-            </div>
-            
-            <!-- Risk Disclaimer -->
-            <div class="text-xs text-gray-600 text-center pt-8">
-                <p class="font-bold text-red-400 mb-2">RISK WARNING</p>
-                <p>Trading Contracts for Difference (CFDs) involves significant risk to your capital and may result in losses that exceed your initial deposit. Please ensure you fully understand the risks involved and take measures to manage your exposure.</p>
-                <p class="mt-4">
-                    &copy; <span id="current-year"></span> Shawn Exchange. All rights reserved. 
-                    This is a demonstration website. Regulated by DFSA (Demo License #S123/F456-Demo).
-                </p>
-            </div>
-        </div>
-    </footer>
-
-    <!-- 
-    ============================================================
-    MODALS (Login, Sign Up, FAQ, Terms, Privacy, Support, Risk)
-    ============================================================
-    -->
-
-    <!-- Modal: Login (Only visible when active) -->
-    <div id="login-modal" class="modal" onclick="closeModal('login-modal')">
-        <div class="modal-content" onclick="event.stopPropagation()">
-            <div class="flex justify-between items-center mb-6">
-                <h2 class="text-3xl font-bold text-gold">Welcome Back</h2>
-                <button onclick="closeModal('login-modal')" class="text-gray-400 hover:text-gold">
-                    <i data-lucide="x" class="w-6 h-6"></i>
-                </button>
-            </div>
-            <!-- Login Form (Phase 2: Firebase Integration) -->
-            <form action="#" onsubmit="event.preventDefault(); console.log('Login attempt'); alert('Phase 2: Login logic goes here')">
-                <div class="mb-4">
-                    <label for="login-email" class="block text-sm font-medium text-gray-300">Email Address</label>
-                    <input type="email" id="login-email" placeholder="you@example.com" class="w-full mt-1 p-4 bg-black/50 border border-gray-700 rounded-lg text-white focus:border-gold focus:ring-1 focus:ring-gold" required>
-                </div>
-                <div class="mb-6">
-                    <label for="login-password" class="block text-sm font-medium text-gray-300">Password</label>
-                    <input type="password" id="login-password" placeholder="••••••••" class="w-full mt-1 p-4 bg-black/50 border border-gray-700 rounded-lg text-white focus:border-gold focus:ring-1 focus:ring-gold" required>
-                </div>
-                <button type="submit" class="btn btn-gold w-full">SECURE LOG IN</button>
-            </form>
-            <p class="text-center text-gray-400 mt-6">
-                Don't have an account? <button onclick="closeModal('login-modal'); openModal('signup-modal')" class="text-gold font-medium hover:underline">Sign Up Now</button>
-            </p>
-        </div>
-    </div>
-    
-    <!-- Modal: Sign Up (Only visible when active) -->
-    <div id="signup-modal" class="modal" onclick="closeModal('signup-modal')">
-        <div class="modal-content" onclick="event.stopPropagation()">
-            <div class="flex justify-between items-center mb-6">
-                <h2 class="text-3xl font-bold text-gold">Create Your Account</h2>
-                <button onclick="closeModal('signup-modal')" class="text-gray-400 hover:text-gold">
-                    <i data-lucide="x" class="w-6 h-6"></i>
-                </button>
-            </div>
-            <!-- Registration Form (Phase 2: Firebase Integration) -->
-            <form action="#" onsubmit="event.preventDefault(); console.log('Registration attempt'); alert('Phase 2: Registration logic and Firebase Auth goes here')">
-                <div class="mb-4">
-                    <label for="signup-name" class="block text-sm font-medium text-gray-300">Full Name</label>
-                    <input type="text" id="signup-name" placeholder="John Doe" class="w-full mt-1 p-4 bg-black/50 border border-gray-700 rounded-lg text-white focus:border-gold focus:ring-1 focus:ring-gold" required>
-                </div>
-                <div class="mb-4">
-                    <label for="signup-email" class="block text-sm font-medium text-gray-300">Email</label>
-                    <input type="email" id="signup-email" placeholder="you@example.com" class="w-full mt-1 p-4 bg-black/50 border border-gray-700 rounded-lg text-white focus:border-gold focus:ring-1 focus:ring-gold" required>
-                </div>
-                <div class="mb-4">
-                    <label for="signup-password" class="block text-sm font-medium text-gray-300">Password</label>
-                    <input type="password" id="signup-password" placeholder="Min. 8 characters" class="w-full mt-1 p-4 bg-black/50 border border-gray-700 rounded-lg text-white focus:border-gold focus:ring-1 focus:ring-gold" required>
-                </div>
-                <div class="mb-6 text-xs text-gray-500">
-                    <input type="checkbox" id="agree-terms" class="mr-2 accent-gold" required>
-                    I confirm I have read and agree to the <button type="button" onclick="openModal('terms-modal')" class="text-gold underline hover:no-underline">Terms & Conditions</button>.
-                </div>
-                <button type="submit" class="btn btn-gold w-full">CREATE ACCOUNT</button>
-            </form>
-            <p class="text-center text-gray-400 mt-6">
-                Already registered? <button onclick="closeModal('signup-modal'); openModal('login-modal')" class="text-gold font-medium hover:underline">Log In</button>
-            </p>
-        </div>
-    </div>
-
-    <!-- Modal: FAQ (Content Pages) -->
-    <div id="faq-modal" class="modal" onclick="closeModal('faq-modal')">
-        <div class="modal-content !max-w-4xl" onclick="event.stopPropagation()">
-            <div class="flex justify-between items-center mb-6 border-b border-gray-700 pb-3">
-                <h2 class="text-3xl font-bold text-gold">Frequently Asked Questions</h2>
-                <button onclick="closeModal('faq-modal')" class="text-gray-400 hover:text-gold"><i data-lucide="x" class="w-6 h-6"></i></button>
-            </div>
-            <div class="space-y-4 text-left max-h-[70vh] overflow-y-auto pr-2">
-                <details class="group">
-                    <summary class="list-none cursor-pointer p-4 bg-black/50 rounded-lg font-semibold flex justify-between items-center hover:bg-black/70 transition-colors">
-                        What is the minimum deposit?
-                        <i data-lucide="chevron-down" class="w-5 h-5 transition-transform group-open:rotate-180"></i>
-                    </summary>
-                    <div class="p-4 bg-navy/50 mt-1 rounded-lg text-gray-300">
-                        <p>The minimum initial deposit to open a live trading account is **$100 USD** (or cryptocurrency equivalent). We aim to make professional trading accessible to everyone.</p>
-                    </div>
-                </details>
-                <details class="group">
-                    <summary class="list-none cursor-pointer p-4 bg-black/50 rounded-lg font-semibold flex justify-between items-center hover:bg-black/70 transition-colors">
-                        How long do withdrawals take?
-                        <i data-lucide="chevron-down" class="w-5 h-5 transition-transform group-open:rotate-180"></i>
-                    </summary>
-                    <div class="p-4 bg-navy/50 mt-1 rounded-lg text-gray-300">
-                        <p>All withdrawal requests are **processed within 24 business hours**. Cryptocurrency transfers are typically reflected in your wallet instantly after processing, while bank transfers may take 3-5 business days.</p>
-                    </div>
-                </details>
-                <details class="group">
-                    <summary class="list-none cursor-pointer p-4 bg-black/50 rounded-lg font-semibold flex justify-between items-center hover:bg-black/70 transition-colors">
-                        Is Shawn Exchange regulated?
-                        <i data-lucide="chevron-down" class="w-5 h-5 transition-transform group-open:rotate-180"></i>
-                    </summary>
-                    <div class="p-4 bg-navy/50 mt-1 rounded-lg text-gray-300">
-                        <p>Yes, Shawn Exchange operates under the supervision of the Demo Financial Services Authority (DFSA) under license S123/F456-Demo. We strictly adhere to global regulatory standards to ensure client protection.</p>
-                    </div>
-                </details>
-                <!-- Other content modals follow the same structure -->
-            </div>
-        </div>
-    </div>
-    
-    <!-- Modal: Terms & Conditions (Content Pages) -->
-    <div id="terms-modal" class="modal" onclick="closeModal('terms-modal')">
-        <div class="modal-content !max-w-4xl" onclick="event.stopPropagation()">
-            <div class="flex justify-between items-center mb-6 border-b border-gray-700 pb-3">
-                <h2 class="text-3xl font-bold text-gold">Terms & Conditions (T&C)</h2>
-                <button onclick="closeModal('terms-modal')" class="text-gray-400 hover:text-gold"><i data-lucide="x" class="w-6 h-6"></i></button>
-            </div>
-            <div class="space-y-4 text-gray-300 text-sm max-h-[70vh] overflow-y-auto pr-2">
-                <p><strong>Effective Date:</strong> October 25, 2024</p>
-                <h3 class="font-bold text-lg text-gold mt-4">1. General Agreement</h3>
-                <p>By registering for an account with Shawn Exchange, you acknowledge that you have read, understood, and agree to be legally bound by all terms and conditions contained herein. If you do not agree to these terms, you are prohibited from using the platform.</p>
-                <h3 class="font-bold text-lg text-gold mt-4">2. Risk Acknowledgement</h3>
-                <p>You acknowledge that trading leveraged products carries a substantial risk of loss. You accept that Shawn Exchange is solely an execution venue and not a financial advisor. It is your sole responsibility to ensure that you are financially capable of withstanding the risks associated with CFDs and Forex trading.</p>
-                <h3 class="font-bold text-lg text-gold mt-4">3. Account Usage and Security</h3>
-                <p>You are solely responsible for maintaining the confidentiality of your account credentials. Any activities occurring under your account will be deemed to be conducted by you. You must notify Shawn Exchange immediately of any unauthorized use.</p>
-            </div>
-        </div>
-    </div>
-    
-    <!-- Modal: Privacy Policy (Content Pages) -->
-    <div id="privacy-modal" class="modal" onclick="closeModal('privacy-modal')">
-        <div class="modal-content !max-w-4xl" onclick="event.stopPropagation()">
-            <div class="flex justify-between items-center mb-6 border-b border-gray-700 pb-3">
-                <h2 class="text-3xl font-bold text-gold">Privacy Policy</h2>
-                <button onclick="closeModal('privacy-modal')" class="text-gray-400 hover:text-gold"><i data-lucide="x" class="w-6 h-6"></i></button>
-            </div>
-            <div class="space-y-4 text-gray-300 text-sm max-h-[70vh] overflow-y-auto pr-2">
-                <p>Shawn Exchange is committed to protecting the privacy and security of your personal data. This policy describes how we collect, use, and share your information.</p>
-                <h3 class="font-bold text-lg text-gold mt-4">1. Data Collection</h3>
-                <p>We collect personal information such as name, email, contact details, and financial data (e.g., wallet addresses) for account registration, regulatory compliance (KYC), and transaction processing.</p>
-                <h3 class="font-bold text-lg text-gold mt-4">2. Data Usage</h3>
-                <p>Your data is used exclusively to: provide trading services, process deposits and withdrawals, comply with anti-money laundering regulations, and improve the user experience on our platform.</p>
-                <h3 class="font-bold text-lg text-gold mt-4">3. Data Security</h3>
-                <p>We implement advanced security measures, including data encryption and secured servers, to prevent unauthorized access, disclosure, modification, or destruction of your personal information.</p>
-            </div>
-        </div>
-    </div>
-    
-    <!-- Modal: Support (Content Pages) -->
-    <div id="support-modal" class="modal" onclick="closeModal('support-modal')">
-        <div class="modal-content !max-w-2xl" onclick="event.stopPropagation()">
-            <div class="flex justify-between items-center mb-6 border-b border-gray-700 pb-3">
-                <h2 class="text-3xl font-bold text-gold">Dedicated Support Center</h2>
-                <button onclick="closeModal('support-modal')" class="text-gray-400 hover:text-gold"><i data-lucide="x" class="w-6 h-6"></i></button>
-            </div>
-            <div class="space-y-4 text-gray-300 text-left">
-                <p class="text-lg">Need immediate assistance? Our support team is available 24 hours a day, 7 days a week.</p>
-                
-                <div class="p-4 bg-navy rounded-lg border border-gold/50">
-                    <h4 class="font-semibold text-xl text-white flex items-center mb-2"><i data-lucide="mail" class="w-6 h-6 text-gold mr-3"></i> Email Support</h4>
-                    <p class="text-gray-400">Send us a detailed message at: **support@shawn.exchange** (demo)</p>
-                </div>
-                
-                <div class="p-4 bg-navy rounded-lg border border-gold/50">
-                    <h4 class="font-semibold text-xl text-white flex items-center mb-2"><i data-lucide="send" class="w-6 h-6 text-gold mr-3"></i> Live Telegram Support</h4>
-                    <p class="text-gray-400">For fast, direct communication, reach our admin on Telegram: <a href="https://t.me/youradmin" target="_blank" class="text-gold underline hover:no-underline font-mono">@ShawnExchangeAdmin</a></p>
-                </div>
-
-                <div class="p-4 bg-navy rounded-lg border border-gold/50">
-                    <h4 class="font-semibold text-xl text-white flex items-center mb-2"><i data-lucide="message-square" class="w-6 h-6 text-gold mr-3"></i> Live Chat Widget</h4>
-                    <p class="text-gray-400">Our live chat service is available 24/7 on the bottom right of the dashboard (will be integrated in Phase 2).</p>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <!-- Modal: Risk Disclosure (Content Pages) -->
-    <div id="risk-modal" class="modal" onclick="closeModal('risk-modal')">
-        <div class="modal-content !max-w-xl" onclick="event.stopPropagation()">
-            <div class="flex justify-between items-center mb-6 border-b border-gray-700 pb-3">
-                <h2 class="text-3xl font-bold text-red-600">!! High Risk Warning !!</h2>
-                <button onclick="closeModal('risk-modal')" class="text-gray-400 hover:text-gold"><i data-lucide="x" class="w-6 h-6"></i></button>
-            </div>
-            <div class="space-y-4 text-gray-300 text-sm">
-                <p class="text-lg font-semibold text-red-400">RISK WARNING: TRADING IS HIGHLY SPECULATIVE.</p>
-                <p>Contracts for Difference (CFDs) and Forex are complex instruments and come with a high risk of losing money rapidly due to leverage. **70-90% of retail investor accounts lose money when trading CFDs.**</p>
-                <p>You should consider whether you understand how CFDs work and whether you can afford to take the high risk of losing your money. **Do not invest funds you cannot afford to lose.** Shawn Exchange assumes no liability for losses incurred.</p>
-                <button onclick="closeModal('risk-modal')" class="btn bg-red-600 text-white w-full mt-6 hover:bg-red-700">I UNDERSTAND THE RISK</button>
-            </div>
-        </div>
-    </div>
-
-
-    <!-- JavaScript -->
+    <!-- JavaScript for Logic and Functionality -->
     <script>
-        // --- Lucide Icons ---
-        lucide.createIcons();
-
-        // --- Current Year for Footer ---
-        document.getElementById('current-year').textContent = new Date().getFullYear();
-
-        // --- Mobile Menu Toggle ---
-        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        mobileMenuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
+        // Initialize Lucide Icons
+        document.addEventListener('DOMContentLoaded', () => {
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+            }
         });
 
-        // --- Modal Control ---
-        function openModal(modalId) {
-            const modal = document.getElementById(modalId);
-            if (modal) {
-                // Close all other modals first
-                document.querySelectorAll('.modal.active').forEach(m => m.classList.remove('active'));
+        const dashboardUserName = document.getElementById('dashboard-user-name');
+        const authButtons = document.getElementById('auth-buttons');
+        const homeNavLinks = document.getElementById('home-nav-links');
+        const dashboardNavLinks = document.getElementById('dashboard-nav-links');
+        const authCard = document.getElementById('auth-card');
+        const authTitle = document.getElementById('auth-title');
+        const authSubtitle = document.getElementById('auth-subtitle');
+        const authToggleText = document.getElementById('auth-toggle-text');
+        const registrationForm = document.getElementById('registration-form');
+        const loginForm = document.getElementById('login-form');
+        const loadingOverlay = document.getElementById('loading-overlay');
+        const loadingMessage = document.getElementById('loading-message');
+
+        // --- Core Page Navigation Logic ---
+        function setPage(pageId) {
+            // Get all page containers
+            const pages = document.querySelectorAll('.page-content');
+            pages.forEach(page => page.classList.remove('active'));
+
+            // Show the requested page
+            const targetPage = document.getElementById(`page-${pageId}`);
+            if (targetPage) {
+                targetPage.classList.add('active');
+            } else {
+                // Default to home if target not found
+                document.getElementById('page-home').classList.add('active');
+                pageId = 'home';
+            }
+
+            // Update URL hash without refreshing
+            window.location.hash = pageId;
+
+            // Manage Header Visibility
+            const isDashboard = pageId === 'dashboard';
+            const isAuth = pageId === 'register' || pageId === 'login';
+
+            // Show/Hide Nav elements based on page
+            authButtons.classList.toggle('hidden', isDashboard || pageId === 'register' || pageId === 'login');
+            homeNavLinks.classList.toggle('hidden', isDashboard || isAuth);
+            dashboardNavLinks.classList.toggle('hidden', !isDashboard);
+            
+            // Set login/register form state if on auth page
+            if (isAuth) {
+                showForm(pageId);
+                authButtons.classList.add('hidden'); // Hide them on the auth page
                 
-                modal.classList.add('active');
-                document.body.style.overflow = 'hidden'; // Prevent background scrolling
+                // On mobile, hide nav links on auth page too
+                const mobileMenu = document.getElementById('mobile-menu'); // Placeholder for mobile menu
+                if (mobileMenu) mobileMenu.classList.add('hidden');
+            } else {
+                // Ensure form components are properly hidden when leaving the auth page
+                registrationForm.classList.remove('hidden');
+                loginForm.classList.add('hidden');
             }
         }
 
-        function closeModal(modalId) {
-            const modal = document.getElementById(modalId);
-            if (modal) {
-                modal.classList.remove('active');
-                document.body.style.overflow = 'auto'; // Restore background scrolling
+        // --- Initialize Page based on URL Hash ---
+        function checkPageHash() {
+            let hash = window.location.hash.substring(1) || 'home';
+            if (hash === 'login') hash = 'register'; // Handle login requests by showing the auth page first
+            setPage(hash);
+            
+            // Re-create icons on load to ensure they render
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
             }
         }
         
-        // Close modal on escape key
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') {
-                document.querySelectorAll('.modal.active').forEach(modal => {
-                    closeModal(modal.id);
-                });
-            }
-        });
+        // Handle hash change events (e.g., back button)
+        window.addEventListener('hashchange', checkPageHash);
 
-        // --- Live Market Ticker ---
+
+        // --- Auth Form Toggling ---
+        function showForm(type) {
+            if (type === 'login') {
+                authTitle.textContent = 'Welcome Back, Trader';
+                authSubtitle.textContent = 'Enter your credentials to access your account.';
+                registrationForm.classList.add('hidden');
+                loginForm.classList.remove('hidden');
+                authToggleText.innerHTML = 'Don\'t have an account? <button type="button" onclick="showForm(\'register\')" class="text-swift-gold hover:underline font-semibold">Sign Up</button>';
+            } else { // 'register'
+                authTitle.textContent = 'Create Your SwiftFX Account';
+                authSubtitle.textContent = 'Fill in your details to start trading.';
+                registrationForm.classList.remove('hidden');
+                loginForm.classList.add('hidden');
+                authToggleText.innerHTML = 'Already have an account? <button type="button" onclick="showForm(\'login\')" class="text-swift-gold hover:underline font-semibold">Log In</button>';
+            }
+            // Ensure the main auth page is active
+            document.getElementById('page-register').classList.add('active');
+        }
+
+
+        // --- Form Submission Handlers (Validation & Redirection) ---
+
+        function handleRegistration(event) {
+            event.preventDefault();
+            
+            // Client-side Validation Checks
+            const name = document.getElementById('reg-name').value;
+            const email = document.getElementById('reg-email').value;
+            const pass = document.getElementById('reg-password').value;
+            const confirmPass = document.getElementById('reg-confirm-password').value;
+            const idUpload = document.getElementById('reg-id-upload');
+            const agreed = document.getElementById('reg-agree-terms').checked;
+
+            if (pass !== confirmPass) {
+                alert('Error: Passwords do not match!'); // Use alert() minimally for error feedback per instructions
+                return;
+            }
+            if (!idUpload.files.length) {
+                alert('Error: ID Upload is required for KYC.');
+                return;
+            }
+            if (!agreed) {
+                alert('Error: You must agree to the Terms & Conditions.');
+                return;
+            }
+
+            // Simulate successful registration and start loading sequence
+            loadingMessage.textContent = 'Creating your account securely...';
+            startLoading('Trader'); // Pass a default name
+
+            // Simulate saving the user's name for the dashboard
+            const firstName = name.split(' ')[0] || 'Trader';
+            localStorage.setItem('swiftfx_user_name', firstName);
+        }
+
+        function handleLogin(event) {
+            event.preventDefault();
+            
+            // Simple validation
+            const email = document.getElementById('login-email').value;
+            const password = document.getElementById('login-password').value;
+            
+            if (!email || !password) {
+                alert('Please enter both email and password.');
+                return;
+            }
+            
+            // Simulate successful login and start loading sequence
+            loadingMessage.textContent = 'Verifying credentials and logging in...';
+            
+            // Simulate retrieving user data
+            const simulatedUser = 'Verified Trader';
+            localStorage.setItem('swiftfx_user_name', simulatedUser);
+            
+            startLoading(simulatedUser);
+        }
+
+        function startLoading(userName) {
+            loadingOverlay.classList.remove('hidden');
+            
+            // 5-second delay before redirecting to the dashboard
+            setTimeout(() => {
+                loadingOverlay.classList.add('hidden');
+                
+                // Update the dashboard name immediately
+                dashboardUserName.textContent = `Welcome, ${userName} 👋`;
+
+                // Redirect to the dashboard page view
+                setPage('dashboard');
+            }, 5000); // 5000 milliseconds = 5 seconds
+        }
+
+        // --- Utility Functions ---
+
+        // Function to copy referral link (for dashboard)
+        function copyToClipboard(elementId) {
+            const copyText = document.getElementById(elementId);
+            copyText.select();
+            copyText.setSelectionRange(0, 99999); // For mobile devices
+            try {
+                document.execCommand('copy');
+                // Use a temporary visual feedback instead of alert
+                const originalText = copyText.value;
+                copyText.value = "Link Copied!";
+                setTimeout(() => copyText.value = originalText, 1500);
+            } catch (err) {
+                console.error('Failed to copy text: ', err);
+            }
+        }
+
+        // --- Live Market Price Simulation ---
         const marketData = [
-            { symbol: 'EUR/USD', price: 1.0856, change: '+0.12%', up: true },
-            { symbol: 'BTC/USD', price: 65120.45, change: '+2.5%', up: true },
-            { symbol: 'GOLD (XAU/USD)', price: 2350.78, change: '-0.20%', up: false },
-            { symbol: 'NASDAQ (US100)', price: 18002.10, change: '+0.8%', up: true },
-            { symbol: 'USD/JPY', price: 154.30, change: '-0.05%', up: false },
-            { symbol: 'S&P 500', price: 5170.00, change: '+0.5%', up: true },
-            { symbol: 'WTI OIL', price: 82.50, change: '-1.10%', up: false },
-            { symbol: 'ETH/USD', price: 3450.00, change: '+1.8%', up: true },
-            { symbol: 'TSLA', price: 175.22, change: '+1.2%', up: true },
-            { symbol: 'AAPL', price: 190.60, change: '-0.3%', up: false },
+            { symbol: 'EUR/USD', price: 1.0856, min: 1.0850, max: 1.0870 },
+            { symbol: 'BTC/USD', price: 65120.45, min: 65000, max: 66000 },
+            { symbol: 'GOLD (XAU/USD)', price: 2350.78, min: 2345, max: 2360 },
+            { symbol: 'NASDAQ (US100)', price: 18002.10, min: 17950, max: 18100 },
+            { symbol: 'USD/JPY', price: 154.30, min: 154.00, max: 154.50 },
         ];
 
-        const tickerContent = document.getElementById('ticker-content');
-        
-        function updateTicker() {
-            // Clear content
-            tickerContent.innerHTML = '';
-            
-            // Create items
-            let itemsHTML = marketData.map(item => {
-                // Simulate price fluctuation
-                const fluctuation = (Math.random() - 0.49) * 0.001 * (item.symbol.includes('BTC') ? 10 : 1);
-                item.price = item.price * (1 + fluctuation);
-                item.up = fluctuation >= 0;
+        function updateMarketPrices() {
+            const livePricesContainer = document.getElementById('live-prices');
+            let content = '';
 
-                const colorClass = item.up ? 'text-green-500' : 'text-red-500';
-                const icon = item.up ? '↑' : '↓';
+            marketData.forEach(item => {
+                // Simulate fluctuation
+                const fluctuation = (Math.random() - 0.5) * (item.max - item.min) / 100;
+                item.price = Math.min(item.max, Math.max(item.min, item.price + fluctuation));
                 
-                return `
-                    <div class="ticker-item">
-                        <span class="font-bold text-gray-200">${item.symbol}</span>
-                        <span class="ml-2 ${colorClass}">${item.price.toFixed(item.symbol.includes('/') ? 4 : 2)}</span>
-                        <span class="ml-1 text-xs ${colorClass}">${icon}</span>
+                const up = fluctuation >= 0;
+                const priceFormatted = item.price.toFixed(item.symbol.includes('/') ? 4 : 2);
+                const change = (Math.random() * 0.5 + 0.1).toFixed(2); // Random change percentage
+
+                const colorClass = up ? 'text-green-500' : 'text-red-500';
+                const icon = up ? '↑' : '↓';
+                
+                content += `
+                    <div class="flex items-center space-x-2 p-1">
+                        <span class="font-bold text-white">${item.symbol}</span>
+                        <span class="${colorClass}">${priceFormatted}</span>
+                        <span class="font-semibold ${colorClass} text-xs">${icon} ${change}%</span>
                     </div>
                 `;
-            }).join('');
-            
-            // Duplicate content for seamless loop
-            tickerContent.innerHTML = itemsHTML + itemsHTML;
-        }
-        
-        updateTicker();
-        // Update prices every 3 seconds
-        setInterval(updateTicker, 3000);
-        
-        // --- Intersection Observer for Animations ---
-        // This makes sure sections fade in as they scroll into view
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                    observer.unobserve(entry.target); // Stop observing once visible
-                }
             });
-        }, { threshold: 0.1 });
+            livePricesContainer.innerHTML = content;
+        }
 
-        document.querySelectorAll('.fade-in').forEach(el => {
-            el.style.transition = 'opacity 1s, transform 1s';
-            observer.observe(el);
-        });
+        // Run updates
+        updateMarketPrices();
+        setInterval(updateMarketPrices, 3000); // Update prices every 3 seconds
 
+        // Load the user's name from localStorage for initial dashboard view
+        const storedUserName = localStorage.getItem('swiftfx_user_name');
+        if (storedUserName) {
+            dashboardUserName.textContent = `Welcome, ${storedUserName} 👋`;
+        }
     </script>
 </body>
 </html>
