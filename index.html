@@ -5,25 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SwiftFX Trade Hub - Trade Smarter, Earn Faster</title>
     
-    <!-- Meta Tags for SEO -->
-    <meta name="description" content="Join thousands of traders who trust SwiftFX Trade Hub for Forex, Crypto, and CFD trading with ultra-low latency.">
+    <!-- Meta Tags for SEO --><meta name="description" content="Join thousands of traders who trust SwiftFX Trade Hub for Forex, Crypto, and CFD trading with ultra-low latency.">
     <meta property="og:title" content="SwiftFX Trade Hub - The Next Generation of Trading">
     <meta property="og:image" content="https://placehold.co/1200x630/0A1931/FFD700?text=SWIFTFX+TRADE+HUB">
     <link rel="icon" href="https://placehold.co/32x32/FFD700/0A1931?text=SFX">
 
-    <!-- Fonts: Poppins for modern professionalism -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <!-- Fonts: Poppins for modern professionalism --><link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Tailwind CSS CDN --><script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Lucide Icons CDN -->
-    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Lucide Icons CDN --><script src="https://unpkg.com/lucide@latest"></script>
 
-    <!-- Custom Tailwind Configuration (for gold/navy theme) -->
-    <script>
+    <!-- Custom Tailwind Configuration (for gold/navy theme) --><script>
         tailwind.config = {
             theme: {
                 extend: {
@@ -42,53 +37,23 @@
         }
     </script>
 
-    <!-- Custom CSS for View Management and Aesthetics -->
-    <style>
+    <!-- Custom CSS for View Management and Aesthetics --><style>
         body {
             font-family: 'Poppins', sans-serif;
             background-color: theme('colors.swift-dark');
             color: white;
         }
 
-        /* Hero Section Styling for Animated Video Effect */
+        /* Animated Background (Subtle Chart Waves - Original) */
         .hero-bg {
-            position: relative; /* Needed for the absolute overlay */
-            overflow: hidden;
-            background-color: theme('colors.swift-dark');
-        }
-        
-        /* Pseudo-element creates the animated data stream lines */
-        .hero-bg::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 300%; /* Wider than normal for horizontal movement */
-            height: 100%;
-            /* Abstract Gradient simulates a moving data stream (Blue/Gold highlights) */
-            background: linear-gradient(90deg, 
-                rgba(10, 25, 49, 0) 0%, 
-                rgba(30, 58, 138, 0.5) 15%, 
-                rgba(255, 215, 0, 0.2) 30%, 
-                rgba(30, 58, 138, 0.5) 45%, 
-                rgba(10, 25, 49, 0) 60%
-            );
-            background-size: 50% 100%; /* Control the gradient repeat */
-            animation: dataFlow 25s linear infinite;
-            opacity: 0.3; /* Subtle transparency */
-            z-index: 1;
+            background-image: linear-gradient(rgba(13, 13, 25, 0.95), rgba(13, 13, 25, 0.95)), url('https://placehold.co/1920x1080/0D0D19/1E3A8A?text=Abstract+Circuit+Grid');
+            background-size: cover;
+            animation: gradientShift 20s ease infinite alternate;
         }
 
-        /* Ensure content is above the pseudo-element */
-        .hero-bg > * {
-            position: relative;
-            z-index: 10;
-        }
-
-        /* Animation for the data stream movement */
-        @keyframes dataFlow {
-            0% { transform: translateX(0%); }
-            100% { transform: translateX(-66.66%); } /* Moves the gradient smoothly to loop */
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
         }
 
         /* Loading Spinner */
@@ -108,29 +73,24 @@
 </head>
 <body onload="initApp()">
 
-    <!-- Main Header Component (Hidden on Dashboard/Deposit) -->
-    <header id="main-header" class="sticky top-0 z-50 bg-swift-dark/95 backdrop-blur-sm border-b border-swift-navy shadow-xl">
+    <!-- Main Header Component (Hidden on Dashboard/Deposit) --><header id="main-header" class="sticky top-0 z-50 bg-swift-dark/95 backdrop-blur-sm border-b border-swift-navy shadow-xl">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-3 flex justify-between items-center">
-            <!-- Logo -->
-            <a href="#home" class="text-3xl font-extrabold tracking-wider text-swift-gold" onclick="showView('page-home')">
+            <!-- Logo --><a href="#home" class="text-3xl font-extrabold tracking-wider text-swift-gold" onclick="showView('page-home')">
                 SwiftFX<span class="text-white font-light">HUB</span>
             </a>
             
-            <!-- Desktop Navigation Links (For Homepage) -->
-            <nav id="home-nav-links" class="hidden md:flex items-center space-x-6 text-sm font-medium">
+            <!-- Desktop Navigation Links (For Homepage) --><nav id="home-nav-links" class="hidden md:flex items-center space-x-6 text-sm font-medium">
                 <a href="#why-us" class="text-white hover:text-swift-gold transition-colors">Why Us</a>
                 <a href="#instruments" class="text-white hover:text-swift-gold transition-colors">Markets</a>
                 <a href="#about" class="text-white hover:text-swift-gold transition-colors">Trust & Safety</a>
             </nav>
 
-            <!-- Auth Buttons (Visible on Home) -->
-            <div id="auth-buttons" class="hidden md:flex items-center space-x-3">
+            <!-- Auth Buttons (Visible on Home) --><div id="auth-buttons" class="hidden md:flex items-center space-x-3">
                 <button onclick="showAuth('login')" class="px-5 py-2 rounded-full border-2 border-swift-gold text-swift-gold text-sm font-semibold transition-colors hover:bg-swift-gold/10">LOG IN</button>
                 <button onclick="showAuth('register')" class="px-5 py-2 rounded-full bg-swift-gold text-swift-dark text-sm font-semibold transition-colors hover:bg-yellow-400">CREATE ACCOUNT</button>
             </div>
 
-            <!-- Dashboard Nav Links (Visible on Dashboard) -->
-            <nav id="dashboard-nav-links" class="hidden items-center space-x-6 text-sm font-medium">
+            <!-- Dashboard Nav Links (Visible on Dashboard) --><nav id="dashboard-nav-links" class="hidden items-center space-x-6 text-sm font-medium">
                 <a href="#dashboard" onclick="showView('page-dashboard')" class="px-3 py-2 rounded-lg bg-swift-blue text-white">Dashboard</a>
                 <a href="#" class="text-white hover:text-swift-gold transition-colors">Transactions</a>
                 <button onclick="showView('page-home')" class="px-3 py-2 rounded-lg text-red-400 hover:bg-swift-dark transition-colors flex items-center">
@@ -142,20 +102,15 @@
 
     <main class="w-full">
         
-        <!-- 0. LOADING OVERLAY/MESSAGE (Full screen, managed by showView) -->
-        <div id="page-loading" class="hidden fixed inset-0 bg-swift-dark/95 backdrop-blur-md flex flex-col items-center justify-center z-50 min-h-screen">
+        <!-- 0. LOADING OVERLAY/MESSAGE (Full screen, managed by showView) --><div id="page-loading" class="hidden fixed inset-0 bg-swift-dark/95 backdrop-blur-md flex flex-col items-center justify-center z-50 min-h-screen">
             <div class="loader mb-6"></div>
             <p class="text-xl font-semibold text-swift-gold" id="loading-message">Securing your connection...</p>
             <p class="text-gray-400 mt-2 text-sm">One moment please.</p>
         </div>
 
-        <!-- ============================================= -->
-        <!-- 1. HOMEPAGE VIEW (Expanded with more content) -->
-        <!-- ============================================= -->
-        <div id="page-home" class="min-h-screen">
+        <!-- ============================================= --><!-- 1. HOMEPAGE VIEW (Expanded with more content) --><!-- ============================================= --><div id="page-home" class="min-h-screen">
             
-            <!-- Hero Section with Animated Background -->
-            <section class="hero-bg text-center pt-24 pb-32">
+            <!-- Hero Section --><section class="hero-bg text-center pt-24 pb-32">
                 <div class="container mx-auto px-4">
                     <h1 class="text-5xl sm:text-6xl md:text-7xl font-extrabold mb-6 tracking-tight text-white">
                         Trade Smarter, Earn Faster
@@ -171,34 +126,28 @@
                 </div>
             </section>
 
-            <!-- Live Market Ticker/Prices -->
-            <section class="py-4 bg-swift-dark border-y border-swift-gold/20">
+            <!-- Live Market Ticker/Prices --><section class="py-4 bg-swift-dark border-y border-swift-gold/20">
                 <div id="live-prices" class="container mx-auto px-4 flex justify-between overflow-x-auto whitespace-nowrap space-x-8 text-sm">
-                    <!-- Data injected by JS -->
-                </div>
+                    <!-- Data injected by JS --></div>
             </section>
 
-            <!-- NEW SECTION: Why Choose Us (Features) -->
-            <section id="why-us" class="py-20 bg-swift-dark/50">
+            <!-- NEW SECTION: Why Choose Us (Features) --><section id="why-us" class="py-20 bg-swift-dark/50">
                 <div class="container mx-auto px-4 text-center">
                     <h2 class="text-4xl font-bold mb-4 text-white">Why SwiftFX is the Right Choice</h2>
                     <p class="text-lg text-gray-400 max-w-3xl mx-auto mb-12">Experience institutional-grade trading conditions combined with user-friendly access for every trader.</p>
 
                     <div class="grid md:grid-cols-3 gap-8">
-                        <!-- Feature 1 -->
-                        <div class="bg-swift-navy p-6 rounded-xl shadow-xl border border-swift-gold/20 hover:border-swift-gold transition duration-300">
+                        <!-- Feature 1 --><div class="bg-swift-navy p-6 rounded-xl shadow-xl border border-swift-gold/20 hover:border-swift-gold transition duration-300">
                             <i data-lucide="zap" class="w-8 h-8 text-swift-gold mb-4 mx-auto md:mx-0"></i>
                             <h3 class="text-xl font-semibold mb-2">Ultra-Low Latency</h3>
                             <p class="text-gray-400 text-sm">Execute trades in milliseconds on our powerful infrastructure, minimizing slippage.</p>
                         </div>
-                        <!-- Feature 2 -->
-                        <div class="bg-swift-navy p-6 rounded-xl shadow-xl border border-swift-gold/20 hover:border-swift-gold transition duration-300">
+                        <!-- Feature 2 --><div class="bg-swift-navy p-6 rounded-xl shadow-xl border border-swift-gold/20 hover:border-swift-gold transition duration-300">
                             <i data-lucide="shield-check" class="w-8 h-8 text-swift-gold mb-4 mx-auto md:mx-0"></i>
                             <h3 class="text-xl font-semibold mb-2">Maximum Security</h3>
                             <p class="text-gray-400 text-sm">Funds are protected in segregated accounts with advanced security protocols.</p>
                         </div>
-                        <!-- Feature 3 -->
-                        <div class="bg-swift-navy p-6 rounded-xl shadow-xl border border-swift-gold/20 hover:border-swift-gold transition duration-300">
+                        <!-- Feature 3 --><div class="bg-swift-navy p-6 rounded-xl shadow-xl border border-swift-gold/20 hover:border-swift-gold transition duration-300">
                             <i data-lucide="bar-chart-3" class="w-8 h-8 text-swift-gold mb-4 mx-auto md:mx-0"></i>
                             <h3 class="text-xl font-semibold mb-2">Competitive Spreads</h3>
                             <p class="text-gray-400 text-sm">Access some of the tightest spreads in the industry across major and minor pairs.</p>
@@ -207,33 +156,28 @@
                 </div>
             </section>
 
-            <!-- NEW SECTION: Supported Instruments -->
-            <section id="instruments" class="py-20 bg-swift-navy/50">
+            <!-- NEW SECTION: Supported Instruments --><section id="instruments" class="py-20 bg-swift-navy/50">
                 <div class="container mx-auto px-4 text-center">
                     <h2 class="text-4xl font-bold mb-4 text-white">Trade Over 300 Global Instruments</h2>
                     <p class="text-lg text-gray-400 max-w-3xl mx-auto mb-12">Diversify your portfolio with a wide range of assets available 24/5.</p>
 
                     <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                        <!-- Market 1: Forex -->
-                        <div class="bg-swift-dark p-6 rounded-xl shadow-lg border-t-4 border-swift-blue">
+                        <!-- Market 1: Forex --><div class="bg-swift-dark p-6 rounded-xl shadow-lg border-t-4 border-swift-blue">
                             <i data-lucide="globe" class="w-10 h-10 text-swift-blue mb-3"></i>
                             <h3 class="text-2xl font-bold mb-1">Forex</h3>
                             <p class="text-gray-400 text-sm">Trade 50+ currency pairs with deep liquidity.</p>
                         </div>
-                        <!-- Market 2: Crypto -->
-                        <div class="bg-swift-dark p-6 rounded-xl shadow-lg border-t-4 border-swift-gold">
+                        <!-- Market 2: Crypto --><div class="bg-swift-dark p-6 rounded-xl shadow-lg border-t-4 border-swift-gold">
                             <i data-lucide="bitcoin" class="w-10 h-10 text-swift-gold mb-3"></i>
                             <h3 class="text-2xl font-bold mb-1">Cryptocurrency</h3>
                             <p class="text-gray-400 text-sm">CFDs on Bitcoin, Ethereum, and major altcoins.</p>
                         </div>
-                        <!-- Market 3: Indices -->
-                        <div class="bg-swift-dark p-6 rounded-xl shadow-lg border-t-4 border-red-500">
+                        <!-- Market 3: Indices --><div class="bg-swift-dark p-6 rounded-xl shadow-lg border-t-4 border-red-500">
                             <i data-lucide="trending-up" class="w-10 h-10 text-red-500 mb-3"></i>
                             <h3 class="text-2xl font-bold mb-1">Indices</h3>
                             <p class="text-gray-400 text-sm">Access global equity markets like NASDAQ and FTSE.</p>
                         </div>
-                        <!-- Market 4: Commodities -->
-                        <div class="bg-swift-dark p-6 rounded-xl shadow-lg border-t-4 border-yellow-700">
+                        <!-- Market 4: Commodities --><div class="bg-swift-dark p-6 rounded-xl shadow-lg border-t-4 border-yellow-700">
                             <i data-lucide="gem" class="w-10 h-10 text-yellow-700 mb-3"></i>
                             <h3 class="text-2xl font-bold mb-1">Commodities</h3>
                             <p class="text-gray-400 text-sm">Trade Gold, Oil, and other precious metals and energies.</p>
@@ -242,14 +186,12 @@
                 </div>
             </section>
             
-            <!-- NEW SECTION: Testimonials -->
-            <section id="testimonials" class="py-20 bg-swift-dark">
+            <!-- NEW SECTION: Testimonials --><section id="testimonials" class="py-20 bg-swift-dark">
                 <div class="container mx-auto px-4">
                     <h2 class="text-4xl font-bold mb-12 text-center text-white">What Our Traders Say</h2>
                     
                     <div class="grid md:grid-cols-3 gap-8">
-                        <!-- Testimonial 1 -->
-                        <div class="bg-swift-navy p-6 rounded-xl shadow-lg border border-gray-700 relative">
+                        <!-- Testimonial 1 --><div class="bg-swift-navy p-6 rounded-xl shadow-lg border border-gray-700 relative">
                             <i data-lucide="quote" class="w-8 h-8 text-swift-gold opacity-30 absolute top-4 left-4"></i>
                             <p class="text-gray-300 italic mt-4 mb-4">"The execution speed is unmatched. I've used several brokers, but SwiftFX's low latency gives me a real edge during high volatility. Highly recommend for scalpers."</p>
                             <div class="flex items-center">
@@ -260,8 +202,7 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- Testimonial 2 -->
-                        <div class="bg-swift-navy p-6 rounded-xl shadow-lg border border-gray-700 relative">
+                        <!-- Testimonial 2 --><div class="bg-swift-navy p-6 rounded-xl shadow-lg border border-gray-700 relative">
                             <i data-lucide="quote" class="w-8 h-8 text-swift-gold opacity-30 absolute top-4 left-4"></i>
                             <p class="text-gray-300 italic mt-4 mb-4">"Their customer support is brilliant. Had an issue with my deposit, and it was resolved in under 15 minutes. It’s comforting to know they're there 24/5."</p>
                             <div class="flex items-center">
@@ -272,8 +213,7 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- Testimonial 3 -->
-                        <div class="bg-swift-navy p-6 rounded-xl shadow-lg border border-gray-700 relative">
+                        <!-- Testimonial 3 --><div class="bg-swift-navy p-6 rounded-xl shadow-lg border border-gray-700 relative">
                             <i data-lucide="quote" class="w-8 h-8 text-swift-gold opacity-30 absolute top-4 left-4"></i>
                             <p class="text-gray-300 italic mt-4 mb-4">"I appreciate the platform's stability. No unexpected freezes, and the interface is intuitive. It allowed me to transition easily from my old, clunky broker."</p>
                             <div class="flex items-center">
@@ -289,8 +229,7 @@
             </section>
 
 
-            <!-- Original Section: About The Broker (Now focused on Trust) -->
-            <section id="about" class="py-20 bg-swift-navy/50">
+            <!-- Original Section: About The Broker (Now focused on Trust) --><section id="about" class="py-20 bg-swift-navy/50">
                 <div class="container mx-auto px-4 grid md:grid-cols-2 gap-12 items-center">
                     <div>
                         <h2 class="text-4xl font-bold mb-4 border-l-4 border-swift-gold pl-4">Trust, Transparency, and Technology</h2>
@@ -309,8 +248,7 @@
                 </div>
             </section>
             
-            <!-- NEW SECTION: Final Call To Action -->
-            <section class="py-20 bg-swift-gold text-swift-dark text-center">
+            <!-- NEW SECTION: Final Call To Action --><section class="py-20 bg-swift-gold text-swift-dark text-center">
                 <div class="container mx-auto px-4">
                     <h2 class="text-4xl font-extrabold mb-4">Ready to Start Trading?</h2>
                     <p class="text-xl mb-8 font-medium">It takes less than 3 minutes to open a live account and access the global markets.</p>
@@ -322,19 +260,14 @@
             </section>
         </div>
 
-        <!-- ============================================= -->
-        <!-- 2. REGISTRATION/LOGIN VIEW (No changes here, kept functional) -->
-        <!-- ============================================= -->
-        <div id="page-register" class="hidden py-20 bg-swift-navy flex items-center justify-center min-h-screen w-full">
+        <!-- ============================================= --><!-- 2. REGISTRATION/LOGIN VIEW (No changes here, kept functional) --><!-- ============================================= --><div id="page-register" class="hidden py-20 bg-swift-navy flex items-center justify-center min-h-screen w-full">
             <div id="auth-card" class="w-full max-w-xl bg-swift-dark p-8 md:p-10 rounded-xl shadow-lg border border-gray-700">
                 <h2 class="text-3xl font-bold text-swift-gold mb-2" id="auth-title">Create Your SwiftFX Account</h2>
                 <p class="text-gray-400 mb-6" id="auth-subtitle">Fill in your details to start trading.</p>
 
-                <!-- Forms Container -->
-                <div id="forms-container">
+                <!-- Forms Container --><div id="forms-container">
                     
-                    <!-- Registration Form -->
-                    <form id="registration-form" onsubmit="handleRegistration(event)">
+                    <!-- Registration Form --><form id="registration-form" onsubmit="handleRegistration(event)">
                         <div class="space-y-4">
                             <input type="text" id="reg-name" placeholder="Full Name" class="w-full p-3 bg-swift-navy border border-gray-700 rounded-lg focus:ring-swift-gold focus:border-swift-gold" required>
                             <input type="email" id="reg-email" placeholder="Email Address" class="w-full p-3 bg-swift-navy border border-gray-700 rounded-lg focus:ring-swift-gold focus:border-swift-gold" required>
@@ -344,8 +277,7 @@
                         <button type="submit" id="reg-submit-btn" class="w-full mt-8 py-3 rounded-full bg-swift-gold text-swift-dark font-bold hover:bg-yellow-400 transition-colors">CREATE ACCOUNT</button>
                     </form>
 
-                    <!-- Login Form (Initially hidden) -->
-                    <form id="login-form" onsubmit="handleLogin(event)" class="hidden">
+                    <!-- Login Form (Initially hidden) --><form id="login-form" onsubmit="handleLogin(event)" class="hidden">
                         <div class="space-y-4">
                             <input type="email" id="login-email" placeholder="Email Address" class="w-full p-3 bg-swift-navy border border-gray-700 rounded-lg focus:ring-swift-gold focus:border-swift-gold" required>
                             <input type="password" id="login-password" placeholder="Password" class="w-full p-3 bg-swift-navy border border-gray-700 rounded-lg focus:ring-swift-gold focus:border-swift-gold" required>
@@ -354,15 +286,13 @@
                     </form>
                 </div>
                 
-                <!-- Toggle Link -->
-                <div class="mt-6 text-center text-sm">
+                <!-- Toggle Link --><div class="mt-6 text-center text-sm">
                     <p class="text-gray-400" id="auth-toggle-text">
                         Already have an account? 
                         <button type="button" onclick="showAuth('login')" class="text-swift-gold hover:underline font-semibold">Log In</button>
                     </p>
                 </div>
-                <!-- Back Button to Home -->
-                <div class="mt-4 text-center">
+                <!-- Back Button to Home --><div class="mt-4 text-center">
                     <button type="button" onclick="showView('page-home')" class="text-sm text-gray-500 hover:text-white transition-colors">
                         &larr; Back to Marketing Site
                     </button>
@@ -370,14 +300,10 @@
             </div>
         </div>
 
-        <!-- ============================================= -->
-        <!-- 3. USER DASHBOARD VIEW (No changes here, kept functional) -->
-        <!-- ============================================= -->
-        <div id="page-dashboard" class="hidden pt-10 pb-20 bg-swift-navy min-h-screen w-full">
+        <!-- ============================================= --><!-- 3. USER DASHBOARD VIEW (No changes here, kept functional) --><!-- ============================================= --><div id="page-dashboard" class="hidden pt-10 pb-20 bg-swift-navy min-h-screen w-full">
             <div class="container mx-auto px-4 grid lg:grid-cols-4 gap-8">
                 
-                <!-- Left Sidebar / User Info (Simulated) -->
-                <aside class="lg:col-span-1 bg-swift-dark p-6 rounded-xl shadow-xl h-fit">
+                <!-- Left Sidebar / User Info (Simulated) --><aside class="lg:col-span-1 bg-swift-dark p-6 rounded-xl shadow-xl h-fit">
                     <div class="text-center pb-4 border-b border-gray-800">
                         <i data-lucide="user-circle" class="w-16 h-16 text-swift-gold mx-auto mb-2"></i>
                         <h3 class="text-2xl font-bold text-white" id="dashboard-user-name">Welcome, Trader! 👋</h3>
@@ -385,8 +311,7 @@
                     </div>
                     
                     <div class="mt-6 space-y-4">
-                        <!-- Deposit button leads to the deposit view -->
-                        <button onclick="showView('page-deposit')" class="w-full py-3 rounded-lg bg-swift-gold text-swift-dark font-bold hover:bg-yellow-400 flex items-center justify-center">
+                        <!-- Deposit button leads to the deposit view --><button onclick="showView('page-deposit')" class="w-full py-3 rounded-lg bg-swift-gold text-swift-dark font-bold hover:bg-yellow-400 flex items-center justify-center">
                             <i data-lucide="wallet" class="w-5 h-5 mr-2"></i> Deposit Funds
                         </button>
                         <button class="w-full py-3 rounded-lg bg-swift-blue text-white font-bold hover:bg-blue-800 flex items-center justify-center">
@@ -395,11 +320,9 @@
                     </div>
                 </aside>
 
-                <!-- Main Content Area -->
-                <div class="lg:col-span-3 space-y-8">
+                <!-- Main Content Area --><div class="lg:col-span-3 space-y-8">
                     
-                    <!-- Account Overview & Balance Card -->
-                    <div class="grid sm:grid-cols-3 gap-6">
+                    <!-- Account Overview & Balance Card --><div class="grid sm:grid-cols-3 gap-6">
                         <div class="bg-swift-dark p-6 rounded-xl shadow-lg border border-swift-blue/50">
                             <p class="text-gray-400 text-sm">Account Balance</p>
                             <h4 class="text-4xl font-extrabold text-swift-gold mt-1">$45,890.34</h4>
@@ -409,8 +332,7 @@
                         </div>
                     </div>
 
-                    <!-- Live Chart Placeholder -->
-                    <div class="bg-swift-dark p-6 rounded-xl shadow-xl border border-gray-800">
+                    <!-- Live Chart Placeholder --><div class="bg-swift-dark p-6 rounded-xl shadow-xl border border-gray-800">
                         <h4 class="text-2xl font-bold mb-4 flex items-center">BTC/USD Live Chart</h4>
                         <div class="h-64 bg-swift-navy rounded-lg flex items-center justify-center text-gray-500 text-lg border border-gray-700">
                             [ Placeholder: Trading Chart ]
@@ -420,21 +342,16 @@
             </div>
         </div>
         
-        <!-- ============================================= -->
-        <!-- 4. DEPOSIT VIEW (No changes here, kept functional) -->
-        <!-- ============================================= -->
-        <div id="page-deposit" class="hidden py-20 bg-swift-navy flex flex-col items-center justify-center min-h-screen w-full">
+        <!-- ============================================= --><!-- 4. DEPOSIT VIEW (No changes here, kept functional) --><!-- ============================================= --><div id="page-deposit" class="hidden py-20 bg-swift-navy flex flex-col items-center justify-center min-h-screen w-full">
             <div class="w-full max-w-2xl bg-swift-dark p-8 md:p-10 rounded-xl shadow-lg border border-swift-gold/50 text-center">
                 
-                <!-- Instruction Headline -->
-                <h2 class="text-3xl font-bold text-white mb-6">
+                <!-- Instruction Headline --><h2 class="text-3xl font-bold text-white mb-6">
                     Make payment to this bitcoin address and send your screenshot to the admin on telegram
                 </h2>
                 
                 <p class="text-gray-400 mb-4">Your personalized deposit address (BTC Network):</p>
                 
-                <!-- Bitcoin Address Box -->
-                <div class="flex flex-col gap-4 mb-8">
+                <!-- Bitcoin Address Box --><div class="flex flex-col gap-4 mb-8">
                     <input type="text" id="btc-address" value="bc1qxy2kgjd00eazl6l6n97tpxf24687k2g59v72a" readonly class="w-full p-4 bg-swift-navy border border-swift-gold rounded-lg text-swift-gold font-mono text-lg text-center select-all shadow-lg">
                     <button onclick="copyToClipboard('btc-address')" class="w-full py-3 rounded-full bg-swift-gold text-swift-dark font-bold hover:bg-yellow-400 flex items-center justify-center">
                         <i data-lucide="copy" class="w-5 h-5 mr-2"></i> Copy Bitcoin Address
@@ -443,13 +360,11 @@
                 
                 <hr class="border-gray-800 mb-8">
                 
-                <!-- Telegram Button -->
-                <a href="https://t.me/admin_swiftfx" target="_blank" class="w-full py-3 rounded-full border-2 border-green-500 text-green-500 font-bold text-lg hover:bg-green-500/10 flex items-center justify-center">
+                <!-- Telegram Button --><a href="https://t.me/admin_swiftfx" target="_blank" class="w-full py-3 rounded-full border-2 border-green-500 text-green-500 font-bold text-lg hover:bg-green-500/10 flex items-center justify-center">
                     <i data-lucide="send" class="w-6 h-6 mr-3"></i> Contact Admin on Telegram
                 </a>
                 
-                <!-- Back Button -->
-                <button onclick="showView('page-dashboard')" class="mt-6 text-gray-400 hover:text-swift-gold transition-colors text-sm">
+                <!-- Back Button --><button onclick="showView('page-dashboard')" class="mt-6 text-gray-400 hover:text-swift-gold transition-colors text-sm">
                     ← Back to Dashboard
                 </button>
             </div>
@@ -457,8 +372,7 @@
 
     </main>
 
-    <!-- Footer (Hidden on Dashboard/Deposit) -->
-    <footer id="main-footer" class="bg-swift-dark pt-12 pb-8 border-t border-swift-gold/10">
+    <!-- Footer (Hidden on Dashboard/Deposit) --><footer id="main-footer" class="bg-swift-dark pt-12 pb-8 border-t border-swift-gold/10">
         <div class="container mx-auto px-4 text-center text-xs text-gray-600">
             <p class="font-bold text-red-500 mb-2">RISK WARNING</p>
             <p class="max-w-4xl mx-auto">
@@ -468,8 +382,7 @@
         </div>
     </footer>
 
-    <!-- JavaScript for Logic and Functionality -->
-    <script>
+    <!-- JavaScript for Logic and Functionality --><script>
         // Global variable to track the currently visible view ID
         let currentViewId = 'page-home';
         
