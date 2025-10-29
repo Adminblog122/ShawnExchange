@@ -19,7 +19,7 @@
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Lucide Icons CDN -->
+    <!-- Lucide Icons CDN (Fixes the "lucide is not defined" error) -->
     <script src="https://unpkg.com/lucide@latest"></script>
 
     <!-- Custom Tailwind Configuration (for gold/navy theme) -->
@@ -90,8 +90,15 @@
         /* Page Content Containers (Used for multi-page simulation) */
         .page-content {
             display: none;
-            min-height: 100vh;
+            min-height: calc(100vh - 72px); /* Default height considering header */
         }
+        
+        /* Full-screen pages (Dashboard/Deposit) */
+        .page-content.full-screen {
+            min-height: 100vh;
+            padding-top: 2rem; /* Add some top padding when header is hidden */
+        }
+
         .page-content.active {
             display: block;
             animation: fadeIn 0.5s ease-out;
@@ -118,7 +125,7 @@
 </head>
 <body onload="checkPageHash()">
 
-    <!-- Main Header Component (Always visible) -->
+    <!-- Main Header Component (Hidden on Dashboard/Deposit) -->
     <header id="main-header" class="sticky top-0 z-50 bg-swift-dark/95 backdrop-blur-sm border-b border-swift-navy shadow-xl">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-3 flex justify-between items-center">
             <!-- Logo -->
@@ -141,7 +148,7 @@
 
             <!-- Dashboard Nav Links (Visible on Dashboard) -->
             <nav id="dashboard-nav-links" class="hidden items-center space-x-6 text-sm font-medium">
-                <a href="#dashboard" class="px-3 py-2 rounded-lg bg-swift-blue text-white">Dashboard</a>
+                <a href="#dashboard" onclick="setPage('dashboard')" class="px-3 py-2 rounded-lg bg-swift-blue text-white">Dashboard</a>
                 <a href="#" class="text-white hover:text-swift-gold transition-colors">Transactions</a>
                 <a href="#" class="text-white hover:text-swift-gold transition-colors">Settings</a>
                 <button onclick="setPage('home')" class="px-3 py-2 rounded-lg text-red-400 hover:bg-swift-dark transition-colors flex items-center">
@@ -286,8 +293,8 @@
                 </div>
             </section>
 
-            <!-- Footer -->
-            <footer class="bg-swift-dark pt-12 pb-8 border-t border-swift-gold/10">
+            <!-- Footer (Hidden on Dashboard/Deposit) -->
+            <footer id="main-footer" class="bg-swift-dark pt-12 pb-8 border-t border-swift-gold/10">
                 <div class="container mx-auto px-4">
                     <div class="grid grid-cols-2 md:grid-cols-5 gap-8 mb-8">
                         <div>
@@ -420,9 +427,9 @@
         </div>
 
         <!-- ============================================= -->
-        <!-- 3. DASHBOARD CONTENT (dashboard.html) -->
+        <!-- 3. USER DASHBOARD PAGE (dashboard.html) -->
         <!-- ============================================= -->
-        <div id="page-dashboard" class="page-content pt-10 pb-20 bg-swift-navy">
+        <div id="page-dashboard" class="page-content full-screen pt-10 pb-20 bg-swift-navy">
             <div class="container mx-auto px-4 grid lg:grid-cols-4 gap-8">
                 
                 <!-- Left Sidebar / User Info (Simulated) -->
@@ -434,7 +441,8 @@
                     </div>
                     
                     <div class="mt-6 space-y-4">
-                        <button class="w-full py-3 rounded-lg bg-swift-gold text-swift-dark font-bold hover:bg-yellow-400 flex items-center justify-center">
+                        <!-- UPDATED: Deposit button now leads to the new deposit page -->
+                        <button onclick="setPage('deposit')" class="w-full py-3 rounded-lg bg-swift-gold text-swift-dark font-bold hover:bg-yellow-400 flex items-center justify-center">
                             <i data-lucide="wallet" class="w-5 h-5 mr-2"></i> Deposit Funds
                         </button>
                         <button class="w-full py-3 rounded-lg bg-swift-blue text-white font-bold hover:bg-blue-800 flex items-center justify-center">
@@ -539,6 +547,41 @@
                 </div>
             </div>
         </div>
+        
+        <!-- ============================================= -->
+        <!-- 4. DEPOSIT PAGE CONTENT (New Requirement) -->
+        <!-- ============================================= -->
+        <div id="page-deposit" class="page-content full-screen py-20 bg-swift-navy flex flex-col items-center justify-center">
+            <div class="w-full max-w-2xl bg-swift-dark p-8 md:p-10 rounded-xl shadow-gold-glow/50 border border-swift-gold/50 text-center">
+                
+                <!-- Instruction Headline -->
+                <h2 class="text-3xl font-bold text-white mb-6">
+                    Make payment to this bitcoin address and send your screenshot to the admin on telegram
+                </h2>
+                
+                <p class="text-gray-400 mb-4">Your personalized deposit address (BTC Network):</p>
+                
+                <!-- Bitcoin Address Box -->
+                <div class="flex flex-col gap-4 mb-8">
+                    <input type="text" id="btc-address" value="bc1qxy2kgjd00eazl6l6n97tpxf24687k2g59v72a" readonly class="w-full p-4 bg-swift-navy border border-swift-gold rounded-lg text-swift-gold font-mono text-lg text-center select-all shadow-lg">
+                    <button onclick="copyToClipboard('btc-address')" class="w-full py-3 rounded-full btn-gold-glow flex items-center justify-center font-bold">
+                        <i data-lucide="copy" class="w-5 h-5 mr-2"></i> Copy Bitcoin Address
+                    </button>
+                </div>
+                
+                <hr class="border-gray-800 mb-8">
+                
+                <!-- Telegram Button -->
+                <a href="https://t.me/admin_swiftfx" target="_blank" class="w-full py-3 rounded-full btn-outline-gold flex items-center justify-center font-bold text-lg hover:bg-swift-gold/20">
+                    <i data-lucide="send" class="w-6 h-6 mr-3"></i> Contact Admin on Telegram
+                </a>
+                
+                <!-- Back Button -->
+                <button onclick="setPage('dashboard')" class="mt-6 text-gray-400 hover:text-swift-gold transition-colors text-sm">
+                    ← Back to Dashboard
+                </button>
+            </div>
+        </div>
 
     </main>
 
@@ -546,11 +589,14 @@
     <script>
         // Initialize Lucide Icons
         document.addEventListener('DOMContentLoaded', () => {
+            // Fix for ReferenceError: lucide is not defined
             if (typeof lucide !== 'undefined') {
                 lucide.createIcons();
             }
         });
 
+        const mainHeader = document.getElementById('main-header');
+        const mainFooter = document.getElementById('main-footer');
         const dashboardUserName = document.getElementById('dashboard-user-name');
         const authButtons = document.getElementById('auth-buttons');
         const homeNavLinks = document.getElementById('home-nav-links');
@@ -568,7 +614,10 @@
         function setPage(pageId) {
             // Get all page containers
             const pages = document.querySelectorAll('.page-content');
-            pages.forEach(page => page.classList.remove('active'));
+            pages.forEach(page => {
+                page.classList.remove('active');
+                page.classList.remove('full-screen');
+            });
 
             // Show the requested page
             const targetPage = document.getElementById(`page-${pageId}`);
@@ -583,34 +632,39 @@
             // Update URL hash without refreshing
             window.location.hash = pageId;
 
-            // Manage Header Visibility
-            const isDashboard = pageId === 'dashboard';
+            // --- HEADER/FOOTER VISIBILITY LOGIC (New Immersive Requirement) ---
+            const isImmersive = pageId === 'dashboard' || pageId === 'deposit';
+            
+            mainHeader.classList.toggle('hidden', isImmersive);
+            mainFooter.classList.toggle('hidden', isImmersive);
+
+            if (isImmersive && targetPage) {
+                 // Adjust the page to take up the full viewport height
+                targetPage.classList.add('full-screen');
+            }
+
+            // Manage Dashboard Navigation Links
+            const isDashboard = pageId === 'dashboard' || pageId === 'deposit';
             const isAuth = pageId === 'register' || pageId === 'login';
 
             // Show/Hide Nav elements based on page
-            authButtons.classList.toggle('hidden', isDashboard || pageId === 'register' || pageId === 'login');
+            authButtons.classList.toggle('hidden', isDashboard || isAuth);
             homeNavLinks.classList.toggle('hidden', isDashboard || isAuth);
             dashboardNavLinks.classList.toggle('hidden', !isDashboard);
             
             // Set login/register form state if on auth page
             if (isAuth) {
                 showForm(pageId);
-                authButtons.classList.add('hidden'); // Hide them on the auth page
-                
-                // On mobile, hide nav links on auth page too
-                const mobileMenu = document.getElementById('mobile-menu'); // Placeholder for mobile menu
-                if (mobileMenu) mobileMenu.classList.add('hidden');
-            } else {
-                // Ensure form components are properly hidden when leaving the auth page
-                registrationForm.classList.remove('hidden');
-                loginForm.classList.add('hidden');
-            }
+                authButtons.classList.add('hidden');
+            } 
         }
 
         // --- Initialize Page based on URL Hash ---
         function checkPageHash() {
             let hash = window.location.hash.substring(1) || 'home';
             if (hash === 'login') hash = 'register'; // Handle login requests by showing the auth page first
+            
+            // Default to home if hash is empty or unrecognized initially
             setPage(hash);
             
             // Re-create icons on load to ensure they render
@@ -650,32 +704,30 @@
             
             // Client-side Validation Checks
             const name = document.getElementById('reg-name').value;
-            const email = document.getElementById('reg-email').value;
             const pass = document.getElementById('reg-password').value;
             const confirmPass = document.getElementById('reg-confirm-password').value;
             const idUpload = document.getElementById('reg-id-upload');
             const agreed = document.getElementById('reg-agree-terms').checked;
 
             if (pass !== confirmPass) {
-                alert('Error: Passwords do not match!'); // Use alert() minimally for error feedback per instructions
+                // Display error message
+                showCustomMessage('Error: Passwords do not match!', 'error');
                 return;
             }
             if (!idUpload.files.length) {
-                alert('Error: ID Upload is required for KYC.');
+                showCustomMessage('Error: ID Upload is required for KYC.', 'error');
                 return;
             }
             if (!agreed) {
-                alert('Error: You must agree to the Terms & Conditions.');
+                showCustomMessage('Error: You must agree to the Terms & Conditions.', 'error');
                 return;
             }
 
             // Simulate successful registration and start loading sequence
             loadingMessage.textContent = 'Creating your account securely...';
-            startLoading('Trader'); // Pass a default name
-
-            // Simulate saving the user's name for the dashboard
             const firstName = name.split(' ')[0] || 'Trader';
             localStorage.setItem('swiftfx_user_name', firstName);
+            startLoading(firstName);
         }
 
         function handleLogin(event) {
@@ -686,14 +738,13 @@
             const password = document.getElementById('login-password').value;
             
             if (!email || !password) {
-                alert('Please enter both email and password.');
+                showCustomMessage('Please enter both email and password.', 'error');
                 return;
             }
             
             // Simulate successful login and start loading sequence
             loadingMessage.textContent = 'Verifying credentials and logging in...';
             
-            // Simulate retrieving user data
             const simulatedUser = 'Verified Trader';
             localStorage.setItem('swiftfx_user_name', simulatedUser);
             
@@ -715,19 +766,47 @@
             }, 5000); // 5000 milliseconds = 5 seconds
         }
 
+        // Custom Message Box (Replaces alert())
+        function showCustomMessage(message, type) {
+            console.warn(message); // Log error instead of showing alert()
+            // In a real app, this would show a Toast or Modal UI element
+            
+            // Quick visual feedback on the form itself for this single-file demo
+            const form = type === 'error' ? document.getElementById('registration-form') : document.getElementById('login-form');
+            const msgElement = form.querySelector('.error-message');
+            if (msgElement) msgElement.remove();
+
+            const errorDiv = document.createElement('div');
+            errorDiv.className = `error-message p-3 rounded-lg text-sm font-semibold mb-4 ${type === 'error' ? 'bg-red-900 text-red-300' : 'bg-green-900 text-green-300'}`;
+            errorDiv.textContent = message;
+            form.prepend(errorDiv);
+
+            setTimeout(() => errorDiv.remove(), 4000);
+        }
+
         // --- Utility Functions ---
 
-        // Function to copy referral link (for dashboard)
+        // Function to copy text to clipboard (used for referral and BTC address)
         function copyToClipboard(elementId) {
             const copyText = document.getElementById(elementId);
             copyText.select();
             copyText.setSelectionRange(0, 99999); // For mobile devices
             try {
-                document.execCommand('copy');
-                // Use a temporary visual feedback instead of alert
-                const originalText = copyText.value;
-                copyText.value = "Link Copied!";
-                setTimeout(() => copyText.value = originalText, 1500);
+                // Use document.execCommand('copy') as it works better in iFrame environments
+                document.execCommand('copy'); 
+                
+                // Show a quick visual confirmation (replaces alert())
+                const originalValue = copyText.value;
+                copyText.value = 'Address Copied Successfully!';
+                copyText.classList.add('shadow-green-500');
+                copyText.classList.remove('shadow-lg');
+                
+                setTimeout(() => {
+                    copyText.value = originalValue;
+                    copyText.classList.remove('shadow-green-500');
+                    copyText.classList.add('shadow-lg');
+                }, 1500);
+
             } catch (err) {
                 console.error('Failed to copy text: ', err);
             }
