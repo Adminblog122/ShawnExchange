@@ -70,13 +70,30 @@
             100% { transform: rotate(360deg); }
         }
 
-        #chart {
-      width: 90%;
+       #chartContainer {
+      width: 100%;
       max-width: 900px;
-      height: 500px;
       border: 1px solid #1e293b;
       border-radius: 10px;
       overflow: hidden;
+    }
+
+    #chart {
+      width: 100%;
+      height: 500px;
+    }
+
+    /* Make it smaller for phones */
+    @media (max-width: 768px) {
+      #chart {
+        height: 380px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      #chart {
+        height: 300px;
+      }
     }
     </style>
 </head>
@@ -349,9 +366,10 @@
                     </div>
 
                    
-                        <h4 class="text-2xl font-bold mb-4 flex items-center">BTC/USD Live Chart</h4>
-                         <div id="chart">   
-                        <!-- <div class="h-64 bg-swift-navy rounded-lg flex items-center justify-center text-gray-500 text-lg border border-gray-700"> -->
+                       <h1>BTC/USD Live Chart</h1>
+                        <div id="chartContainer">
+                            <div id="chart"></div>
+                        </div>
                         
                             
                     </div>
@@ -400,16 +418,14 @@
     </footer>
 
 
-    <script>
-    // Load TradingView widget script dynamically
-    const script = document.createElement('script');
+   <script type="text/javascript">
+    const script = document.createElement("script");
     script.src = "https://s3.tradingview.com/tv.js";
-    script.onload = function() {
+    script.onload = function () {
       new TradingView.widget({
-        "width": "100%",
-        "height": 500,
-        "symbol": "BITSTAMP:BTCUSD", // Bitcoin/USD pair
-        "interval": "30",            // time frame (30 minutes)
+        "autosize": true,                // makes it responsive
+        "symbol": "BITSTAMP:BTCUSD",
+        "interval": "30",
         "timezone": "Etc/UTC",
         "theme": "dark",
         "style": "1",
@@ -423,8 +439,6 @@
       });
     };
     document.body.appendChild(script);
-    </script>
-
 
     <!-- JavaScript for Logic and Functionality --><script>
         // Global variable to track the currently visible view ID
