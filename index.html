@@ -69,6 +69,15 @@
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
+
+        #chart {
+      width: 90%;
+      max-width: 900px;
+      height: 500px;
+      border: 1px solid #1e293b;
+      border-radius: 10px;
+      overflow: hidden;
+    }
     </style>
 </head>
 <body onload="initApp()">
@@ -341,8 +350,8 @@
 
                     <!-- Live Chart Placeholder --><div class="bg-swift-dark p-6 rounded-xl shadow-xl border border-gray-800">
                         <h4 class="text-2xl font-bold mb-4 flex items-center">BTC/USD Live Chart</h4>
-                        <div class="h-64 bg-swift-navy rounded-lg flex items-center justify-center text-gray-500 text-lg border border-gray-700">
-                        <div id="chart"></div>
+                        <!-- <div class="h-64 bg-swift-navy rounded-lg flex items-center justify-center text-gray-500 text-lg border border-gray-700"> -->
+                        <div id="chart">
                             
                         </div>
                     </div>
