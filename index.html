@@ -484,8 +484,7 @@
             <p class="font-bold text-red-500 mb-2">RISK WARNING</p>
             <p class="max-w-4xl mx-auto">
                 Trading involves risk. Invest only what you can afford to lose.
-            </p>
-            <p class="mt-4">&copy; 2023 Shawn Exchange. All rights reserved.</p>
+            </WELCOME>
         </div>
     </footer>
 
@@ -751,6 +750,8 @@
                     msg = "Password is too weak. Must be at least 6 characters.";
                 } else if (error.code === 'auth/invalid-email') {
                     msg = "Please enter a valid email address.";
+                } else if (error.code === 'auth/operation-not-allowed') {
+                    msg = "Registration is currently disabled by the administrator. (Error: auth/operation-not-allowed)";
                 }
                 showMessageBox("Registration Failed", msg);
             } finally {
