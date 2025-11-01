@@ -393,8 +393,9 @@
                         <button onclick="showView('page-deposit')" class="w-full py-3 rounded-lg bg-swift-gold text-swift-dark font-bold hover:bg-yellow-400 flex items-center justify-center">
                             <i data-lucide="wallet" class="w-5 h-5 mr-2"></i> Deposit Funds
                         </button>
-                        <button id="start-button" onclick="showPage('page-form')" class="w-full py-3 rounded-lg bg-swift-blue text-white font-bold hover:bg-blue-800 flex items-center justify-center">
-                            <i data-lucide="banknote" class="w-5 h-5 mr-2"></i> Withdraw
+                        <button id="start-button" onclick="showPage('page-form')"
+                            class="w-full py-3 rounded-lg bg-swift-blue text-white font-bold hover:bg-blue-800 flex items-center justify-center">
+                            <i data-lucide="banknote" class="w-5 h-5 mr-2"></i> WITHDRAW FUNDS
                         </button> 
 
                         <!-- <button id="start-button" onclick="showPage('page-form')" 
@@ -402,6 +403,43 @@
                         <i data-lucide="banknote" class="w-5 h-5 mr-2"></i>WITHDRAW FUNDS NOW
                       </button> -->
                     </div>
+
+                    
+                    <!-- ============================================= -->
+        <!-- 4. DEPOSIT VIEW (No changes here, kept functional) -->
+        <!-- ============================================= -->
+        <div id="page-deposit" class="hidden py-20 bg-swift-navy flex flex-col items-center justify-center min-h-screen w-full">
+            <div class="w-full max-w-2xl bg-swift-dark p-8 md:p-10 rounded-xl shadow-lg border border-swift-gold/50 text-center">
+                
+                <!-- Instruction Headline -->
+                <h2 class="text-3xl font-bold text-white mb-6">
+                    Make payment to this bitcoin address and send your screenshot to the admin on telegram
+                </h2>
+                
+                <p class="text-gray-400 mb-4">Your personalized deposit address (BTC Network):</p>
+                
+                <!-- Bitcoin Address Box -->
+                <div class="flex flex-col gap-4 mb-8">
+                    <input type="text" id="btc-address" value="bc1qxy2kgjd00eazl6l6n97tpxf24687k2g59v72a" readonly class="w-full p-4 bg-swift-navy border border-swift-gold rounded-lg text-swift-gold font-mono text-lg text-center select-all shadow-lg">
+                    <button onclick="copyToClipboard('btc-address')" class="w-full py-3 rounded-full bg-swift-gold text-swift-dark font-bold hover:bg-yellow-400 flex items-center justify-center">
+                        <i data-lucide="copy" class="w-5 h-5 mr-2"></i> Copy Bitcoin Address
+                    </button>
+                </div>
+                
+                <hr class="border-gray-800 mb-8">
+                
+                <!-- Telegram Button -->
+                <a href="https://t.me/admin_swiftfx" target="_blank" class="w-full py-3 rounded-full border-2 border-green-500 text-green-500 font-bold text-lg hover:bg-green-500/10 flex items-center justify-center">
+                    <i data-lucide="send" class="w-6 h-6 mr-3"></i> Contact Admin on Telegram
+                </a>
+                
+                <!-- Back Button -->
+                <button onclick="showView('page-dashboard')" class="mt-6 text-gray-400 hover:text-swift-gold transition-colors text-sm">
+                    ← Back to Dashboard
+                </button>
+            </div>
+        </div>
+
                 </aside>
 
              
@@ -446,42 +484,10 @@
                 </div>
             </div>
         </div>
-        
-        <!-- ============================================= -->
-        <!-- 4. DEPOSIT VIEW (No changes here, kept functional) -->
-        <!-- ============================================= -->
-        <div id="page-deposit" class="hidden py-20 bg-swift-navy flex flex-col items-center justify-center min-h-screen w-full">
-            <div class="w-full max-w-2xl bg-swift-dark p-8 md:p-10 rounded-xl shadow-lg border border-swift-gold/50 text-center">
-                
-                <!-- Instruction Headline -->
-                <h2 class="text-3xl font-bold text-white mb-6">
-                    Make payment to this bitcoin address and send your screenshot to the admin on telegram
-                </h2>
-                
-                <p class="text-gray-400 mb-4">Your personalized deposit address (BTC Network):</p>
-                
-                <!-- Bitcoin Address Box -->
-                <div class="flex flex-col gap-4 mb-8">
-                    <input type="text" id="btc-address" value="bc1qxy2kgjd00eazl6l6n97tpxf24687k2g59v72a" readonly class="w-full p-4 bg-swift-navy border border-swift-gold rounded-lg text-swift-gold font-mono text-lg text-center select-all shadow-lg">
-                    <button onclick="copyToClipboard('btc-address')" class="w-full py-3 rounded-full bg-swift-gold text-swift-dark font-bold hover:bg-yellow-400 flex items-center justify-center">
-                        <i data-lucide="copy" class="w-5 h-5 mr-2"></i> Copy Bitcoin Address
-                    </button>
-                </div>
-                
-                <hr class="border-gray-800 mb-8">
-                
-                <!-- Telegram Button -->
-                <a href="https://t.me/admin_swiftfx" target="_blank" class="w-full py-3 rounded-full border-2 border-green-500 text-green-500 font-bold text-lg hover:bg-green-500/10 flex items-center justify-center">
-                    <i data-lucide="send" class="w-6 h-6 mr-3"></i> Contact Admin on Telegram
-                </a>
-                
-                <!-- Back Button -->
-                <button onclick="showView('page-dashboard')" class="mt-6 text-gray-400 hover:text-swift-gold transition-colors text-sm">
-                    ← Back to Dashboard
-                </button>
-            </div>
-        </div>
 
+
+        
+        
     </main>
 
     <!-- Footer (Hidden on Dashboard/Deposit) -->
@@ -569,7 +575,7 @@
         document.addEventListener('DOMContentLoaded', () => {
             showPage('page-start');
         });
-    </script>
+    
 
 
 
