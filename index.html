@@ -327,7 +327,7 @@
         </div>
 
         <!-- ============================================= -->
-        <!-- 2. REGISTRATION/LOGIN VIEW (No changes here, kept functional) -->
+        <!-- 2. REGISTRATION/LOGIN VIEW (Fully functional with Firebase) -->
         <!-- ============================================= -->
         <div id="page-register" class="hidden py-20 bg-swift-navy flex items-center justify-center min-h-screen w-full">
             <div id="auth-card" class="w-full max-w-xl bg-swift-dark p-8 md:p-10 rounded-xl shadow-lg border border-gray-700">
@@ -340,21 +340,21 @@
                     <!-- Registration Form -->
                     <form id="registration-form" onsubmit="handleRegistration(event)">
                         <div class="space-y-4">
-                            <input type="text" id="reg-name" placeholder="Full Name (Any Name)" class="w-full p-3 bg-swift-navy border border-gray-700 rounded-lg focus:ring-swift-gold focus:border-swift-gold" required>
-                            <input type="email" id="reg-email" placeholder="Email Address (Any Valid Email)" class="w-full p-3 bg-swift-navy border border-gray-700 rounded-lg focus:ring-swift-gold focus:border-swift-gold" required>
+                            <input type="text" id="reg-name" placeholder="Full Name" class="w-full p-3 bg-swift-navy border border-gray-700 rounded-lg focus:ring-swift-gold focus:border-swift-gold" required>
+                            <input type="email" id="reg-email" placeholder="Email Address" class="w-full p-3 bg-swift-navy border border-gray-700 rounded-lg focus:ring-swift-gold focus:border-swift-gold" required>
                             <input type="password" id="reg-password" placeholder="Password (Min 8 characters)" class="w-full p-3 bg-swift-navy border border-gray-700 rounded-lg focus:ring-swift-gold focus:border-swift-gold" required minlength="8">
                             <input type="password" id="reg-confirm-password" placeholder="Confirm Password" class="w-full p-3 bg-swift-navy border border-gray-700 rounded-lg focus:ring-swift-gold focus:border-swift-gold" required>
                         </div>
-                        <button type="submit" id="reg-submit-btn" class="w-full mt-8 py-3 rounded-full bg-swift-gold text-swift-dark font-bold hover:bg-yellow-400 transition-colors">CREATE ACCOUNT</button>
+                        <button type="submit" id="reg-submit-btn" class="w-full mt-8 py-3 rounded-full bg-swift-gold text-swift-dark font-bold hover:bg-yellow-400 transition-colors disabled:opacity-50">CREATE ACCOUNT</button>
                     </form>
 
                     <!-- Login Form (Initially hidden) -->
                     <form id="login-form" onsubmit="handleLogin(event)" class="hidden">
                         <div class="space-y-4">
-                            <input type="email" id="login-email" placeholder="Email Address (Must be the registered email)" class="w-full p-3 bg-swift-navy border border-gray-700 rounded-lg focus:ring-swift-gold focus:border-swift-gold" required>
+                            <input type="email" id="login-email" placeholder="Email Address" class="w-full p-3 bg-swift-navy border border-gray-700 rounded-lg focus:ring-swift-gold focus:border-swift-gold" required>
                             <input type="password" id="login-password" placeholder="Password" class="w-full p-3 bg-swift-navy border border-gray-700 rounded-lg focus:ring-swift-gold focus:border-swift-gold" required>
                         </div>
-                        <button type="submit" id="login-submit-btn" class="w-full mt-8 py-3 rounded-full bg-swift-gold text-swift-dark font-bold hover:bg-yellow-400 transition-colors">SECURE LOGIN</button>
+                        <button type="submit" id="login-submit-btn" class="w-full mt-8 py-3 rounded-full bg-swift-gold text-swift-dark font-bold hover:bg-yellow-400 transition-colors disabled:opacity-50">SECURE LOGIN</button>
                     </form>
                 </div>
                 
@@ -380,7 +380,7 @@
         <div id="page-dashboard" class="hidden pt-10 pb-20 bg-swift-navy min-h-screen w-full">
             <div class="container mx-auto px-4 grid lg:grid-cols-4 gap-8">
                 
-                <!-- Left Sidebar / User Info (Simulated) -->
+                <!-- Left Sidebar / User Info (Now real) -->
                 <aside class="lg:col-span-1 bg-swift-dark p-6 rounded-xl shadow-xl h-fit">
                     <div class="text-center pb-4 border-b border-gray-800">
                         <i data-lucide="user-circle" class="w-16 h-16 text-swift-gold mx-auto mb-2"></i>
@@ -490,12 +490,33 @@
     </footer>
 
 
-    <!-- JavaScript for Logic and Functionality -->
-    <script>
+    <!-- ====================================================== -->
+    <!-- NEW JAVASCRIPT SECTION with FIREBASE AUTHENTICATION -->
+    <!-- ====================================================== -->
+    <script type="module">
+        // Import Firebase modules
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { 
+            getAuth, 
+            signInAnonymously, 
+            signInWithCustomToken, 
+            onAuthStateChanged,
+            createUserWithEmailAndPassword, 
+            signInWithEmailAndPassword,     
+            signOut,
+        } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore, setDoc, doc, getDoc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+        import { setLogLevel } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
         // --- GLOBAL STATE & ELEMENTS ---
         let currentViewId = 'page-home';
-        let registeredUser = null; // Stores { name, email, password } of the successfully registered user
         
+        // Firebase Globals
+        let app, db, auth;
+        const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
+        const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : {};
+        const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null;
+
         // Element references
         const mainHeader = document.getElementById('main-header');
         const mainFooter = document.getElementById('main-footer');
@@ -514,20 +535,20 @@
         const messageTitle = document.getElementById('message-title');
         const messageText = document.getElementById('message-text');
         const messageOkBtn = document.getElementById('message-ok-btn');
+        const regSubmitBtn = document.getElementById('reg-submit-btn');
+        const loginSubmitBtn = document.getElementById('login-submit-btn');
+
 
         // --- CORE FUNCTIONS ---
 
         /**
          * Custom replacement for alert() and window.confirm().
-         * @param {string} title - The title of the message box.
-         * @param {string} message - The content of the message.
          */
         function showMessageBox(title, message) {
             messageTitle.textContent = title;
             messageText.textContent = message;
             messageBox.classList.remove('hidden');
             
-            // Set up listener to close the box
             const closeHandler = () => {
                 messageBox.classList.add('hidden');
                 messageOkBtn.removeEventListener('click', closeHandler);
@@ -547,81 +568,73 @@
                 { symbol: 'US30', price: 39500, change: -0.22, type: 'down' },
             ];
 
-            livePricesContainer.innerHTML = data.map(item => `
-                <div class="flex items-center space-x-2 p-2">
-                    <span class="font-semibold text-white">${item.symbol}</span>
-                    <span class="text-white">${item.price.toLocaleString()}</span>
-                    <span class="${item.type === 'up' ? 'text-green-400' : 'text-red-400'} font-medium flex items-center">
-                        <i data-lucide="${item.type === 'up' ? 'trending-up' : 'trending-down'}" class="w-4 h-4 mr-1"></i>
-                        ${item.change}%
-                    </span>
-                </div>
-            `).join('');
+            if(livePricesContainer) {
+                livePricesContainer.innerHTML = data.map(item => `
+                    <div class="flex items-center space-x-2 p-2">
+                        <span class="font-semibold text-white">${item.symbol}</span>
+                        <span class="text-white">${item.price.toLocaleString()}</span>
+                        <span class="${item.type === 'up' ? 'text-green-400' : 'text-red-400'} font-medium flex items-center">
+                            <i data-lucide="${item.type === 'up' ? 'trending-up' : 'trending-down'}" class="w-4 h-4 mr-1"></i>
+                            ${item.change}%
+                        </span>
+                    </div>
+                `).join('');
+            }
 
-            // Re-render lucide icons after injecting HTML
-            lucide.createIcons();
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+            }
         }
 
         /**
          * Controls which main application view is visible, ensuring only one is shown.
-         * Also manages the header/footer visibility for the immersive dashboard experience.
-         * @param {string} pageId - The ID of the view to display (e.g., 'page-home', 'page-dashboard').
          */
         function showView(pageId) {
-            // 1. Hide all main content containers inside <main>
             const pages = document.querySelectorAll('main > div');
             pages.forEach(page => {
-                // Ensure page-loading is not accidentally hidden if it's the target
                 if (page.id !== 'page-loading' && page.id !== 'message-box') {
                      page.classList.add('hidden');
                 }
             });
             
-            // 2. Show the requested page
             const targetPage = document.getElementById(pageId);
             if (targetPage) {
                 targetPage.classList.remove('hidden');
-                currentViewId = pageId; // Update the global tracker
+                currentViewId = pageId; 
                 
-                // For smoother scrolling to the top of the new content
                 if (pageId === 'page-home') {
                     window.scrollTo({ top: 0, behavior: 'smooth' });
                 }
             } else {
-                // Default to home if target not found
                 document.getElementById('page-home').classList.remove('hidden');
                 currentViewId = 'page-home';
                 pageId = 'page-home';
             }
 
-            // 3. Conditional Visibility (Header/Footer for Immersive Pages)
+            // Conditional Visibility for Header/Footer
             const isImmersive = pageId === 'page-dashboard' || pageId === 'page-deposit';
+            const isAuth = pageId === 'page-register';
+            
+            mainHeader.classList.toggle('hidden', isImmersive);
+            mainFooter.classList.toggle('hidden', isImmersive || isAuth); // Also hide footer on auth page
 
-            // Show/Hide Header and Footer
-            mainHeader.classList.toggle('hidden', isImmersive && pageId !== 'page-loading');
-            mainFooter.classList.toggle('hidden', isImmersive && pageId !== 'page-loading');
+            // Manage Navigation Links
+            const isHomePage = pageId === 'page-home';
+            authButtons.classList.toggle('hidden', !isHomePage);
+            authButtons.classList.toggle('md:flex', isHomePage);
+            homeNavLinks.classList.toggle('hidden', !isHomePage);
+            homeNavLinks.classList.toggle('md:flex', isHomePage);
+            
+            dashboardNavLinks.classList.toggle('hidden', isHomePage || isAuth);
+            dashboardNavLinks.classList.toggle('md:flex', !isHomePage && !isAuth);
 
-            // Toggle Dashboard/Home navigation links in the header (only if header is visible)
-            if (!mainHeader.classList.contains('hidden')) {
-                const isHome = pageId === 'page-home' || pageId === 'page-register';
-                
-                authButtons.classList.toggle('hidden', !isHome);
-                homeNavLinks.classList.toggle('hidden', !isHome);
-                
-                dashboardNavLinks.classList.toggle('hidden', isHome);
-                dashboardNavLinks.classList.toggle('flex', !isHome && !isImmersive); // Show if not home AND not fully immersive
-                
-                // Ensure dashboard link is highlighted when on dashboard/deposit
-                document.getElementById('dashboard-link')?.classList.toggle('bg-swift-blue', pageId === 'page-dashboard');
-                document.getElementById('dashboard-link')?.classList.toggle('bg-transparent', pageId !== 'page-dashboard');
-                document.getElementById('deposit-link')?.classList.toggle('text-swift-gold', pageId === 'page-deposit');
-                document.getElementById('deposit-link')?.classList.toggle('text-white', pageId !== 'page-deposit');
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
             }
         }
 
         /**
          * Switches the active form (Login vs. Register) on the auth view.
-         * @param {string} mode - 'login' or 'register'.
          */
         function showAuth(mode) {
             showView('page-register');
@@ -631,11 +644,6 @@
                 registrationForm.classList.add('hidden');
                 loginForm.classList.remove('hidden');
                 authToggleText.innerHTML = 'New user? <button type="button" onclick="showAuth(\'register\')" class="text-swift-gold hover:underline font-semibold">Create Account</button>';
-                
-                // Pre-fill login email if a user was registered
-                if (registeredUser) {
-                    document.getElementById('login-email').value = registeredUser.email;
-                }
             } else { // register
                 authTitle.textContent = 'Create Your Shawn Exchange Account';
                 authSubtitle.textContent = 'Fill in your details to start trading.';
@@ -646,46 +654,63 @@
         }
 
         /**
-         * Simulates a network call and shows the loading screen.
-         * @param {string} message - Message to display during loading.
-         * @param {string} destination - The view ID to navigate to after loading.
-         * @param {object} userData - Data object to save to session storage.
+         * Saves user data (like name) to their private Firestore document.
          */
-        function startLoading(message, destination, userData) {
-            loadingMessage.textContent = message;
-            loadingOverlay.classList.remove('hidden');
-            
-            // Use setTimeout to simulate network delay
-            setTimeout(() => {
-                completeLogin(destination, userData);
-            }, 2000); 
+        async function saveUserData(uid, email, name) {
+            const userDocRef = doc(db, 'artifacts', appId, 'users', uid, 'profile', 'data');
+            const userData = {
+                email: email,
+                name: name,
+                lastLogin: new Date().toISOString(),
+            };
+            // Only add createdAt on registration (not on every login)
+            if (!auth.currentUser.metadata.lastSignInTime) {
+                 userData.createdAt = new Date().toISOString();
+            }
+            try {
+                await setDoc(userDocRef, userData, { merge: true });
+                console.log("User data saved to Firestore:", userData);
+                return userData;
+            } catch (e) {
+                console.error("Error saving user data to Firestore:", e);
+                showMessageBox("Save Error", "Could not save user profile: " + e.message);
+                return { email, name }; // Return optimistic data
+            }
+        }
+        
+        /**
+         * Fetches user data from Firestore to populate the dashboard.
+         */
+        async function fetchUserData(uid) {
+            const userDocRef = doc(db, 'artifacts', appId, 'users', uid, 'profile', 'data');
+            try {
+                const docSnap = await getDoc(userDocRef);
+                if (docSnap.exists()) {
+                    return docSnap.data();
+                } else {
+                    console.log("No profile data found for user, will create it.");
+                    // This case happens if user logged in but saveUserData failed
+                    // Or if they are a user from before profile saving was implemented
+                    return null;
+                }
+            } catch (e) {
+                console.error("Error fetching user data:", e);
+                return null;
+            }
         }
 
         /**
-         * Completes the login process, saves state, and navigates to the dashboard.
-         * @param {string} destination - The view ID to navigate to.
-         * @param {object} userData - Data object to save to session storage.
+         * Updates the dashboard UI with user data.
          */
-        function completeLogin(destination, userData) {
-            // Save user session for persistence
-            sessionStorage.setItem('isLoggedIn', 'true');
-            sessionStorage.setItem('userName', userData.name);
-            sessionStorage.setItem('userEmail', userData.email);
-
-            // Update Dashboard UI
-            document.getElementById('dashboard-user-name').textContent = `Welcome, ${userData.name}! 👋`;
-            document.getElementById('dashboard-user-email').textContent = userData.email;
-
-            // Hide loading overlay and show destination
-            loadingOverlay.classList.add('hidden');
-            showView(destination);
+        function updateDashboardUI(userData) {
+            document.getElementById('dashboard-user-name').textContent = `Welcome, ${userData.name || 'Trader'}! 👋`;
+            document.getElementById('dashboard-user-email').textContent = userData.email || 'No Email';
         }
 
         /**
-         * Handles the simulated registration process.
-         * @param {Event} event 
+         * Handles the REAL registration process with Firebase Auth.
          */
-        function handleRegistration(event) {
+        async function handleRegistration(event) {
             event.preventDefault();
             const name = document.getElementById('reg-name').value.trim();
             const email = document.getElementById('reg-email').value.trim();
@@ -697,100 +722,204 @@
                 return;
             }
 
-            // Simulate successful registration
-            registeredUser = { name, email, password };
-            
-            // Clear forms
-            registrationForm.reset();
+            regSubmitBtn.disabled = true;
+            regSubmitBtn.textContent = 'Creating Account...';
 
-            // Simulate loading and login
-            startLoading('Creating your secure account...', 'page-dashboard', registeredUser);
+            try {
+                // 1. Create the user in Firebase Auth
+                const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+                const user = userCredential.user;
+                console.log("User created:", user.uid);
+
+                // 2. Save their name and email to Firestore
+                // We show loading *during* this process
+                loadingMessage.textContent = 'Saving profile...';
+                loadingOverlay.classList.remove('hidden');
+                
+                await saveUserData(user.uid, user.email, name);
+                
+                // 3. Reset form
+                registrationForm.reset();
+                // onAuthStateChanged will automatically handle the redirect to dashboard.
+
+            } catch (error) {
+                console.error("Registration Error:", error);
+                let msg = "An unknown error occurred.";
+                if (error.code === 'auth/email-already-in-use') {
+                    msg = "This email is already registered. Please try logging in.";
+                } else if (error.code === 'auth/weak-password') {
+                    msg = "Password is too weak. Must be at least 6 characters.";
+                } else if (error.code === 'auth/invalid-email') {
+                    msg = "Please enter a valid email address.";
+                }
+                showMessageBox("Registration Failed", msg);
+            } finally {
+                regSubmitBtn.disabled = false;
+                regSubmitBtn.textContent = 'CREATE ACCOUNT';
+                loadingOverlay.classList.add('hidden');
+            }
         }
 
         /**
-         * Handles the simulated login process.
-         * @param {Event} event 
+         * Handles the REAL login process with Firebase Auth.
          */
-        function handleLogin(event) {
+        async function handleLogin(event) {
             event.preventDefault();
             const email = document.getElementById('login-email').value.trim();
             const password = document.getElementById('login-password').value;
 
-            if (!registeredUser) {
-                showMessageBox("Login Failed", "No user is registered yet. Please register first.");
-                return;
-            }
+            loginSubmitBtn.disabled = true;
+            loginSubmitBtn.textContent = 'Verifying...';
 
-            if (email === registeredUser.email && password === registeredUser.password) {
-                // Simulate successful login
+            try {
+                // 1. Sign in the user
+                const userCredential = await signInWithEmailAndPassword(auth, email, password);
+                const user = userCredential.user;
+
+                // 2. Show loading while we update their "lastLogin" time
+                loadingMessage.textContent = 'Loading your dashboard...';
+                loadingOverlay.classList.remove('hidden');
+                
+                // 3. Update their profile (this just updates 'lastLogin')
+                // We fetch existing data to preserve their name
+                const existingData = await fetchUserData(user.uid);
+                await saveUserData(user.uid, user.email, existingData?.name || 'Trader');
+                
+                // 4. Reset form
                 loginForm.reset();
-                startLoading('Authenticating and loading dashboard...', 'page-dashboard', registeredUser);
-            } else {
-                showMessageBox("Login Failed", "Invalid email or password. Please check your credentials.");
+                // onAuthStateChanged will handle the redirect.
+                
+            } catch (error) {
+                console.error("Login Error:", error);
+                let msg = "An unknown error occurred.";
+                if (error.code === 'auth/user-not-found' || error.code === 'auth/wrong-password' || error.code === 'auth/invalid-credential') {
+                    msg = "Invalid email or password. Please try again.";
+                }
+                showMessageBox("Login Failed", msg);
+            } finally {
+                loginSubmitBtn.disabled = false;
+                loginSubmitBtn.textContent = 'SECURE LOGIN';
+                loadingOverlay.classList.add('hidden');
             }
         }
         
         /**
          * Handles the logout process.
          */
-        function handleLogout() {
-            sessionStorage.removeItem('isLoggedIn');
-            sessionStorage.removeItem('userName');
-            sessionStorage.removeItem('userEmail');
-            registeredUser = null; // Clear local state too
-            showView('page-home');
-        }
-
-        /**
-         * Initializes the application on page load.
-         * Checks for existing session.
-         */
-        function initApp() {
-            lucide.createIcons(); // Initialize all icons
-            populateLivePrices(); // Load the simulated live prices
-
-            const isLoggedIn = sessionStorage.getItem('isLoggedIn') === 'true';
-            const userName = sessionStorage.getItem('userName');
-            const userEmail = sessionStorage.getItem('userEmail');
-
-            if (isLoggedIn && userName && userEmail) {
-                // Restore the state for persistence
-                registeredUser = { name: userName, email: userEmail };
-                
-                // Go straight to the dashboard
-                // We use startLoading here to ensure the dashboard UI updates
-                startLoading('Resuming secure session...', 'page-dashboard', registeredUser);
-            } else {
-                // Default to home page
-                showView('page-home');
+        async function handleLogout() {
+            try {
+                await signOut(auth);
+                // onAuthStateChanged will automatically handle redirecting to home.
+            } catch (error) {
+                console.error("Logout Error:", error);
+                showMessageBox("Error", "Failed to log out: " + error.message);
             }
         }
 
         /**
+         * Initializes the application on page load.
+         */
+        function initApp() {
+            // 1. Check for Firebase config
+            if (Object.keys(firebaseConfig).length === 0) {
+                console.error("Firebase Configuration is missing!");
+                showMessageBox("Init Error", "Cannot connect to services. Config missing.");
+                return;
+            }
+
+            // 2. Initialize Firebase
+            app = initializeApp(firebaseConfig);
+            db = getFirestore(app);
+            auth = getAuth(app);
+            setLogLevel('Debug');
+            console.log("Firebase Initialized.");
+
+            // 3. Set up the master Auth State Listener
+            onAuthStateChanged(auth, async (user) => {
+                if (user && !user.isAnonymous) {
+                    // --- USER IS LOGGED IN ---
+                    console.log("Auth state changed: User is LOGGED IN", user.uid);
+                    
+                    // Show loading while we fetch profile
+                    loadingMessage.textContent = 'Loading profile...';
+                    loadingOverlay.classList.remove('hidden');
+                    
+                    // Fetch profile data from Firestore
+                    let userData = await fetchUserData(user.uid);
+                    if (!userData) {
+                        // This is a fallback in case the profile doc doesn't exist
+                        userData = await saveUserData(user.uid, user.email, 'Trader');
+                    }
+                    
+                    // Update the dashboard UI
+                    updateDashboardUI(userData);
+                    
+                    // Show the dashboard
+                    loadingOverlay.classList.add('hidden');
+                    showView('page-dashboard');
+                    
+                } else {
+                    // --- USER IS LOGGED OUT (or anonymous) ---
+                    console.log("Auth state changed: User is LOGGED OUT or Anonymous");
+                    // Ensure we are on the home page
+                    showView('page-home');
+                }
+            });
+
+            // 4. Handle initial Canvas auth
+            const initialAuth = async () => {
+                try {
+                    if (initialAuthToken) {
+                        await signInWithCustomToken(auth, initialAuthToken);
+                        console.log("Canvas token auth successful.");
+                    } else {
+                        await signInAnonymously(auth);
+                        console.log("Anonymous auth successful.");
+                    }
+                } catch (error) {
+                    console.error("Initial authentication failed:", error);
+                }
+            };
+            initialAuth();
+
+            // 5. Populate dynamic content on the homepage
+            populateLivePrices();
+
+            // 6. Final icon render
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+            }
+        }
+        
+        // --- Utility Functions ---
+
+        /**
          * Copies the content of an input element to the clipboard.
-         * @param {string} elementId - The ID of the input element to copy from.
          */
         function copyToClipboard(elementId) {
             const copyText = document.getElementById(elementId);
-            
-            // Select the text field
             copyText.select();
-            copyText.setSelectionRange(0, 99999); // For mobile devices
-
-            // Copy the text inside the text field
-            document.execCommand('copy');
-            
-            // Provide feedback
-            showMessageBox("Success!", "Bitcoin address copied to clipboard.");
+            copyText.setSelectionRange(0, 99999); 
+            try {
+                // Use execCommand as a fallback for iFrame compatibility
+                document.execCommand('copy'); 
+                showMessageBox("Success!", "Bitcoin address copied to clipboard.");
+            } catch (err) {
+                console.error('Failed to copy text: ', err);
+                showMessageBox("Error", "Failed to copy. Please copy manually.");
+            }
         }
         
-        // --- EVENT LISTENERS ---
-        // Ensure Lucide icons are refreshed after the initial load and any DOM manipulation
-        window.addEventListener('load', () => {
-             // Already called in initApp, but good to ensure
-             lucide.createIcons(); 
-        });
+        // --- EXPOSE FUNCTIONS to window for HTML onclick ---
+        window.initApp = initApp;
+        window.showView = showView;
+        window.showAuth = showAuth;
+        window.handleRegistration = handleRegistration;
+        window.handleLogin = handleLogin;
+        window.handleLogout = handleLogout;
+        window.copyToClipboard = copyToClipboard;
 
     </script>
 </body>
 </html>
+
