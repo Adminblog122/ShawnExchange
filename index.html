@@ -207,7 +207,7 @@
             </section>
 
             <!-- NEW SECTION: Supported Instruments -->
-            <section id="instruments" class="py-20" style="background-image: url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj2kKxfRxIJRVp2NeNSWlC5phIuJtqrJ3N_UsrVGBMZYIL9Hti_S7BW-7cWB4ZIBSNV3wzNGItgQl1rEh1awHc9NyRvbyDz8JaM6aU_amYrMdzzpYTHHiESR_jSXAhJCldegbEkJfJ9raibIXNe5kEE8Ewb0AoO6DGFdM-GpKA1Of_RPMvQyikzU7jgPqQ/s400/kanchanara-GnWfl_nnZro-unsplash.jpg'); background-size: cover; background-repeat: no-repeat; background-attachment: fixed; background-position: center;">
+            <section id="instruments" class="py-20" style="background-image: url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj2kKxfRxIJRVp2NeNSWlC5phIuJtqrJ3N_UsrVGBMZYIL9Hti_S7BW-7cWB4ZIBSNV3wzNGItgQl1rEh1awHc9NyRvbyDz8JaM6aU_amYrMdzzpYTHHiESR_jSXAhJCldegbEkJfJ9raibIXNe5kEE8Ewb0AoO6DGFdM-GpKA1Of-RPMvQyikzU7jgPqQ/s400/kanchanara-GnWfl_nnZro-unsplash.jpg'); background-size: cover; background-repeat: no-repeat; background-attachment: fixed; background-position: center;">
 
                 <div class="container mx-auto px-4 text-center">
                     <h2 class="text-4xl font-bold mb-4 text-swift-gold">Trade Over 300 Global Instruments</h2>
@@ -538,8 +538,15 @@
         const loginSubmitBtn = document.getElementById('login-submit-btn');
 
 
-        // --- CORE FUNCTIONS ---
+        // --- UTILITY FUNCTIONS ---
 
+        /**
+         * Helper function for pausing execution.
+         */
+        function delay(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }
+        
         /**
          * Custom replacement for alert() and window.confirm().
          */
@@ -653,7 +660,7 @@
         }
 
         /**
-         * Saves user data (like name) to their private Firestore document.
+         * Saves user data (like name) to their private Firestore document with retry logic.
          */
         async function saveUserData(uid, email, name) {
             const userDocRef = doc(db, 'artifacts', appId, 'users', uid, 'profile', 'data');
@@ -666,36 +673,65 @@
             if (!auth.currentUser.metadata.lastSignInTime) {
                  userData.createdAt = new Date().toISOString();
             }
-            try {
-                await setDoc(userDocRef, userData, { merge: true });
-                console.log("User data saved to Firestore:", userData);
-                return userData;
-            } catch (e) {
-                console.error("Error saving user data to Firestore:", e);
-                showMessageBox("Save Error", "Could not save user profile: " + e.message);
-                return { email, name }; // Return optimistic data
+
+            const maxRetries = 3;
+            let currentRetry = 0;
+            while (currentRetry < maxRetries) {
+                try {
+                    await setDoc(userDocRef, userData, { merge: true });
+                    console.log("User data saved to Firestore:", userData);
+                    return userData;
+                } catch (e) {
+                    if (e.message && e.message.includes('client is offline') && currentRetry < maxRetries - 1) {
+                        currentRetry++;
+                        const delayMs = 500 * Math.pow(2, currentRetry - 1);
+                        console.warn(`Firestore save offline error. Retrying in ${delayMs}ms... (Attempt ${currentRetry}/${maxRetries})`);
+                        await delay(delayMs);
+                    } else {
+                        console.error("Error saving user data to Firestore:", e);
+                        showMessageBox("Save Error", "Could not save user profile: " + e.message);
+                        return { email, name }; 
+                    }
+                }
             }
+            console.error("Failed to save user data after multiple retries.");
+            return { email, name };
         }
         
         /**
-         * Fetches user data from Firestore to populate the dashboard.
+         * Fetches user data from Firestore with retry logic.
          */
         async function fetchUserData(uid) {
             const userDocRef = doc(db, 'artifacts', appId, 'users', uid, 'profile', 'data');
-            try {
-                const docSnap = await getDoc(userDocRef);
-                if (docSnap.exists()) {
-                    return docSnap.data();
-                } else {
-                    console.log("No profile data found for user, will create it.");
-                    // This case happens if user logged in but saveUserData failed
-                    // Or if they are a user from before profile saving was implemented
-                    return null;
+            
+            const maxRetries = 5;
+            let currentRetry = 0;
+
+            while (currentRetry < maxRetries) {
+                try {
+                    const docSnap = await getDoc(userDocRef);
+                    if (docSnap.exists()) {
+                        return docSnap.data();
+                    } else {
+                        console.log("No profile data found for user, will attempt to create it.");
+                        return null;
+                    }
+                } catch (e) {
+                    if (e.message && e.message.includes('client is offline') && currentRetry < maxRetries - 1) {
+                        currentRetry++;
+                        const delayMs = 1000 * Math.pow(2, currentRetry - 1); // 1s, 2s, 4s, 8s
+                        console.warn(`Firestore offline error. Retrying in ${delayMs}ms... (Attempt ${currentRetry}/${maxRetries})`);
+                        await delay(delayMs);
+                    } else {
+                        console.error("Error fetching user data:", e);
+                        // If it's the final attempt or a different error, break and return null
+                        return null;
+                    }
                 }
-            } catch (e) {
-                console.error("Error fetching user data:", e);
-                return null;
             }
+            // If loop completes without success
+            console.error("Failed to fetch user data after multiple retries.");
+            return null;
         }
 
         /**
@@ -731,7 +767,6 @@
                 console.log("User created:", user.uid);
 
                 // 2. Save their name and email to Firestore
-                // We show loading *during* this process
                 loadingMessage.textContent = 'Saving profile...';
                 loadingOverlay.classList.remove('hidden');
                 
@@ -782,7 +817,6 @@
                 loadingOverlay.classList.remove('hidden');
                 
                 // 3. Update their profile (this just updates 'lastLogin')
-                // We fetch existing data to preserve their name
                 const existingData = await fetchUserData(user.uid);
                 await saveUserData(user.uid, user.email, existingData?.name || 'Trader');
                 
@@ -923,4 +957,3 @@
     </script>
 </body>
 </html>
-
