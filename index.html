@@ -5,20 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shawn Exchange - Trade Smarter, Earn Faster</title>
     
-    <!-- Meta Tags for SEO --><meta name="description" content="Join thousands of traders who trust Shawn Exchange for Forex, Crypto, and CFD trading with ultra-low latency.">
+    <!-- Meta Tags for SEO -->
+    <meta name="description" content="Join thousands of traders who trust Shawn Exchange for Forex, Crypto, and CFD trading with ultra-low latency.">
     <meta property="og:title" content="Shawn Exchange - The Next Generation of Trading">
     <meta property="og:image" content="https://placehold.co/1200x630/0A1931/FFD700?text=SWIFTFX+TRADE+HUB">
     <link rel="icon" href="https://placehold.co/32x32/FFD700/0A1931?text=SFX">
 
-    <!-- Fonts: Poppins for modern professionalism --><link rel="preconnect" href="https://fonts.googleapis.com">
+    <!-- Fonts: Poppins for modern professionalism -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     
-    <!-- Tailwind CSS CDN --><script src="https://cdn.tailwindcss.com"></script>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Lucide Icons CDN --><script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
 
-    <!-- Custom Tailwind Configuration (for gold/navy theme) --><script>
+    <!-- Custom Tailwind Configuration (for gold/navy theme) -->
+    <script>
         tailwind.config = {
             theme: {
                 extend: {
@@ -37,16 +42,18 @@
         }
     </script>
 
-    <!-- Custom CSS for View Management and Aesthetics --><style>
+    <!-- Custom CSS for View Management and Aesthetics -->
+    <style>
         body {
             font-family: 'Poppins', sans-serif;
             background-color: theme('colors.swift-dark');
             color: white;
+            min-height: 100vh;
         }
 
-         /* Animated Background (Subtle Chart Waves - Original) */
-         .hero-bg {
-           background-image: url("https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgE6sQxeZjs4llCE8XaQOprDAMvKrRxXrtVPeQ3VJ25r-vXJS8KIBhxXF64MJOIbEDkBSuuEi3vwh860gXkg4mZFUpBHXAPmBvywdmuQqdPHoOrEpWTSLJo3FCShkRSRuIdtMwz9JQX6k6OeckVShCun-wIQOtKIv0z4MwWYDb9WwZ6H6Cg8aQ0exLe_Ek/s320/maxim-hopman-fiXLQXAhCfk-unsplash.jpg");
+        /* Animated Background (Subtle Chart Waves - Original) */
+        .hero-bg {
+            background-image: url("https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgE6sQxeZjs4llCE8XaQOprDAMvKrRxXrtVPeQ3VJ25r-vXJS8KIBhxXF64MJOIbEDkBSu0uEi3vwh860gXkg4mZFUpBHXAPmBvywdmuQqdPHoOrEpWTSLJo3FCShkRSRuIdtMwz9JQX6k6OeckVShCun-wIQOtKIv0z4MwWYDb9WwZ6H6Cg8aQ0exLe_Ek/s320/maxim-hopman-fiXLQXAhCfk-unsplash.jpg");
             background-size: cover;
             animation: gradientShift 20s ease infinite alternate;
         } 
@@ -71,44 +78,48 @@
         }
 
       .chart-container {
-      width: 100%;
-      max-width: 900px;
-      aspect-ratio: 16 / 9; /* Keeps it responsive */
-      border: 1px solid #1e293b;
-      border-radius: 10px;
-      overflow: hidden;
-    }
+        width: 100%;
+        max-width: 900px;
+        aspect-ratio: 16 / 9; /* Keeps it responsive */
+        border: 1px solid #1e293b;
+        border-radius: 10px;
+        overflow: hidden;
+      }
 
-    iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
-    }
+      iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+      }
     </style>
 </head>
 <body onload="initApp()">
 
-    <!-- Main Header Component (Hidden on Dashboard/Deposit) --><header id="main-header" class="sticky top-0 z-50 bg-swift-dark/95 backdrop-blur-sm border-b border-swift-navy shadow-xl">
+    <!-- Main Header Component (Hidden on Dashboard/Deposit) -->
+    <header id="main-header" class="sticky top-0 z-50 bg-swift-dark/95 backdrop-blur-sm border-b border-swift-navy shadow-xl">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-3 flex justify-between items-center">
-            <!-- Logo --><a href="#home" class="text-3xl font-extrabold tracking-wider text-swift-gold" onclick="showView('page-home')">
-                 SHAWN<span class="text-white font-light"> EXCHANGE</span>
+            <!-- Logo -->
+            <a href="#home" class="text-3xl font-extrabold tracking-wider text-swift-gold" onclick="showView('page-home')">
+                SHAWN<span class="text-white font-light"> EXCHANGE</span>
             </a>
             
-            <!-- Desktop Navigation Links (For Homepage) --><nav id="home-nav-links" class="hidden md:flex items-center space-x-6 text-sm font-medium">
-                <!-- <a href="#why-us" class="text-white hover:text-swift-gold transition-colors">Why Us</a>
-                <a href="#instruments" class="text-white hover:text-swift-gold transition-colors">Markets</a>
-                <a href="#about" class="text-white hover:text-swift-gold transition-colors">Trust & Safety</a>
-            </nav> -->
+            <!-- Desktop Navigation Links (For Homepage) -->
+            <nav id="home-nav-links" class="hidden md:flex items-center space-x-6 text-sm font-medium">
+                <a href="#why-us" class="text-white hover:text-swift-gold transition-colors" onclick="document.getElementById('why-us').scrollIntoView({ behavior: 'smooth' })">Why Us</a>
+                <a href="#instruments" class="text-white hover:text-swift-gold transition-colors" onclick="document.getElementById('instruments').scrollIntoView({ behavior: 'smooth' })">Markets</a>
+                <a href="#about" class="text-white hover:text-swift-gold transition-colors" onclick="document.getElementById('about').scrollIntoView({ behavior: 'smooth' })">Trust & Safety</a>
+            </nav>
 
-            <!-- Auth Buttons (Visible on Home) --><div id="auth-buttons" class="hidden md:flex items-center space-x-3">
+            <!-- Auth Buttons (Visible on Home) -->
+            <div id="auth-buttons" class="hidden md:flex items-center space-x-3">
                 <button onclick="showAuth('login')" class="px-5 py-2 rounded-full border-2 border-swift-gold text-swift-gold text-sm font-semibold transition-colors hover:bg-swift-gold/10">LOG IN</button>
-              
             </div>
 
-            <!-- Dashboard Nav Links (Visible on Dashboard) --><nav id="dashboard-nav-links" class="hidden items-center space-x-6 text-sm font-medium">
-                <a href="#dashboard" onclick="showView('page-dashboard')" class="px-3 py-2 rounded-lg bg-swift-blue text-white">Dashboard</a>
-                <a href="#" class="text-white hover:text-swift-gold transition-colors">Transactions</a>
-                <button onclick="showView('page-home')" class="px-3 py-2 rounded-lg text-red-400 hover:bg-swift-dark transition-colors flex items-center">
+            <!-- Dashboard Nav Links (Visible on Dashboard) -->
+            <nav id="dashboard-nav-links" class="hidden items-center space-x-6 text-sm font-medium">
+                <a href="#dashboard" onclick="showView('page-dashboard')" id="dashboard-link" class="px-3 py-2 rounded-lg text-white font-semibold transition-colors bg-swift-blue hover:bg-swift-blue/80">Dashboard</a>
+                <a href="#deposit" onclick="showView('page-deposit')" id="deposit-link" class="px-3 py-2 rounded-lg text-white font-semibold hover:text-swift-gold transition-colors">Deposit</a>
+                <button onclick="handleLogout()" class="px-3 py-2 rounded-lg text-red-400 hover:bg-swift-navy transition-colors flex items-center">
                     <i data-lucide="log-out" class="w-4 h-4 mr-1"></i> Logout
                 </button>
             </nav>
@@ -117,17 +128,32 @@
 
     <main class="w-full">
         
-        <!-- 0. LOADING OVERLAY/MESSAGE (Full screen, managed by showView) --><div id="page-loading" class="hidden fixed inset-0 bg-swift-dark/95 backdrop-blur-md flex flex-col items-center justify-center z-50 min-h-screen">
+        <!-- 0. LOADING OVERLAY/MESSAGE (Full screen, managed by showView) -->
+        <div id="page-loading" class="hidden fixed inset-0 bg-swift-dark/95 backdrop-blur-md flex flex-col items-center justify-center z-[100] min-h-screen">
             <div class="loader mb-6"></div>
             <p class="text-xl font-semibold text-swift-gold" id="loading-message">Securing your connection...</p>
             <p class="text-gray-400 mt-2 text-sm">One moment please.</p>
         </div>
 
-        <!-- ============================================= --><!-- 1. HOMEPAGE VIEW (Expanded with more content) --><!-- ============================================= --><div id="page-home" class="min-h-screen">
+        <!-- 0.5. CUSTOM MESSAGE BOX (For alerts/confirmations) -->
+        <div id="message-box" class="hidden fixed inset-0 bg-black/70 flex items-center justify-center z-[110]">
+            <div class="bg-swift-dark p-8 rounded-xl max-w-sm w-full shadow-gold-glow border border-swift-gold/50">
+                <h3 class="text-xl font-bold text-swift-gold mb-3" id="message-title">Notification</h3>
+                <p class="text-gray-300 mb-6" id="message-text">This is a custom message.</p>
+                <button id="message-ok-btn" class="w-full py-2 rounded-full bg-swift-gold text-swift-dark font-semibold hover:bg-yellow-400 transition-colors">OK</button>
+            </div>
+        </div>
+
+
+        <!-- ============================================= -->
+        <!-- 1. HOMEPAGE VIEW (Expanded with more content) -->
+        <!-- ============================================= -->
+        <div id="page-home" class="min-h-screen">
             
-            <!-- Hero Section --><section class="hero-bg text-center pt-24 pb-32">
+            <!-- Hero Section -->
+            <section class="hero-bg text-center pt-24 pb-32">
                 <div class="container mx-auto px-4">
-                            <center><img alt="stg" border="0" width="400" data-original-height="346" data-original-width="720" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiOqu_SxXuvXpHnhCcUbX5BzK1ieySlaSzc5h41QPYK1uUyAAHLhaqAxli3l02G2ykUYbIMtu24wPwLJxIc8H97trsEAoGRW6cgkptvcXKNdyVwgdBg-l-1IxdXA5t_xkQ_6FVe-vVyaupmz6Mv6GNmVKbTHObx2P_B_MmHZtPWbG4rAEpkuQPtwPBfQ28/s400/470217989_122209822904026435_23819967085114148_n-removebg-preview.png"/>            </center><br><br>
+                                <center><img alt="stg" border="0" width="400" data-original-height="346" data-original-width="720" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiOqu_SxXuvXpHnhCcUbX5BzK1ieySlaSzc5h41QPYK1uUyAAHLhaqAxli3l02G2ykUYbIMtu24wPwLJxIc8H97trsEAoGRW6cgkptvcXKNdyVwgdBg-l-1IxdXA5t_xkQ_6FVe-vVyaupmz6Mv6GNmVKbTHObx2P_B_MmHZtPWbG4rAEpkuQPtwPBfQ28/s400/470217989_122209822904026435_23819967085114148_n-removebg-preview.png"/>            </center><br><br>
                     <h1 class="text-5xl sm:text-6xl md:text-7xl font-extrabold mb-6 tracking-tight text-white">
                         Trade Smarter, Earn Faster
                         <span class="block text-swift-gold mt-2">— Welcome To Shawn Exchange
@@ -143,30 +169,35 @@
                 </div>
             </section>
 
-            <!-- Live Market Ticker/Prices --><section class="py-4 bg-swift-dark border-y border-swift-gold/20">
+            <!-- Live Market Ticker/Prices -->
+            <section class="py-4 bg-swift-dark border-y border-swift-gold/20">
                 <div id="live-prices" class="container mx-auto px-4 flex justify-between overflow-x-auto whitespace-nowrap space-x-8 text-sm">
-                    <!-- Data injected by JS --></div>
+                    <!-- Data injected by JS -->
+                </div>
             </section>
 
             
-
-            <!-- NEW SECTION: Why Choose Us (Features) --><section id="why-us" class="py-20 bg-swift-dark/50">
+            <!-- NEW SECTION: Why Choose Us (Features) -->
+            <section id="why-us" class="py-20 bg-swift-dark/50">
                 <div class="container mx-auto px-4 text-center">
                     <h2 class="text-4xl font-bold mb-4 text-white">Why Shawn Exchange is the Right Choice</h2>
                     <p class="text-lg text-white-400 max-w-3xl mx-auto mb-12">Experience institutional-grade trading conditions combined with user-friendly access for every trader.</p>
 
                     <div class="grid md:grid-cols-3 gap-8">
-                        <!-- Feature 1 --><div class="bg-swift-navy p-6 rounded-xl shadow-xl border border-swift-gold/20 hover:border-swift-gold transition duration-300">
+                        <!-- Feature 1 -->
+                        <div class="bg-swift-navy p-6 rounded-xl shadow-xl border border-swift-gold/20 hover:border-swift-gold transition duration-300">
                             <i data-lucide="zap" class="w-8 h-8 text-swift-gold mb-4 mx-auto md:mx-0"></i>
                             <h3 class="text-xl font-semibold mb-2">Ultra-Low Latency</h3>
                             <p class="text-gray-400 text-sm">Execute trades in milliseconds on our powerful infrastructure, minimizing slippage.</p>
                         </div>
-                        <!-- Feature 2 --><div class="bg-swift-navy p-6 rounded-xl shadow-xl border border-swift-gold/20 hover:border-swift-gold transition duration-300">
+                        <!-- Feature 2 -->
+                        <div class="bg-swift-navy p-6 rounded-xl shadow-xl border border-swift-gold/20 hover:border-swift-gold transition duration-300">
                             <i data-lucide="shield-check" class="w-8 h-8 text-swift-gold mb-4 mx-auto md:mx-0"></i>
                             <h3 class="text-xl font-semibold mb-2">Maximum Security</h3>
                             <p class="text-gray-400 text-sm">Funds are protected in segregated accounts with advanced security protocols.</p>
                         </div>
-                        <!-- Feature 3 --><div class="bg-swift-navy p-6 rounded-xl shadow-xl border border-swift-gold/20 hover:border-swift-gold transition duration-300">
+                        <!-- Feature 3 -->
+                        <div class="bg-swift-navy p-6 rounded-xl shadow-xl border border-swift-gold/20 hover:border-swift-gold transition duration-300">
                             <i data-lucide="bar-chart-3" class="w-8 h-8 text-swift-gold mb-4 mx-auto md:mx-0"></i>
                             <h3 class="text-xl font-semibold mb-2">Competitive Spreads</h3>
                             <p class="text-gray-400 text-sm">Access some of the tightest spreads in the industry across major and minor pairs.</p>
@@ -175,29 +206,34 @@
                 </div>
             </section>
 
-            <!-- NEW SECTION: Supported Instruments --><section id="instruments" class="py-20" style="background-image: url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj2kKxfRxIJRVp2NeNSWlC5phIuJtqrJ3N_UsrVGBMZYIL9Hti_S7BW-7cWB4ZIBSNV3wzNGItgQl1rEh1awHc9NyRvbyDz8JaM6aU_amYrMdzzpYTHHiESR_jSXAhJCldegbEkJfJ9raibIXNe5kEE8Ewb0AoO6DGFdM-GpKA1Of_RPMvQyikzU7jgPqQ/s400/kanchanara-GnWfl_nnZro-unsplash.jpg'); background-size: cover; background-repeat: no-repeat; background-attachment: fixed; background-position: center;">
+            <!-- NEW SECTION: Supported Instruments -->
+            <section id="instruments" class="py-20" style="background-image: url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj2kKxfRxIJRVp2NeNSWlC5phIuJtqrJ3N_UsrVGBMZYIL9Hti_S7BW-7cWB4ZIBSNV3wzNGItgQl1rEh1awHc9NyRvbyDz8JaM6aU_amYrMdzzpYTHHiESR_jSXAhJCldegbEkJfJ9raibIXNe5kEE8Ewb0AoO6DGFdM-GpKA1Of_RPMvQyikzU7jgPqQ/s400/kanchanara-GnWfl_nnZro-unsplash.jpg'); background-size: cover; background-repeat: no-repeat; background-attachment: fixed; background-position: center;">
 
                 <div class="container mx-auto px-4 text-center">
                     <h2 class="text-4xl font-bold mb-4 text-swift-gold">Trade Over 300 Global Instruments</h2>
                     <p class="text-lg text-swift-gold-400 max-w-3xl mx-auto mb-12">Diversify your portfolio with a wide range of assets available 24/5.</p>
 
                     <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                        <!-- Market 1: Forex --><div class="bg-swift-dark p-6 rounded-xl shadow-lg border-t-4 border-swift-blue">
+                        <!-- Market 1: Forex -->
+                        <div class="bg-swift-dark p-6 rounded-xl shadow-lg border-t-4 border-swift-blue">
                             <i data-lucide="globe" class="w-10 h-10 text-swift-blue mb-3"></i>
                             <h3 class="text-2xl font-bold mb-1">Forex</h3>
                             <p class="text-gray-400 text-sm">Trade 50+ currency pairs with deep liquidity.</p>
                         </div>
-                        <!-- Market 2: Crypto --><div class="bg-swift-dark p-6 rounded-xl shadow-lg border-t-4 border-swift-gold">
+                        <!-- Market 2: Crypto -->
+                        <div class="bg-swift-dark p-6 rounded-xl shadow-lg border-t-4 border-swift-gold">
                             <i data-lucide="bitcoin" class="w-10 h-10 text-swift-gold mb-3"></i>
                             <h3 class="text-2xl font-bold mb-1">Cryptocurrency</h3>
                             <p class="text-gray-400 text-sm">CFDs on Bitcoin, Ethereum, and major altcoins.</p>
                         </div>
-                        <!-- Market 3: Indices --><div class="bg-swift-dark p-6 rounded-xl shadow-lg border-t-4 border-red-500">
+                        <!-- Market 3: Indices -->
+                        <div class="bg-swift-dark p-6 rounded-xl shadow-lg border-t-4 border-red-500">
                             <i data-lucide="trending-up" class="w-10 h-10 text-red-500 mb-3"></i>
                             <h3 class="text-2xl font-bold mb-1">Indices</h3>
                             <p class="text-gray-400 text-sm">Access global equity markets like NASDAQ and FTSE.</p>
                         </div>
-                        <!-- Market 4: Commodities --><div class="bg-swift-dark p-6 rounded-xl shadow-lg border-t-4 border-yellow-700">
+                        <!-- Market 4: Commodities -->
+                        <div class="bg-swift-dark p-6 rounded-xl shadow-lg border-t-4 border-yellow-700">
                             <i data-lucide="gem" class="w-10 h-10 text-yellow-700 mb-3"></i>
                             <h3 class="text-2xl font-bold mb-1">Commodities</h3>
                             <p class="text-gray-400 text-sm">Trade Gold, Oil, and other precious metals and energies.</p>
@@ -206,12 +242,14 @@
                 </div>
             </section>
             
-            <!-- NEW SECTION: Testimonials --><section id="testimonials" class="py-20 bg-swift-dark">
+            <!-- NEW SECTION: Testimonials -->
+            <section id="testimonials" class="py-20 bg-swift-dark">
                 <div class="container mx-auto px-4">
                     <h2 class="text-4xl font-bold mb-12 text-center text-white">What Our Traders Say</h2>
                     
                     <div class="grid md:grid-cols-3 gap-8">
-                        <!-- Testimonial 1 --><div class="bg-swift-navy p-6 rounded-xl shadow-lg border border-gray-700 relative">
+                        <!-- Testimonial 1 -->
+                        <div class="bg-swift-navy p-6 rounded-xl shadow-lg border border-gray-700 relative">
                             <i data-lucide="quote" class="w-8 h-8 text-swift-gold opacity-30 absolute top-4 left-4"></i>
                             <p class="text-gray-300 italic mt-4 mb-4">"The execution speed is unmatched. I've used several brokers, but Shawn Exchange's low latency gives me a real edge during high volatility. Highly recommend for scalpers."</p>
                             <div class="flex items-center">
@@ -222,7 +260,8 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- Testimonial 2 --><div class="bg-swift-navy p-6 rounded-xl shadow-lg border border-gray-700 relative">
+                        <!-- Testimonial 2 -->
+                        <div class="bg-swift-navy p-6 rounded-xl shadow-lg border border-gray-700 relative">
                             <i data-lucide="quote" class="w-8 h-8 text-swift-gold opacity-30 absolute top-4 left-4"></i>
                             <p class="text-gray-300 italic mt-4 mb-4">"Their customer support is brilliant. Had an issue with my deposit, and it was resolved in under 15 minutes. It’s comforting to know they're there 24/5."</p>
                             <div class="flex items-center">
@@ -233,7 +272,8 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- Testimonial 3 --><div class="bg-swift-navy p-6 rounded-xl shadow-lg border border-gray-700 relative">
+                        <!-- Testimonial 3 -->
+                        <div class="bg-swift-navy p-6 rounded-xl shadow-lg border border-gray-700 relative">
                             <i data-lucide="quote" class="w-8 h-8 text-swift-gold opacity-30 absolute top-4 left-4"></i>
                             <p class="text-gray-300 italic mt-4 mb-4">"I appreciate the platform's stability. No unexpected freezes, and the interface is intuitive. It allowed me to transition easily from my old, clunky broker."</p>
                             <div class="flex items-center">
@@ -249,11 +289,12 @@
             </section>
 
 
-            <!-- Original Section: About The Broker (Now focused on Trust) --><section id="about" class="py-20 bg-swift-navy/50">
+            <!-- Original Section: About The Broker (Now focused on Trust) -->
+            <section id="about" class="py-20 bg-swift-navy/50">
                 <div class="container mx-auto px-4 grid md:grid-cols-2 gap-12 items-center">
                     <div>
                         <h2 class="text-4xl font-bold mb-4 border-l-4 border-swift-gold pl-4">Trust, Transparency, and Technology</h2><br>
-                                                <p class="text-lg text-white-300 mb-6">
+                                            <p class="text-lg text-white-300 mb-6">
                         Shawn Exchange is a company duly registered with RC Number: 1877341 under the Laws of the Federal Republic of Nigeria
                         </p> <br>
                         <p class="text-lg text-white-300 mb-6">
@@ -272,7 +313,8 @@
                 </div>
             </section>
             
-            <!-- NEW SECTION: Final Call To Action --><section class="py-20 bg-swift-gold text-swift-dark text-center">
+            <!-- NEW SECTION: Final Call To Action -->
+            <section class="py-20 bg-swift-gold text-swift-dark text-center">
                 <div class="container mx-auto px-4">
                     <h2 class="text-4xl font-extrabold mb-4">Ready to Start Trading?</h2>
                     <p class="text-xl mb-8 font-medium">It takes less than 3 minutes to open a live account and access the global markets.</p>
@@ -284,39 +326,47 @@
             </section>
         </div>
 
-        <!-- ============================================= --><!-- 2. REGISTRATION/LOGIN VIEW (No changes here, kept functional) --><!-- ============================================= --><div id="page-register" class="hidden py-20 bg-swift-navy flex items-center justify-center min-h-screen w-full">
+        <!-- ============================================= -->
+        <!-- 2. REGISTRATION/LOGIN VIEW (No changes here, kept functional) -->
+        <!-- ============================================= -->
+        <div id="page-register" class="hidden py-20 bg-swift-navy flex items-center justify-center min-h-screen w-full">
             <div id="auth-card" class="w-full max-w-xl bg-swift-dark p-8 md:p-10 rounded-xl shadow-lg border border-gray-700">
                 <h2 class="text-3xl font-bold text-swift-gold mb-2" id="auth-title">Create Your Shawn Exchange Account</h2>
                 <p class="text-gray-400 mb-6" id="auth-subtitle">Fill in your details to start trading.</p>
 
-                <!-- Forms Container --><div id="forms-container">
+                <!-- Forms Container -->
+                <div id="forms-container">
                     
-                    <!-- Registration Form --><form id="registration-form" onsubmit="handleRegistration(event)">
+                    <!-- Registration Form -->
+                    <form id="registration-form" onsubmit="handleRegistration(event)">
                         <div class="space-y-4">
-                            <input type="text" id="reg-name" placeholder="Full Name" class="w-full p-3 bg-swift-navy border border-gray-700 rounded-lg focus:ring-swift-gold focus:border-swift-gold" required>
-                            <input type="email" id="reg-email" placeholder="Email Address" class="w-full p-3 bg-swift-navy border border-gray-700 rounded-lg focus:ring-swift-gold focus:border-swift-gold" required>
+                            <input type="text" id="reg-name" placeholder="Full Name (Any Name)" class="w-full p-3 bg-swift-navy border border-gray-700 rounded-lg focus:ring-swift-gold focus:border-swift-gold" required>
+                            <input type="email" id="reg-email" placeholder="Email Address (Any Valid Email)" class="w-full p-3 bg-swift-navy border border-gray-700 rounded-lg focus:ring-swift-gold focus:border-swift-gold" required>
                             <input type="password" id="reg-password" placeholder="Password (Min 8 characters)" class="w-full p-3 bg-swift-navy border border-gray-700 rounded-lg focus:ring-swift-gold focus:border-swift-gold" required minlength="8">
                             <input type="password" id="reg-confirm-password" placeholder="Confirm Password" class="w-full p-3 bg-swift-navy border border-gray-700 rounded-lg focus:ring-swift-gold focus:border-swift-gold" required>
                         </div>
                         <button type="submit" id="reg-submit-btn" class="w-full mt-8 py-3 rounded-full bg-swift-gold text-swift-dark font-bold hover:bg-yellow-400 transition-colors">CREATE ACCOUNT</button>
                     </form>
 
-                    <!-- Login Form (Initially hidden) --><form id="login-form" onsubmit="handleLogin(event)" class="hidden">
+                    <!-- Login Form (Initially hidden) -->
+                    <form id="login-form" onsubmit="handleLogin(event)" class="hidden">
                         <div class="space-y-4">
-                            <input type="email" id="login-email" placeholder="Email Address" class="w-full p-3 bg-swift-navy border border-gray-700 rounded-lg focus:ring-swift-gold focus:border-swift-gold" required>
+                            <input type="email" id="login-email" placeholder="Email Address (Must be the registered email)" class="w-full p-3 bg-swift-navy border border-gray-700 rounded-lg focus:ring-swift-gold focus:border-swift-gold" required>
                             <input type="password" id="login-password" placeholder="Password" class="w-full p-3 bg-swift-navy border border-gray-700 rounded-lg focus:ring-swift-gold focus:border-swift-gold" required>
                         </div>
                         <button type="submit" id="login-submit-btn" class="w-full mt-8 py-3 rounded-full bg-swift-gold text-swift-dark font-bold hover:bg-yellow-400 transition-colors">SECURE LOGIN</button>
                     </form>
                 </div>
                 
-                <!-- Toggle Link --><div class="mt-6 text-center text-sm">
+                <!-- Toggle Link -->
+                <div class="mt-6 text-center text-sm">
                     <p class="text-gray-400" id="auth-toggle-text">
                         Already have an account? 
                         <button type="button" onclick="showAuth('login')" class="text-swift-gold hover:underline font-semibold">Log In</button>
                     </p>
                 </div>
-                <!-- Back Button to Home --><div class="mt-4 text-center">
+                <!-- Back Button to Home -->
+                <div class="mt-4 text-center">
                     <button type="button" onclick="showView('page-home')" class="text-sm text-gray-500 hover:text-white transition-colors">
                         &larr; Back to Marketing Site
                     </button>
@@ -324,18 +374,23 @@
             </div>
         </div>
 
-        <!-- ============================================= --><!-- 3. USER DASHBOARD VIEW (No changes here, kept functional) --><!-- ============================================= --><div id="page-dashboard" class="hidden pt-10 pb-20 bg-swift-navy min-h-screen w-full">
+        <!-- ============================================= -->
+        <!-- 3. USER DASHBOARD VIEW (No changes here, kept functional) -->
+        <!-- ============================================= -->
+        <div id="page-dashboard" class="hidden pt-10 pb-20 bg-swift-navy min-h-screen w-full">
             <div class="container mx-auto px-4 grid lg:grid-cols-4 gap-8">
                 
-                <!-- Left Sidebar / User Info (Simulated) --><aside class="lg:col-span-1 bg-swift-dark p-6 rounded-xl shadow-xl h-fit">
+                <!-- Left Sidebar / User Info (Simulated) -->
+                <aside class="lg:col-span-1 bg-swift-dark p-6 rounded-xl shadow-xl h-fit">
                     <div class="text-center pb-4 border-b border-gray-800">
                         <i data-lucide="user-circle" class="w-16 h-16 text-swift-gold mx-auto mb-2"></i>
                         <h3 class="text-2xl font-bold text-white" id="dashboard-user-name">Welcome, Trader! 👋</h3>
-                        <p class="text-gray-400 text-sm" id="dashboard-user-email">email@swiftfx.com </p>
+                        <p class="text-gray-400 text-sm break-words" id="dashboard-user-email">email@swiftfx.com </p>
                     </div>
                     
                     <div class="mt-6 space-y-4">
-                        <!-- Deposit button leads to the deposit view --><button onclick="showView('page-deposit')" class="w-full py-3 rounded-lg bg-swift-gold text-swift-dark font-bold hover:bg-yellow-400 flex items-center justify-center">
+                        <!-- Deposit button leads to the deposit view -->
+                        <button onclick="showView('page-deposit')" class="w-full py-3 rounded-lg bg-swift-gold text-swift-dark font-bold hover:bg-yellow-400 flex items-center justify-center">
                             <i data-lucide="wallet" class="w-5 h-5 mr-2"></i> Deposit Funds
                         </button>
                         <button class="w-full py-3 rounded-lg bg-swift-blue text-white font-bold hover:bg-blue-800 flex items-center justify-center">
@@ -344,9 +399,11 @@
                     </div>
                 </aside>
 
-                <!-- Main Content Area --><div class="lg:col-span-3 space-y-8">
+                <!-- Main Content Area -->
+                <div class="lg:col-span-3 space-y-8">
                     
-                    <!-- Account Overview & Balance Card --><div class="grid sm:grid-cols-3 gap-6">
+                    <!-- Account Overview & Balance Card -->
+                    <div class="grid sm:grid-cols-3 gap-6">
                         <div class="bg-swift-dark p-6 rounded-xl shadow-lg border border-swift-blue/50">
                             <p class="text-gray-400 text-sm">Account Balance</p>
                             <h4 class="text-4xl font-extrabold text-swift-gold mt-1">$0.00</h4>
@@ -354,33 +411,51 @@
                                 +2.15% (24H)
                             </span>
                         </div>
+                        <div class="bg-swift-dark p-6 rounded-xl shadow-lg border border-red-500/50">
+                            <p class="text-gray-400 text-sm">Open Trades</p>
+                            <h4 class="text-4xl font-extrabold text-white mt-1">0</h4>
+                            <span class="text-sm text-red-500 flex items-center mt-2">
+                                No positions running
+                            </span>
+                        </div>
+                        <div class="bg-swift-dark p-6 rounded-xl shadow-lg border border-green-500/50">
+                            <p class="text-gray-400 text-sm">Equity</p>
+                            <h4 class="text-4xl font-extrabold text-white mt-1">$0.00</h4>
+                            <span class="text-sm text-green-500 flex items-center mt-2">
+                                Margin Level: Good
+                            </span>
+                        </div>
                     </div>
 
-                   
-                       <h1>BTC/USD Live Chart</h1>
+                    
+                    <h1>BTC/USD Live Chart</h1>
 
-  <div class="chart-container">
-    <iframe
-      src="https://s.tradingview.com/widgetembed/?frameElementId=tradingview_1&symbol=BITSTAMP%3ABTCUSD&interval=30&theme=dark&style=1&locale=en&toolbarbg=%230a0f1a&enable_publishing=false&hide_top_toolbar=false&hide_legend=false&save_image=false"allowfullscreen>
-    </iframe>
-  </div>
+                    <div class="chart-container">
+                        <iframe
+                            src="https://s.tradingview.com/widgetembed/?frameElementId=tradingview_1&symbol=BITSTAMP%3ABTCUSD&interval=30&theme=dark&style=1&locale=en&toolbarbg=%230a0f1a&enable_publishing=false&hide_top_toolbar=false&hide_legend=false&save_image=false"allowfullscreen>
+                        </iframe>
+                    </div>
                         
-                            
-                    </div>
+                        
                 </div>
             </div>
         </div>
         
-        <!-- ============================================= --><!-- 4. DEPOSIT VIEW (No changes here, kept functional) --><!-- ============================================= --><div id="page-deposit" class="hidden py-20 bg-swift-navy flex flex-col items-center justify-center min-h-screen w-full">
+        <!-- ============================================= -->
+        <!-- 4. DEPOSIT VIEW (No changes here, kept functional) -->
+        <!-- ============================================= -->
+        <div id="page-deposit" class="hidden py-20 bg-swift-navy flex flex-col items-center justify-center min-h-screen w-full">
             <div class="w-full max-w-2xl bg-swift-dark p-8 md:p-10 rounded-xl shadow-lg border border-swift-gold/50 text-center">
                 
-                <!-- Instruction Headline --><h2 class="text-3xl font-bold text-white mb-6">
+                <!-- Instruction Headline -->
+                <h2 class="text-3xl font-bold text-white mb-6">
                     Make payment to this bitcoin address and send your screenshot to the admin on telegram
                 </h2>
                 
                 <p class="text-gray-400 mb-4">Your personalized deposit address (BTC Network):</p>
                 
-                <!-- Bitcoin Address Box --><div class="flex flex-col gap-4 mb-8">
+                <!-- Bitcoin Address Box -->
+                <div class="flex flex-col gap-4 mb-8">
                     <input type="text" id="btc-address" value="bc1qxy2kgjd00eazl6l6n97tpxf24687k2g59v72a" readonly class="w-full p-4 bg-swift-navy border border-swift-gold rounded-lg text-swift-gold font-mono text-lg text-center select-all shadow-lg">
                     <button onclick="copyToClipboard('btc-address')" class="w-full py-3 rounded-full bg-swift-gold text-swift-dark font-bold hover:bg-yellow-400 flex items-center justify-center">
                         <i data-lucide="copy" class="w-5 h-5 mr-2"></i> Copy Bitcoin Address
@@ -389,11 +464,13 @@
                 
                 <hr class="border-gray-800 mb-8">
                 
-                <!-- Telegram Button --><a href="https://t.me/admin_swiftfx" target="_blank" class="w-full py-3 rounded-full border-2 border-green-500 text-green-500 font-bold text-lg hover:bg-green-500/10 flex items-center justify-center">
+                <!-- Telegram Button -->
+                <a href="https://t.me/admin_swiftfx" target="_blank" class="w-full py-3 rounded-full border-2 border-green-500 text-green-500 font-bold text-lg hover:bg-green-500/10 flex items-center justify-center">
                     <i data-lucide="send" class="w-6 h-6 mr-3"></i> Contact Admin on Telegram
                 </a>
                 
-                <!-- Back Button --><button onclick="showView('page-dashboard')" class="mt-6 text-gray-400 hover:text-swift-gold transition-colors text-sm">
+                <!-- Back Button -->
+                <button onclick="showView('page-dashboard')" class="mt-6 text-gray-400 hover:text-swift-gold transition-colors text-sm">
                     ← Back to Dashboard
                 </button>
             </div>
@@ -401,7 +478,8 @@
 
     </main>
 
-    <!-- Footer (Hidden on Dashboard/Deposit) --><footer id="main-footer" class="bg-swift-dark pt-12 pb-8 border-t border-swift-gold/10">
+    <!-- Footer (Hidden on Dashboard/Deposit) -->
+    <footer id="main-footer" class="bg-swift-dark pt-12 pb-8 border-t border-swift-gold/10">
         <div class="container mx-auto px-4 text-center text-xs text-gray-600">
             <p class="font-bold text-red-500 mb-2">RISK WARNING</p>
             <p class="max-w-4xl mx-auto">
@@ -412,11 +490,11 @@
     </footer>
 
 
-  
-
-    <!-- JavaScript for Logic and Functionality --><script>
-        // Global variable to track the currently visible view ID
+    <!-- JavaScript for Logic and Functionality -->
+    <script>
+        // --- GLOBAL STATE & ELEMENTS ---
         let currentViewId = 'page-home';
+        let registeredUser = null; // Stores { name, email, password } of the successfully registered user
         
         // Element references
         const mainHeader = document.getElementById('main-header');
@@ -431,6 +509,58 @@
         const loginForm = document.getElementById('login-form');
         const loadingOverlay = document.getElementById('page-loading');
         const loadingMessage = document.getElementById('loading-message');
+        const livePricesContainer = document.getElementById('live-prices');
+        const messageBox = document.getElementById('message-box');
+        const messageTitle = document.getElementById('message-title');
+        const messageText = document.getElementById('message-text');
+        const messageOkBtn = document.getElementById('message-ok-btn');
+
+        // --- CORE FUNCTIONS ---
+
+        /**
+         * Custom replacement for alert() and window.confirm().
+         * @param {string} title - The title of the message box.
+         * @param {string} message - The content of the message.
+         */
+        function showMessageBox(title, message) {
+            messageTitle.textContent = title;
+            messageText.textContent = message;
+            messageBox.classList.remove('hidden');
+            
+            // Set up listener to close the box
+            const closeHandler = () => {
+                messageBox.classList.add('hidden');
+                messageOkBtn.removeEventListener('click', closeHandler);
+            };
+            messageOkBtn.addEventListener('click', closeHandler);
+        }
+
+        /**
+         * Populates the live price ticker at the top of the homepage.
+         */
+        function populateLivePrices() {
+            const data = [
+                { symbol: 'BTC/USD', price: 65123.45, change: 1.25, type: 'up' },
+                { symbol: 'EUR/USD', price: 1.0850, change: -0.05, type: 'down' },
+                { symbol: 'XAU/USD (Gold)', price: 2320.10, change: 0.88, type: 'up' },
+                { symbol: 'AAPL', price: 190.75, change: 0.15, type: 'up' },
+                { symbol: 'US30', price: 39500, change: -0.22, type: 'down' },
+            ];
+
+            livePricesContainer.innerHTML = data.map(item => `
+                <div class="flex items-center space-x-2 p-2">
+                    <span class="font-semibold text-white">${item.symbol}</span>
+                    <span class="text-white">${item.price.toLocaleString()}</span>
+                    <span class="${item.type === 'up' ? 'text-green-400' : 'text-red-400'} font-medium flex items-center">
+                        <i data-lucide="${item.type === 'up' ? 'trending-up' : 'trending-down'}" class="w-4 h-4 mr-1"></i>
+                        ${item.change}%
+                    </span>
+                </div>
+            `).join('');
+
+            // Re-render lucide icons after injecting HTML
+            lucide.createIcons();
+        }
 
         /**
          * Controls which main application view is visible, ensuring only one is shown.
@@ -441,7 +571,10 @@
             // 1. Hide all main content containers inside <main>
             const pages = document.querySelectorAll('main > div');
             pages.forEach(page => {
-                page.classList.add('hidden');
+                // Ensure page-loading is not accidentally hidden if it's the target
+                if (page.id !== 'page-loading' && page.id !== 'message-box') {
+                     page.classList.add('hidden');
+                }
             });
             
             // 2. Show the requested page
@@ -463,37 +596,48 @@
 
             // 3. Conditional Visibility (Header/Footer for Immersive Pages)
             const isImmersive = pageId === 'page-dashboard' || pageId === 'page-deposit';
-            const isAuth = pageId === 'page-register';
-            
-            mainHeader.classList.toggle('hidden', isImmersive);
-            mainFooter.classList.toggle('hidden', isImmersive);
 
-            // 4. Manage Navigation Links based on view
-            dashboardNavLinks.classList.toggle('hidden', !isImmersive);
-            authButtons.classList.toggle('hidden', isImmersive || isAuth);
-            homeNavLinks.classList.toggle('hidden', isImmersive || isAuth);
-            
-            // Re-create icons on view change
-            if (typeof lucide !== 'undefined') {
-                lucide.createIcons();
+            // Show/Hide Header and Footer
+            mainHeader.classList.toggle('hidden', isImmersive && pageId !== 'page-loading');
+            mainFooter.classList.toggle('hidden', isImmersive && pageId !== 'page-loading');
+
+            // Toggle Dashboard/Home navigation links in the header (only if header is visible)
+            if (!mainHeader.classList.contains('hidden')) {
+                const isHome = pageId === 'page-home' || pageId === 'page-register';
+                
+                authButtons.classList.toggle('hidden', !isHome);
+                homeNavLinks.classList.toggle('hidden', !isHome);
+                
+                dashboardNavLinks.classList.toggle('hidden', isHome);
+                dashboardNavLinks.classList.toggle('flex', !isHome && !isImmersive); // Show if not home AND not fully immersive
+                
+                // Ensure dashboard link is highlighted when on dashboard/deposit
+                document.getElementById('dashboard-link')?.classList.toggle('bg-swift-blue', pageId === 'page-dashboard');
+                document.getElementById('dashboard-link')?.classList.toggle('bg-transparent', pageId !== 'page-dashboard');
+                document.getElementById('deposit-link')?.classList.toggle('text-swift-gold', pageId === 'page-deposit');
+                document.getElementById('deposit-link')?.classList.toggle('text-white', pageId !== 'page-deposit');
             }
         }
 
         /**
-         * Toggles between the registration and login forms within the 'page-register' view.
-         * @param {string} type - 'register' or 'login'.
+         * Switches the active form (Login vs. Register) on the auth view.
+         * @param {string} mode - 'login' or 'register'.
          */
-        function showAuth(type) {
-            showView('page-register'); // Ensure the parent view is visible
-
-            if (type === 'login') {
-                authTitle.textContent = 'Welcome Back, Trader';
-                authSubtitle.textContent = 'Enter your credentials to access your account.';
+        function showAuth(mode) {
+            showView('page-register');
+            if (mode === 'login') {
+                authTitle.textContent = 'Log In to Your Account';
+                authSubtitle.textContent = 'Welcome back! Enter your credentials.';
                 registrationForm.classList.add('hidden');
                 loginForm.classList.remove('hidden');
-                authToggleText.innerHTML = 'Don\'t have an account? <button type="button" onclick="showAuth(\'register\')" class="text-swift-gold hover:underline font-semibold">Sign Up</button>';
-            } else { // 'register'
-                authTitle.textContent = 'Create Your SwiftFX Account';
+                authToggleText.innerHTML = 'New user? <button type="button" onclick="showAuth(\'register\')" class="text-swift-gold hover:underline font-semibold">Create Account</button>';
+                
+                // Pre-fill login email if a user was registered
+                if (registeredUser) {
+                    document.getElementById('login-email').value = registeredUser.email;
+                }
+            } else { // register
+                authTitle.textContent = 'Create Your Shawn Exchange Account';
                 authSubtitle.textContent = 'Fill in your details to start trading.';
                 registrationForm.classList.remove('hidden');
                 loginForm.classList.add('hidden');
@@ -501,139 +645,152 @@
             }
         }
 
-        // --- Form Submission Handlers (Validation & Redirection) ---
+        /**
+         * Simulates a network call and shows the loading screen.
+         * @param {string} message - Message to display during loading.
+         * @param {string} destination - The view ID to navigate to after loading.
+         * @param {object} userData - Data object to save to session storage.
+         */
+        function startLoading(message, destination, userData) {
+            loadingMessage.textContent = message;
+            loadingOverlay.classList.remove('hidden');
+            
+            // Use setTimeout to simulate network delay
+            setTimeout(() => {
+                completeLogin(destination, userData);
+            }, 2000); 
+        }
 
+        /**
+         * Completes the login process, saves state, and navigates to the dashboard.
+         * @param {string} destination - The view ID to navigate to.
+         * @param {object} userData - Data object to save to session storage.
+         */
+        function completeLogin(destination, userData) {
+            // Save user session for persistence
+            sessionStorage.setItem('isLoggedIn', 'true');
+            sessionStorage.setItem('userName', userData.name);
+            sessionStorage.setItem('userEmail', userData.email);
+
+            // Update Dashboard UI
+            document.getElementById('dashboard-user-name').textContent = `Welcome, ${userData.name}! 👋`;
+            document.getElementById('dashboard-user-email').textContent = userData.email;
+
+            // Hide loading overlay and show destination
+            loadingOverlay.classList.add('hidden');
+            showView(destination);
+        }
+
+        /**
+         * Handles the simulated registration process.
+         * @param {Event} event 
+         */
         function handleRegistration(event) {
             event.preventDefault();
-            
-            const pass = document.getElementById('reg-password').value;
-            const confirmPass = document.getElementById('reg-confirm-password').value;
-            const email = document.getElementById('reg-email').value;
-            const submitButton = document.getElementById('reg-submit-btn');
+            const name = document.getElementById('reg-name').value.trim();
+            const email = document.getElementById('reg-email').value.trim();
+            const password = document.getElementById('reg-password').value;
+            const confirmPassword = document.getElementById('reg-confirm-password').value;
 
-            if (pass !== confirmPass) {
-                console.error("Error: Passwords do not match!");
+            if (password !== confirmPassword) {
+                showMessageBox("Registration Failed", "Passwords do not match. Please try again.");
                 return;
             }
 
-            submitButton.disabled = true;
-            submitButton.innerHTML = '<div class="loader w-6 h-6 border-4"></div>';
+            // Simulate successful registration
+            registeredUser = { name, email, password };
             
-            const userName = document.getElementById('reg-name').value.split(' ')[0] || 'Trader';
-            
-            startLoading(userName, email, 'Creating your account securely...');
+            // Clear forms
+            registrationForm.reset();
+
+            // Simulate loading and login
+            startLoading('Creating your secure account...', 'page-dashboard', registeredUser);
         }
 
+        /**
+         * Handles the simulated login process.
+         * @param {Event} event 
+         */
         function handleLogin(event) {
             event.preventDefault();
-            
-            const email = document.getElementById('login-email').value;
-            const submitButton = document.getElementById('login-submit-btn');
-            
-            submitButton.disabled = true;
-            submitButton.innerHTML = '<div class="loader w-6 h-6 border-4"></div>';
-            
-            // Simulate user data after successful login
-            const simulatedUser = 'Verified Trader'; 
-            
-            startLoading(simulatedUser, email, 'Verifying credentials and logging in...');
-        }
+            const email = document.getElementById('login-email').value.trim();
+            const password = document.getElementById('login-password').value;
 
-        function startLoading(userName, userEmail, message) {
-            // 1. Show the dedicated loading view
-            loadingMessage.textContent = message;
-            showView('page-loading'); 
-            
-            // 2. Simulate network delay (e.g., creating account on a server)
-            setTimeout(() => {
-                
-                // 3. Update Dashboard content
-                document.getElementById('dashboard-user-name').textContent = `Welcome, ${userName}! 👋`;
-                document.getElementById('dashboard-user-email').textContent = userEmail;
+            if (!registeredUser) {
+                showMessageBox("Login Failed", "No user is registered yet. Please register first.");
+                return;
+            }
 
-                // 4. Reset Forms (Canceling them before opening dashboard)
-                document.getElementById('registration-form').reset();
-                document.getElementById('login-form').reset();
-                
-                // 5. Navigate to the Dashboard View
-                showView('page-dashboard');
-
-                // 6. Reset Buttons (for next use)
-                document.getElementById('reg-submit-btn').disabled = false;
-                document.getElementById('reg-submit-btn').innerHTML = 'CREATE ACCOUNT';
-                document.getElementById('login-submit-btn').disabled = false;
-                document.getElementById('login-submit-btn').innerHTML = 'SECURE LOGIN';
-
-            }, 2000); // 2 second loading simulation
-        }
-
-        // --- Utility Functions ---
-
-        // Function to copy text to clipboard
-        function copyToClipboard(elementId) {
-            const copyText = document.getElementById(elementId);
-            copyText.select();
-            copyText.setSelectionRange(0, 99999); 
-            try {
-                document.execCommand('copy'); 
-                
-                const originalValue = copyText.value;
-                copyText.value = 'Address Copied!';
-                
-                setTimeout(() => {
-                    copyText.value = originalValue;
-                }, 1500);
-
-            } catch (err) {
-                console.error('Failed to copy text: ', err);
+            if (email === registeredUser.email && password === registeredUser.password) {
+                // Simulate successful login
+                loginForm.reset();
+                startLoading('Authenticating and loading dashboard...', 'page-dashboard', registeredUser);
+            } else {
+                showMessageBox("Login Failed", "Invalid email or password. Please check your credentials.");
             }
         }
         
-        // --- Live Market Price Simulation (Restored) ---
-        const marketData = [
-            { symbol: 'EUR/USD', price: 1.0856, min: 1.0850, max: 1.0870 },
-            { symbol: 'BTC/USD', price: 65120.45, min: 65000, max: 66000 },
-            { symbol: 'GOLD', price: 2350.78, min: 2345, max: 2360 },
-            { symbol: 'NASDAQ', price: 18002.10, min: 17950, max: 18100 },
-        ];
-
-        function updateMarketPrices() {
-            const livePricesContainer = document.getElementById('live-prices');
-            let content = '';
-
-            marketData.forEach(item => {
-                const fluctuation = (Math.random() - 0.5) * (item.max - item.min) / 100;
-                item.price = Math.min(item.max, Math.max(item.min, item.price + fluctuation));
-                
-                const up = fluctuation >= 0;
-                const priceFormatted = item.price.toFixed(item.symbol.includes('/') ? 4 : 2);
-                const change = (Math.random() * 0.5 + 0.1).toFixed(2); 
-
-                const colorClass = up ? 'text-green-500' : 'text-red-500';
-                const icon = up ? '↑' : '↓';
-                
-                content += `
-                    <div class="flex items-center space-x-2 p-1">
-                        <span class="font-bold text-white">${item.symbol}</span>
-                        <span class="${colorClass}">${priceFormatted}</span>
-                        <span class="font-semibold ${colorClass} text-xs">${icon} ${change}%</span>
-                    </div>
-                `;
-            });
-            if (livePricesContainer) livePricesContainer.innerHTML = content;
+        /**
+         * Handles the logout process.
+         */
+        function handleLogout() {
+            sessionStorage.removeItem('isLoggedIn');
+            sessionStorage.removeItem('userName');
+            sessionStorage.removeItem('userEmail');
+            registeredUser = null; // Clear local state too
+            showView('page-home');
         }
 
-        // --- App Initialization ---
+        /**
+         * Initializes the application on page load.
+         * Checks for existing session.
+         */
         function initApp() {
-            showView('page-home');
-            updateMarketPrices();
-            setInterval(updateMarketPrices, 3000); 
+            lucide.createIcons(); // Initialize all icons
+            populateLivePrices(); // Load the simulated live prices
 
-            // Initialize Lucide Icons
-            if (typeof lucide !== 'undefined') {
-                lucide.createIcons();
+            const isLoggedIn = sessionStorage.getItem('isLoggedIn') === 'true';
+            const userName = sessionStorage.getItem('userName');
+            const userEmail = sessionStorage.getItem('userEmail');
+
+            if (isLoggedIn && userName && userEmail) {
+                // Restore the state for persistence
+                registeredUser = { name: userName, email: userEmail };
+                
+                // Go straight to the dashboard
+                // We use startLoading here to ensure the dashboard UI updates
+                startLoading('Resuming secure session...', 'page-dashboard', registeredUser);
+            } else {
+                // Default to home page
+                showView('page-home');
             }
         }
+
+        /**
+         * Copies the content of an input element to the clipboard.
+         * @param {string} elementId - The ID of the input element to copy from.
+         */
+        function copyToClipboard(elementId) {
+            const copyText = document.getElementById(elementId);
+            
+            // Select the text field
+            copyText.select();
+            copyText.setSelectionRange(0, 99999); // For mobile devices
+
+            // Copy the text inside the text field
+            document.execCommand('copy');
+            
+            // Provide feedback
+            showMessageBox("Success!", "Bitcoin address copied to clipboard.");
+        }
+        
+        // --- EVENT LISTENERS ---
+        // Ensure Lucide icons are refreshed after the initial load and any DOM manipulation
+        window.addEventListener('load', () => {
+             // Already called in initApp, but good to ensure
+             lucide.createIcons(); 
+        });
+
     </script>
 </body>
 </html>
