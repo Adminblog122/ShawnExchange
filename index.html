@@ -394,14 +394,19 @@
                         <button onclick="showView('page-deposit')" class="w-full py-3 rounded-lg bg-swift-gold text-swift-dark font-bold hover:bg-yellow-400 flex items-center justify-center">
                             <i data-lucide="wallet" class="w-5 h-5 mr-2"></i> Deposit Funds
                         </button>
+                        
                         <!-- <button class="w-full py-3 rounded-lg bg-swift-blue text-white font-bold hover:bg-blue-800 flex items-center justify-center">
                             <i data-lucide="banknote" class="w-5 h-5 mr-2"></i> Withdraw
                         </button> -->
-
-                        <!-- PAGE 0: Initial Button -->
-             <!-- <button onclick="show(1)" class="w-full py-2 bg-green-500 hover:bg-green-600 rounded font-semibold">
-                Withdraw
-              </button> -->
+                     <!-- 1. The Button -->
+         <button 
+        type="button" 
+        class="btn btn-danger btn-lg shadow-lg rounded-xl px-5 py-3" 
+        data-bs-toggle="modal" 
+        data-bs-target="#ineligibleModal">
+        Attempt Withdrawal
+    </button>
+                       
 
               <!-- //////////////// -->
               <!-- The Page Container, styled as a card for aesthetics and centered on the screen -->
@@ -410,7 +415,7 @@
     <!-- P0: Initial Button Page -->
     <div id="p0" class="text-center">
        
-        <button class="btn btn-primary w-100" onclick="show(1)">Withdraw Now</button>
+        <!-- <button class="btn btn-primary w-100" onclick="show(1)">Withdraw Now</button> -->
     </div>
 
     <!-- P1: Form Page (Starts hidden using d-none) -->
