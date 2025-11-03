@@ -404,37 +404,8 @@
                </div>
                     </div>
 
-             <!-- PAGE 1: Form -->
-    <div id="p1" class="hide">
-        <h2 class="text-xl font-bold mb-4">Enter Details</h2>
-        <form onsubmit="handle(event)">
-            <input type="text" id="name" placeholder="Full Name" required class="input mb-3">
-            <input type="text" id="btc" placeholder="Bitcoin Address" required class="input mb-3">
-            <input type="number" id="amt" placeholder="Amount (BTC)" required min="0.00001" class="input mb-4">
-            <label class="flex items-center justify-center mb-6 text-sm">
-                <input type="checkbox" id="check" required class="mr-2"> I confirm details.
-            </label>
-            <p id="error" class="text-red-400 text-sm mb-4"></p>
-            <button type="submit" id="btn" class="w-full py-2 bg-orange-500 hover:bg-orange-600 rounded font-semibold">
-                WITHDRAW
-            </button>
-        </form>
-    </div>
-
-    <!-- PAGE 2: Confirmation -->
-    <div id="p2" class="hide">
-        <svg class="w-12 h-12 text-green-400 mx-auto mb-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
-        <h2 class="text-xl font-bold mb-4">Request Received!</h2>
-        <p class="text-sm leading-relaxed">
-            Your payment will be made **within the week**. Please come back after **48 hours**. Thank you for your patience.
-        </p>
-        <button onclick="show(0)" class="w-full py-2 bg-blue-500 hover:bg-blue-600 rounded font-semibold mt-6">
-            Go Back
-        </button>
-    </div>
-</div>
-
                 </aside>
+            
 
                 <!-- Main Content Area -->
                 <div class="lg:col-span-3 space-y-8">
