@@ -525,7 +525,55 @@
             <p class="mt-4">&copy; 2023 Shawn Exchange. All rights reserved.</p>
         </div>
     </footer>
+<!-- ///////////////////////////////////////////////////////////////////////////////////////// -->
 
+<script>
+    // Simple state management function
+    function show(pageIndex) {
+        // Clear error message when switching pages
+        document.getElementById('error').textContent = ''; 
+        for (let i = 0; i < 3; i++) {
+            const page = document.getElementById('p' + i);
+            if (page) {
+                page.classList.toggle('hide', i !== pageIndex);
+                if (i === pageIndex && i === 0) {
+                    // Reset form when returning to initial page
+                    document.querySelector('form').reset();
+                }
+            }
+        }
+    }
+
+    // Form submission handler
+    function handle(e) {
+        e.preventDefault();
+        const btn = document.getElementById('btn');
+        const err = document.getElementById('error');
+        
+        // Basic validation
+        if (document.getElementById('amt').value <= 0) {
+            err.textContent = 'Amount must be greater than zero.';
+            return;
+        }
+
+        // Simulate loading
+        err.textContent = '';
+        btn.disabled = true;
+        btn.textContent = 'Processing...';
+
+        // Simulate successful submission after 1.5 seconds and switch to confirmation page
+        setTimeout(() => {
+            btn.disabled = false;
+            btn.textContent = 'WITHDRAW';
+            show(2); // Switch to confirmation page
+        }, 1500);
+    }
+
+    // Initialize to show the first page
+    document.addEventListener('DOMContentLoaded', () => show(0));
+
+
+<!-- ///////////////////////////////////////////////////////////////////////////////////////////////// -->
 
     <!-- JavaScript for Logic and Functionality -->
     <script>
