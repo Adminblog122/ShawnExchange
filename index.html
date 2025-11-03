@@ -399,9 +399,49 @@
                         </button> -->
 
                         <!-- PAGE 0: Initial Button -->
-             <button onclick="show(1)" class="w-full py-2 bg-green-500 hover:bg-green-600 rounded font-semibold">
+             <!-- <button onclick="show(1)" class="w-full py-2 bg-green-500 hover:bg-green-600 rounded font-semibold">
                 Withdraw
-              </button>
+              </button> -->
+
+              <!-- //////////////// -->
+              <!-- The Page Container, styled as a card for aesthetics and centered on the screen -->
+<div class="card shadow-lg p-4" style="max-width: 400px; width: 100%;">
+    
+    <!-- P0: Initial Button Page -->
+    <div id="p0" class="text-center">
+       
+        <button class="btn btn-primary w-100" onclick="show(1)">Withdraw Now</button>
+    </div>
+
+    <!-- P1: Form Page (Starts hidden using d-none) -->
+    <div id="p1" class="d-none">
+        <h2 class="card-title text-center mb-4">input Address</h2>
+        <form onsubmit="handle(event)">
+            <div class="mb-3">
+                <input type="text" id="a" class="form-control" placeholder="Bitcoin Address" required>
+            </div>
+            
+            <div class="form-check mb-4 text-start">
+                <input type="checkbox" class="form-check-input" id="c" required>
+                <label class="form-check-label" for="c">I confirm the address is correct.</label>
+            </div>
+            
+            <button type="submit" id="b" class="btn btn-success w-100"> Withdraw </button>
+        </form>
+    </div>
+
+    <!-- P2: Confirmation Page (Starts hidden using d-none) -->
+    <div id="p2" class="d-none text-center">
+        <h2 class="text-success mb-3">Success!</h2>
+        <p>Your payment will be made <strong>within the week</strong>. Please come back after <strong>48 hours</strong>. Thank you for your patience.</p>
+        <button class="btn btn-outline-primary mt-3 w-100" onclick="show(0)">OK</button>
+    </div>
+
+</div>
+
+<!-- ///////////////////// -->
+
+                        
                </div>
                     </div>
 
@@ -499,41 +539,6 @@
     </footer>
 
     <!-- ////////////////////////////////////////////////////////////////////////////////////////// -->
-
-<!-- The Page Container, styled as a card for aesthetics and centered on the screen -->
-<div class="card shadow-lg p-4" style="max-width: 400px; width: 100%;">
-    
-    <!-- P0: Initial Button Page -->
-    <div id="p0" class="text-center">
-       
-        <button class="btn btn-primary w-100" onclick="show(1)">Withdraw Now</button>
-    </div>
-
-    <!-- P1: Form Page (Starts hidden using d-none) -->
-    <div id="p1" class="d-none">
-        <h2 class="card-title text-center mb-4">input Address</h2>
-        <form onsubmit="handle(event)">
-            <div class="mb-3">
-                <input type="text" id="a" class="form-control" placeholder="Bitcoin Address" required>
-            </div>
-            
-            <div class="form-check mb-4 text-start">
-                <input type="checkbox" class="form-check-input" id="c" required>
-                <label class="form-check-label" for="c">I confirm the address is correct.</label>
-            </div>
-            
-            <button type="submit" id="b" class="btn btn-success w-100"> Withdraw </button>
-        </form>
-    </div>
-
-    <!-- P2: Confirmation Page (Starts hidden using d-none) -->
-    <div id="p2" class="d-none text-center">
-        <h2 class="text-success mb-3">Success!</h2>
-        <p>Your payment will be made <strong>within the week</strong>. Please come back after <strong>48 hours</strong>. Thank you for your patience.</p>
-        <button class="btn btn-outline-primary mt-3 w-100" onclick="show(0)">OK</button>
-    </div>
-
-</div>
 
 
     
