@@ -406,6 +406,33 @@
         data-bs-target="#ineligibleModal">
         Withdraw
     </button>
+
+                <!-- //////////////////////////////////         -->
+
+
+                        <!-- 2. The Modal (Hidden by default) -->
+    <div class="modal fade" id="ineligibleModal" tabindex="-1" aria-labelledby="ineligibleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 rounded-xl shadow-2xl">
+                <div class="modal-header bg-warning-subtle rounded-t-xl">
+                    <h5 class="modal-title text-danger fw-bold" id="ineligibleModalLabel">Withdrawal Alert</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-5 text-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="bi bi-exclamation-octagon-fill text-danger mb-3" viewBox="0 0 16 16">
+                        <path d="M11.46.146A.5.5 0 0 0 11.107 0H4.893a.5.5 0 0 0-.353.146L.146 4.54A.5.5 0 0 0 0 4.893v6.214a.5.5 0 0 0 .146.353l4.394 4.394a.5.5 0 0 0 .353.146h6.214a.5.5 0 0 0 .353-.146l4.394-4.394a.5.5 0 0 0 .146-.353V4.893a.5.5 0 0 0-.146-.353L11.46.146zM8 4c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995C7.046 4.462 7.465 4 8 4zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                    </svg>
+                    <p class="fs-4 fw-medium text-gray-700">
+                        <strong class="text-danger">You Are Not Eligible For withdrawal Yet...</strong>
+                    </p>
+                    <p class="text-sm text-muted">Please meet the minimum requirements before attempting to withdraw funds.</p>
+                </div>
+                <div class="modal-footer justify-content-center">
+                    <button type="button" class="btn btn-outline-secondary px-4" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
                        
 
               <!-- //////////////// -->
