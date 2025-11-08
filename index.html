@@ -411,6 +411,45 @@
         data-bs-target="#ineligibleModal">
         Withdraw
     </button> -->
+                        <!-- //////////////////////////// -->
+
+
+
+                          <!-- MINIMUM DEPOSIT SELECTOR CARD (Card 5) -->
+        <div class="card shadow-lg mb-4 border-0 rounded-4">
+            <div class="card-header text-bg-warning rounded-top-4 p-3">
+                <h5 class="mb-0 fw-bold">Minimum Deposit Selector</h5>
+            </div>
+            <div class="card-body p-4">
+                <p class="card-text text-secondary mb-3">
+                    <small>Minimum Deposit - Select the amount you wish to deposit.</small>
+                </p>
+                
+                <div class="dropdown d-grid">
+                    <button class="btn btn-warning dropdown-toggle fw-bold text-dark shadow-sm py-2" type="button" data-bs-toggle="dropdown" aria-expanded="false" id="depositDisplay">
+                        Select Deposit Amount
+                    </button>
+                    <ul class="dropdown-menu shadow-lg rounded-3 p-1 w-100" aria-labelledby="depositDisplay">
+                        <li><h6 class="dropdown-header text-warning">💰 Deposit Options</h6></li>
+                        <li><a class="dropdown-item py-2 fw-medium" href="#" onclick="handleDropdownSelection(this, 'depositDisplay')">$20</a></li>
+                        <li><a class="dropdown-item py-2 fw-medium" href="#" onclick="handleDropdownSelection(this, 'depositDisplay')">$50</a></li>
+                        <li><a class="dropdown-item py-2 fw-medium" href="#" onclick="handleDropdownSelection(this, 'depositDisplay')">$100</a></li>
+                        <li><a class="dropdown-item py-2 fw-medium" href="#" onclick="handleDropdownSelection(this, 'depositDisplay')">$200</a></li>
+                        <li><a class="dropdown-item py-2 fw-medium" href="#" onclick="handleDropdownSelection(this, 'depositDisplay')">$500</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li class="px-2"><span class="badge text-bg-primary w-100">Recommended</span></li>
+                        <li><a class="dropdown-item py-2 fw-bold text-primary" href="#" onclick="handleDropdownSelection(this, 'depositDisplay')">$1,000</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Feedback Area -->
+        <div class="alert alert-success mt-5 shadow" role="alert" id="feedback">
+            <strong class="text-success">Current Deposit:</strong> No amount selected.
+        </div>
+    </div>
+
 
                 <!-- //////////////////////////////////         -->
 
@@ -701,41 +740,7 @@
 
     <!-- ////////////////////////////////////////////////////////////////////////////////////////// -->
 
-       <!-- MINIMUM DEPOSIT SELECTOR CARD (Card 5) -->
-        <div class="card shadow-lg mb-4 border-0 rounded-4">
-            <div class="card-header text-bg-warning rounded-top-4 p-3">
-                <h5 class="mb-0 fw-bold">Minimum Deposit Selector</h5>
-            </div>
-            <div class="card-body p-4">
-                <p class="card-text text-secondary mb-3">
-                    <small>Minimum Deposit - Select the amount you wish to deposit.</small>
-                </p>
-                
-                <div class="dropdown d-grid">
-                    <button class="btn btn-warning dropdown-toggle fw-bold text-dark shadow-sm py-2" type="button" data-bs-toggle="dropdown" aria-expanded="false" id="depositDisplay">
-                        Select Deposit Amount
-                    </button>
-                    <ul class="dropdown-menu shadow-lg rounded-3 p-1 w-100" aria-labelledby="depositDisplay">
-                        <li><h6 class="dropdown-header text-warning">💰 Deposit Options</h6></li>
-                        <li><a class="dropdown-item py-2 fw-medium" href="#" onclick="handleDropdownSelection(this, 'depositDisplay')">$20</a></li>
-                        <li><a class="dropdown-item py-2 fw-medium" href="#" onclick="handleDropdownSelection(this, 'depositDisplay')">$50</a></li>
-                        <li><a class="dropdown-item py-2 fw-medium" href="#" onclick="handleDropdownSelection(this, 'depositDisplay')">$100</a></li>
-                        <li><a class="dropdown-item py-2 fw-medium" href="#" onclick="handleDropdownSelection(this, 'depositDisplay')">$200</a></li>
-                        <li><a class="dropdown-item py-2 fw-medium" href="#" onclick="handleDropdownSelection(this, 'depositDisplay')">$500</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li class="px-2"><span class="badge text-bg-primary w-100">Recommended</span></li>
-                        <li><a class="dropdown-item py-2 fw-bold text-primary" href="#" onclick="handleDropdownSelection(this, 'depositDisplay')">$1,000</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Feedback Area -->
-        <div class="alert alert-success mt-5 shadow" role="alert" id="feedback">
-            <strong class="text-success">Current Deposit:</strong> No amount selected.
-        </div>
-    </div>
-
+     
 <!-- ///////////////////////////////////////////////////////////////////////////////////////// -->
  <script>
         // Function to handle selection from the dropdown button
