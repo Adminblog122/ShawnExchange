@@ -392,64 +392,34 @@
                     <!-- ////////////////////////////// -->
 
 
-                    <!-- Card 3: DISEASE SPECIALIST (Bootstrap-Only Multi-Select Filter) -->
+                 <!-- Card 5: MINIMUM DEPOSIT SELECTOR (NEW CARD) -->
         <div class="card shadow mb-4 border-0 rounded-3">
-            <div class="card-header text-bg-info rounded-top-3">3. Disease Specialist (Beautiful Multi-Select Filter)</div>
+            <div class="card-header text-bg-warning rounded-top-3">Minimum Deposit Selector</div>
             <div class="card-body">
+                <p class="card-text">Minimum Deposit - Select the amount you wish to deposit.</p>
                 <div class="dropdown">
-                    <button class="btn btn-outline-info dropdown-toggle shadow-sm" type="button" data-bs-toggle="dropdown" aria-expanded="false" id="diseaseSpecialistDisplay">
-                        Filter by Specialty
+                    <button class="btn btn-warning dropdown-toggle fw-bold" type="button" data-bs-toggle="dropdown" aria-expanded="false" id="depositDisplay">
+                        Select Deposit Amount
                     </button>
-                    <!-- Used default dropdown-menu styling -->
-                    <ul class="dropdown-menu" aria-labelledby="diseaseSpecialistDisplay" style="min-width: 250px;">
-                        <li><h6 class="dropdown-header">Filter Disease-Specific Fields</h6></li>
-                        
-                        <!-- List Item 1: Clickable LI uses pt-2/pb-2 for spacing and stops closing via JS -->
-                        <li onclick="this.querySelector('input').click()" class="pt-2 pb-2 dropdown-item">
-                            <!-- form-check with m-0 for tight alignment -->
-                            <div class="form-check m-0">
-                                <input class="form-check-input" type="checkbox" value="Oncologist" id="checkOncologist" onclick="updateMultiSelect('diseaseSpecialistDisplay', event)">
-                                <label class="form-check-label fw-medium text-dark" for="checkOncologist">
-                                    <span role="img" aria-label="cancer" class="me-2">🎗️</span> Oncologist (Cancer)
-                                </label>
-                            </div>
-                        </li>
-
-                        <!-- List Item 2 -->
-                        <li onclick="this.querySelector('input').click()" class="pt-2 pb-2 dropdown-item">
-                            <div class="form-check m-0">
-                                <input class="form-check-input" type="checkbox" value="Allergist" id="checkAllergist" onclick="updateMultiSelect('diseaseSpecialistDisplay', event)">
-                                <label class="form-check-label fw-medium text-dark" for="checkAllergist">
-                                    <span role="img" aria-label="allergies" class="me-2">🤧</span> Allergist (Immune System)
-                                </label>
-                            </div>
-                        </li>
-
-                        <!-- List Item 3 -->
-                        <li onclick="this.querySelector('input').click()" class="pt-2 pb-2 dropdown-item">
-                            <div class="form-check m-0">
-                                <input class="form-check-input" type="checkbox" value="Rheumatologist" id="checkRheumatologist" onclick="updateMultiSelect('diseaseSpecialistDisplay', event)">
-                                <label class="form-check-label fw-medium text-dark" for="checkRheumatologist">
-                                    <span role="img" aria-label="joint" class="me-2">🦴</span> Rheumatologist (Joints/Autoimmune)
-                                </label>
-                            </div>
-                        </li>
-
-                        <!-- List Item 4 -->
-                         <li onclick="this.querySelector('input').click()" class="pt-2 pb-2 dropdown-item">
-                            <div class="form-check m-0">
-                                <input class="form-check-input" type="checkbox" value="Endocrinologist" id="checkEndocrinologist" onclick="updateMultiSelect('diseaseSpecialistDisplay', event)">
-                                <label class="form-check-label fw-medium text-dark" for="checkEndocrinologist">
-                                    <span role="img" aria-label="gland" class="me-2">🍬</span> Endocrinologist (Hormones/Diabetes)
-                                </label>
-                            </div>
-                        </li>
+                    <ul class="dropdown-menu shadow-lg rounded-3 p-1" aria-labelledby="depositDisplay">
+                        <li><h6 class="dropdown-header text-warning">💰 Deposit Options</h6></li>
+                        <li><a class="dropdown-item py-2 fw-medium" href="#" onclick="handleDropdownSelection(this, 'depositDisplay')">$20</a></li>
+                        <li><a class="dropdown-item py-2 fw-medium" href="#" onclick="handleDropdownSelection(this, 'depositDisplay')">$50</a></li>
+                        <li><a class="dropdown-item py-2 fw-medium" href="#" onclick="handleDropdownSelection(this, 'depositDisplay')">$100</a></li>
+                        <li><a class="dropdown-item py-2 fw-medium" href="#" onclick="handleDropdownSelection(this, 'depositDisplay')">$200</a></li>
+                        <li><a class="dropdown-item py-2 fw-medium" href="#" onclick="handleDropdownSelection(this, 'depositDisplay')">$500</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item py-2 fw-medium text-primary" href="#" onclick="handleDropdownSelection(this, 'depositDisplay')">$1,000</a></li>
                     </ul>
                 </div>
             </div>
         </div>
         
-
+        <!-- Feedback Area -->
+        <div class="alert alert-primary mt-5 shadow" role="alert" id="feedback">
+            <strong class="text-primary">Your Selection:</strong> No item has been selected yet.
+        </div>
+    </div>
         
                     <!-- //////////////////////////////// -->
                     
@@ -763,7 +733,77 @@
 
     <!-- ////////////////////////////////////////////////////////////////////////////////////////// -->
 
+        <script>
+        // Function to display the selection from the standard select box (Card 1)
+        function displaySelection(selectElement) {
+            const selection = selectElement.value;
+            const feedback = document.getElementById('feedback');
 
+            if (selection) {
+                feedback.innerHTML = `<strong class="text-primary">Your Selection (PCP):</strong> You chose <strong>${selection}</strong>.`;
+            } else {
+                feedback.innerHTML = `<strong class="text-primary">Your Selection:</strong> Please choose an option.`;
+            }
+        }
+
+        // Function to handle selection from the dropdown button (Cards 2, 4, and 5)
+        function handleDropdownSelection(linkElement, displayId) {
+            const selection = linkElement.innerText;
+            const displayButton = document.getElementById(displayId);
+            const feedback = document.getElementById('feedback');
+
+            // Update the button text to show the selection
+            displayButton.innerText = selection.trim();
+
+            const cardTitle = linkElement.closest('.card').querySelector('.card-header').innerText.split('.')[1].trim();
+            feedback.innerHTML = `<strong class="text-primary">Your Selection (${cardTitle}):</strong> You selected <strong>${selection}</strong>.`;
+            
+            // Prevent the default link behavior
+            return false;
+        }
+
+        // Function to handle and update the checkable dropdown (Card 3)
+        function updateMultiSelect(displayId, event) {
+            // Stop propagation to prevent the dropdown from immediately closing when a checkbox is clicked
+            if (event) {
+                event.stopPropagation();
+            }
+            
+            const dropdownElement = document.getElementById(displayId).closest('.dropdown').querySelector('.dropdown-menu');
+            const checkboxes = dropdownElement.querySelectorAll('.form-check-input:checked');
+            const displayButton = document.getElementById(displayId);
+            const feedback = document.getElementById('feedback');
+            
+            let selections = Array.from(checkboxes).map(cb => cb.value);
+
+            if (selections.length === 0) {
+                displayButton.innerText = 'Filter by Specialty';
+                feedback.innerHTML = `<strong class="text-primary">Your Selection (Disease Specialist):</strong> No specialists are currently filtered.`;
+                displayButton.classList.remove('btn-info');
+                displayButton.classList.add('btn-outline-info');
+            } else if (selections.length === 1) {
+                displayButton.innerText = selections[0];
+                feedback.innerHTML = `<strong class="text-primary">Your Selection (Disease Specialist):</strong> You filtered by <strong>${selections[0]}</strong>.`;
+                displayButton.classList.remove('btn-outline-info');
+                displayButton.classList.add('btn-info');
+            } else {
+                displayButton.innerText = `${selections.length} Specialties Selected`;
+                feedback.innerHTML = `<strong class="text-primary">Your Selection (Disease Specialist):</strong> You filtered by: <strong>${selections.join(', ')}</strong>.`;
+                displayButton.classList.remove('btn-outline-info');
+                displayButton.classList.add('btn-info');
+            }
+        }
+
+        // This JS keeps the multi-select dropdown open when a list item is clicked.
+        document.querySelectorAll('.dropdown-menu li').forEach(li => {
+            li.addEventListener('click', function(e) {
+                // Only act if the list item contains a form-check (i.e., Card 3)
+                if (this.querySelector('.form-check')) {
+                    e.stopPropagation(); 
+                }
+            });
+        });
+    </script>
     
 <!-- ///////////////////////////////////////////////////////////////////////////////////////// -->
 
