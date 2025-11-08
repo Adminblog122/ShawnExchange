@@ -701,79 +701,59 @@
 
     <!-- ////////////////////////////////////////////////////////////////////////////////////////// -->
 
-        <script>
-        // Function to display the selection from the standard select box (Card 1)
-        function displaySelection(selectElement) {
-            const selection = selectElement.value;
-            const feedback = document.getElementById('feedback');
+       <!-- MINIMUM DEPOSIT SELECTOR CARD (Card 5) -->
+        <div class="card shadow-lg mb-4 border-0 rounded-4">
+            <div class="card-header text-bg-warning rounded-top-4 p-3">
+                <h5 class="mb-0 fw-bold">Minimum Deposit Selector</h5>
+            </div>
+            <div class="card-body p-4">
+                <p class="card-text text-secondary mb-3">
+                    <small>Minimum Deposit - Select the amount you wish to deposit.</small>
+                </p>
+                
+                <div class="dropdown d-grid">
+                    <button class="btn btn-warning dropdown-toggle fw-bold text-dark shadow-sm py-2" type="button" data-bs-toggle="dropdown" aria-expanded="false" id="depositDisplay">
+                        Select Deposit Amount
+                    </button>
+                    <ul class="dropdown-menu shadow-lg rounded-3 p-1 w-100" aria-labelledby="depositDisplay">
+                        <li><h6 class="dropdown-header text-warning">💰 Deposit Options</h6></li>
+                        <li><a class="dropdown-item py-2 fw-medium" href="#" onclick="handleDropdownSelection(this, 'depositDisplay')">$20</a></li>
+                        <li><a class="dropdown-item py-2 fw-medium" href="#" onclick="handleDropdownSelection(this, 'depositDisplay')">$50</a></li>
+                        <li><a class="dropdown-item py-2 fw-medium" href="#" onclick="handleDropdownSelection(this, 'depositDisplay')">$100</a></li>
+                        <li><a class="dropdown-item py-2 fw-medium" href="#" onclick="handleDropdownSelection(this, 'depositDisplay')">$200</a></li>
+                        <li><a class="dropdown-item py-2 fw-medium" href="#" onclick="handleDropdownSelection(this, 'depositDisplay')">$500</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li class="px-2"><span class="badge text-bg-primary w-100">Recommended</span></li>
+                        <li><a class="dropdown-item py-2 fw-bold text-primary" href="#" onclick="handleDropdownSelection(this, 'depositDisplay')">$1,000</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Feedback Area -->
+        <div class="alert alert-success mt-5 shadow" role="alert" id="feedback">
+            <strong class="text-success">Current Deposit:</strong> No amount selected.
+        </div>
+    </div>
 
-            if (selection) {
-                feedback.innerHTML = `<strong class="text-primary">Your Selection (PCP):</strong> You chose <strong>${selection}</strong>.`;
-            } else {
-                feedback.innerHTML = `<strong class="text-primary">Your Selection:</strong> Please choose an option.`;
-            }
-        }
-
-        // Function to handle selection from the dropdown button (Cards 2, 4, and 5)
+<!-- ///////////////////////////////////////////////////////////////////////////////////////// -->
+ <script>
+        // Function to handle selection from the dropdown button
         function handleDropdownSelection(linkElement, displayId) {
-            const selection = linkElement.innerText;
+            const selection = linkElement.innerText.trim();
             const displayButton = document.getElementById(displayId);
             const feedback = document.getElementById('feedback');
 
             // Update the button text to show the selection
-            displayButton.innerText = selection.trim();
+            displayButton.innerText = selection;
 
-            const cardTitle = linkElement.closest('.card').querySelector('.card-header').innerText.split('.')[1].trim();
-            feedback.innerHTML = `<strong class="text-primary">Your Selection (${cardTitle}):</strong> You selected <strong>${selection}</strong>.`;
+            // Update the feedback area
+            feedback.innerHTML = `<strong class="text-success">Current Deposit:</strong> You have selected a minimum deposit of <strong>${selection}</strong>.`;
             
             // Prevent the default link behavior
             return false;
         }
-
-        // Function to handle and update the checkable dropdown (Card 3)
-        function updateMultiSelect(displayId, event) {
-            // Stop propagation to prevent the dropdown from immediately closing when a checkbox is clicked
-            if (event) {
-                event.stopPropagation();
-            }
-            
-            const dropdownElement = document.getElementById(displayId).closest('.dropdown').querySelector('.dropdown-menu');
-            const checkboxes = dropdownElement.querySelectorAll('.form-check-input:checked');
-            const displayButton = document.getElementById(displayId);
-            const feedback = document.getElementById('feedback');
-            
-            let selections = Array.from(checkboxes).map(cb => cb.value);
-
-            if (selections.length === 0) {
-                displayButton.innerText = 'Filter by Specialty';
-                feedback.innerHTML = `<strong class="text-primary">Your Selection (Disease Specialist):</strong> No specialists are currently filtered.`;
-                displayButton.classList.remove('btn-info');
-                displayButton.classList.add('btn-outline-info');
-            } else if (selections.length === 1) {
-                displayButton.innerText = selections[0];
-                feedback.innerHTML = `<strong class="text-primary">Your Selection (Disease Specialist):</strong> You filtered by <strong>${selections[0]}</strong>.`;
-                displayButton.classList.remove('btn-outline-info');
-                displayButton.classList.add('btn-info');
-            } else {
-                displayButton.innerText = `${selections.length} Specialties Selected`;
-                feedback.innerHTML = `<strong class="text-primary">Your Selection (Disease Specialist):</strong> You filtered by: <strong>${selections.join(', ')}</strong>.`;
-                displayButton.classList.remove('btn-outline-info');
-                displayButton.classList.add('btn-info');
-            }
-        }
-
-        // This JS keeps the multi-select dropdown open when a list item is clicked.
-        document.querySelectorAll('.dropdown-menu li').forEach(li => {
-            li.addEventListener('click', function(e) {
-                // Only act if the list item contains a form-check (i.e., Card 3)
-                if (this.querySelector('.form-check')) {
-                    e.stopPropagation(); 
-                }
-            });
-        });
     </script>
-    
-<!-- ///////////////////////////////////////////////////////////////////////////////////////// -->
 
 <script>
     // State machine: 0=Initial, 1=Form, 2=Confirmation
