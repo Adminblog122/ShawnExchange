@@ -388,6 +388,71 @@
                         <h3 class="text-2xl font-bold text-white" id="dashboard-user-name">Welcome, Trader! 👋</h3>
                         <p class="text-gray-400 text-sm break-words" id="dashboard-user-email">email@swiftfx.com </p>
                     </div>
+
+                    <!-- ////////////////////////////// -->
+
+
+                    <!-- Card 3: DISEASE SPECIALIST (Bootstrap-Only Multi-Select Filter) -->
+        <div class="card shadow mb-4 border-0 rounded-3">
+            <div class="card-header text-bg-info rounded-top-3">3. Disease Specialist (Beautiful Multi-Select Filter)</div>
+            <div class="card-body">
+                <p class="card-text">This uses only Bootstrap utility classes for styling, offering a clean, multi-select filtering experience.</p>
+                <div class="dropdown">
+                    <button class="btn btn-outline-info dropdown-toggle shadow-sm" type="button" data-bs-toggle="dropdown" aria-expanded="false" id="diseaseSpecialistDisplay">
+                        Filter by Specialty
+                    </button>
+                    <!-- Used default dropdown-menu styling -->
+                    <ul class="dropdown-menu" aria-labelledby="diseaseSpecialistDisplay" style="min-width: 250px;">
+                        <li><h6 class="dropdown-header">Filter Disease-Specific Fields</h6></li>
+                        
+                        <!-- List Item 1: Clickable LI uses pt-2/pb-2 for spacing and stops closing via JS -->
+                        <li onclick="this.querySelector('input').click()" class="pt-2 pb-2 dropdown-item">
+                            <!-- form-check with m-0 for tight alignment -->
+                            <div class="form-check m-0">
+                                <input class="form-check-input" type="checkbox" value="Oncologist" id="checkOncologist" onclick="updateMultiSelect('diseaseSpecialistDisplay', event)">
+                                <label class="form-check-label fw-medium text-dark" for="checkOncologist">
+                                    <span role="img" aria-label="cancer" class="me-2">🎗️</span> Oncologist (Cancer)
+                                </label>
+                            </div>
+                        </li>
+
+                        <!-- List Item 2 -->
+                        <li onclick="this.querySelector('input').click()" class="pt-2 pb-2 dropdown-item">
+                            <div class="form-check m-0">
+                                <input class="form-check-input" type="checkbox" value="Allergist" id="checkAllergist" onclick="updateMultiSelect('diseaseSpecialistDisplay', event)">
+                                <label class="form-check-label fw-medium text-dark" for="checkAllergist">
+                                    <span role="img" aria-label="allergies" class="me-2">🤧</span> Allergist (Immune System)
+                                </label>
+                            </div>
+                        </li>
+
+                        <!-- List Item 3 -->
+                        <li onclick="this.querySelector('input').click()" class="pt-2 pb-2 dropdown-item">
+                            <div class="form-check m-0">
+                                <input class="form-check-input" type="checkbox" value="Rheumatologist" id="checkRheumatologist" onclick="updateMultiSelect('diseaseSpecialistDisplay', event)">
+                                <label class="form-check-label fw-medium text-dark" for="checkRheumatologist">
+                                    <span role="img" aria-label="joint" class="me-2">🦴</span> Rheumatologist (Joints/Autoimmune)
+                                </label>
+                            </div>
+                        </li>
+
+                        <!-- List Item 4 -->
+                         <li onclick="this.querySelector('input').click()" class="pt-2 pb-2 dropdown-item">
+                            <div class="form-check m-0">
+                                <input class="form-check-input" type="checkbox" value="Endocrinologist" id="checkEndocrinologist" onclick="updateMultiSelect('diseaseSpecialistDisplay', event)">
+                                <label class="form-check-label fw-medium text-dark" for="checkEndocrinologist">
+                                    <span role="img" aria-label="gland" class="me-2">🍬</span> Endocrinologist (Hormones/Diabetes)
+                                </label>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+
+        
+                    <!-- //////////////////////////////// -->
                     
                     <div class="mt-6 space-y-4">
                         <!-- Deposit button leads to the deposit view -->
