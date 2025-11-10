@@ -392,66 +392,67 @@
 
                     <!-- ////////////// -->
 
-
-                         <!-- STEP 1: The main button (ID: mainDepositButton). -->
+<!-- STEP 1: The main button (ID: mainDepositButton). -->
             <button 
                 type="button" 
                 id="mainDepositButton"
-                class="btn btn-lg btn-primary text-white shadow rounded-pill px-5 py-3 text-truncate" 
+                class="btn btn-lg btn-warning text-dark shadow rounded-pill px-5 py-3 text-truncate" 
                 data-bs-toggle="modal" 
                 data-bs-target="#depositModal"
                 style="min-width: 250px;">
                 Select Deposit Amount
             </button>
 
-                    <!-- STEP 2: The Deposit Selection Modal -->
+                    
+                     <!-- STEP 2: The Deposit Selection Modal -->
     <div class="modal fade" id="depositModal" tabindex="-1" aria-labelledby="depositModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content rounded-3">
-                <div class="modal-header bg-primary text-white">
+            <!-- Modal content with dark background and shadow -->
+            <div class="modal-content rounded-3 bg-dark shadow-xl border border-warning">
+                <!-- Modal header with a slightly different dark color -->
+                <div class="modal-header bg-secondary text-light">
                     <h1 class="modal-title fs-5 fw-bold" id="depositModalLabel">Select Deposit Amount</h1>
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body p-4">
                     
-                    <p class="text-dark mb-3 fw-bold">💰 Select Deposit Amount:</p>
+                    <p class="text-light mb-3 fw-bold">💰 Select Deposit Amount:</p>
 
                     <form id="depositForm" class="text-start">
-                        <!-- Checkboxes for Amounts -->
-                        <div class="form-check p-3 border rounded mb-2">
+                        <!-- Checkboxes for Amounts with light borders for visibility -->
+                        <div class="form-check p-3 border border-light rounded mb-2 bg-black bg-opacity-25">
                             <input class="form-check-input me-3" type="checkbox" data-amount="20" id="amount20">
-                            <label class="form-check-label h5" for="amount20">$20</label>
+                            <label class="form-check-label h5 text-light" for="amount20">$20</label>
                         </div>
-                        <div class="form-check p-3 border rounded mb-2">
+                        <div class="form-check p-3 border border-light rounded mb-2 bg-black bg-opacity-25">
                             <input class="form-check-input me-3" type="checkbox" data-amount="50" id="amount50">
-                            <label class="form-check-label h5" for="amount50">$50</label>
+                            <label class="form-check-label h5 text-light" for="amount50">$50</label>
                         </div>
-                        <div class="form-check p-3 border rounded mb-2">
+                        <div class="form-check p-3 border border-light rounded mb-2 bg-black bg-opacity-25">
                             <input class="form-check-input me-3" type="checkbox" data-amount="100" id="amount100">
-                            <label class="form-check-label h5" for="amount100">$100</label>
+                            <label class="form-check-label h5 text-light" for="amount100">$100</label>
                         </div>
-                        <div class="form-check p-3 border rounded mb-2">
+                        <div class="form-check p-3 border border-light rounded mb-2 bg-black bg-opacity-25">
                             <input class="form-check-input me-3" type="checkbox" data-amount="200" id="amount200">
-                            <label class="form-check-label h5" for="amount200">$200</label>
+                            <label class="form-check-label h5 text-light" for="amount200">$200</label>
                         </div>
-                        <div class="form-check p-3 border rounded mb-2">
+                        <div class="form-check p-3 border border-light rounded mb-2 bg-black bg-opacity-25">
                             <input class="form-check-input me-3" type="checkbox" data-amount="500" id="amount500">
-                            <label class="form-check-label h5" for="amount500">$500</label>
+                            <label class="form-check-label h5 text-light" for="amount500">$500</label>
                         </div>
                     </form>
                     
                 </div>
                 <div class="modal-footer border-top-0 p-3">
                     <!-- The button that triggers the update function -->
-                    <button type="button" id="confirmButton" class="btn btn-primary fw-bold rounded-pill px-4">
+                    <button type="button" id="confirmButton" class="btn btn-warning fw-bold rounded-pill px-4 text-dark">
                         Confirm Selection
                     </button>
                 </div>
             </div>
         </div>
     </div>
-    
-                    
+   
                     <!-- /////////////////// -->
               
 
