@@ -390,43 +390,13 @@
                     </div>
 
 
-                     <!-- MINIMUM DEPOSIT SELECTOR CARD (Card 5) -->
-        <div class="card shadow-lg mb-4 border-0 rounded-4">
-            <div class="card-header text-bg-warning rounded-top-4 p-3">
-                <h5 class="mb-0 fw-bold">Minimum Deposit Selector</h5>
-            </div>
-            <div class="card-body p-4">
-                <p class="card-text text-secondary mb-3">
-                    <small>Minimum Deposit - Select the amount you wish to deposit.</small>
-                </p>
-                
-                <div class="dropdown d-grid">
-                    <button class="btn btn-warning dropdown-toggle fw-bold text-dark shadow-sm py-2" type="button" data-bs-toggle="dropdown" aria-expanded="false" id="depositDisplay">
-                        Select Deposit Amount
-                    </button>
-                    <ul class="dropdown-menu shadow-lg rounded-3 p-1 w-100" aria-labelledby="depositDisplay">
-                        <li><h6 class="dropdown-header text-warning">💰 Deposit Options</h6></li>
-                        <li><a class="dropdown-item py-2 fw-medium" href="#" onclick="handleDropdownSelection(this, 'depositDisplay')">$20</a></li>
-                        <li><a class="dropdown-item py-2 fw-medium" href="#" onclick="handleDropdownSelection(this, 'depositDisplay')">$50</a></li>
-                        <li><a class="dropdown-item py-2 fw-medium" href="#" onclick="handleDropdownSelection(this, 'depositDisplay')">$100</a></li>
-                        <li><a class="dropdown-item py-2 fw-medium" href="#" onclick="handleDropdownSelection(this, 'depositDisplay')">$200</a></li>
-                        <li><a class="dropdown-item py-2 fw-medium" href="#" onclick="handleDropdownSelection(this, 'depositDisplay')">$500</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li class="px-2"><span class="badge text-bg-primary w-100">Recommended</span></li>
-                        <li><a class="dropdown-item py-2 fw-bold text-primary" href="#" onclick="handleDropdownSelection(this, 'depositDisplay')">$1,000</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Feedback Area -->
-        <div class="alert alert-success mt-5 shadow" role="alert" id="feedback">
-            <strong class="text-success">Current Deposit:</strong> No amount selected.
-        </div>
-    </div>
+                    <!-- ////////////// -->
 
 
+                          
 
+                    
+                    <!-- /////////////////// -->
               
 
                     <div class="mt-6 space-y-4">
@@ -745,68 +715,9 @@
 
      
 <!-- ///////////////////////////////////////////////////////////////////////////////////////// -->
- <script>
-        // Function to handle selection from the dropdown button
-        function handleDropdownSelection(linkElement, displayId) {
-            const selection = linkElement.innerText.trim();
-            const displayButton = document.getElementById(displayId);
-            const feedback = document.getElementById('feedback');
-
-            // Update the button text to show the selection
-            displayButton.innerText = selection;
-
-            // Update the feedback area
-            feedback.innerHTML = `<strong class="text-success">Current Deposit:</strong> You have selected a minimum deposit of <strong>${selection}</strong>.`;
-            
-            // Prevent the default link behavior
-            return false;
-        }
-    </script>
-
-<script>
-    // State machine: 0=Initial, 1=Form, 2=Confirmation
-    function show(i) {
-        // Get all page elements
-        const p0 = document.getElementById('p0');
-        const p1 = document.getElementById('p1');
-        const p2 = document.getElementById('p2');
-
-        // Toggle Bootstrap's 'd-none' utility class to show/hide pages
-        // The 'd-none' class (display: none) is added if the state 'i' does NOT match the page index.
-        p0.classList.toggle('d-none', i !== 0);
-        p1.classList.toggle('d-none', i !== 1);
-        p2.classList.toggle('d-none', i !== 2);
-
-        if (i === 0) {
-            // Reset form inputs when navigating back to the start
-            document.getElementById('a').value = '';
-            document.getElementById('c').checked = false;
-        }
-    }
-
-    // Form Submission Handler
-    function handle(e) {
-        e.preventDefault();
-        const btn = document.getElementById('b');
-        
-        // Disable button and show loading state
-        btn.disabled = true;
-        btn.textContent = 'Processing...';
-
-        // Simulate a 1-second network processing delay
-        setTimeout(() => {
-            btn.disabled = false;
-            btn.textContent = 'Last Withdraw Button'; // Reset button text
-            show(2); // Go to confirmation page
-        }, 1000); 
-    }
-
-    // Initialize the app on the first page (P0) when the DOM is loaded
-    document.addEventListener('DOMContentLoaded', () => show(0));
-</script>
+ 
 
 
-<!-- ///////////////////////////////////////////////////////////////////////////////////////////////// -->
 
     <!-- JavaScript for Logic and Functionality -->
     <script>
