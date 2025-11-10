@@ -393,56 +393,57 @@
                     <!-- ////////////// -->
 
 
-                          <button 
-            type="button" 
-            id="mainDepositButton"
-            class="btn btn-lg btn-success text-white shadow-lg rounded-pill px-5 py-3" 
-            data-bs-toggle="modal" 
-            data-bs-target="#depositModal"
-            style="min-width: 280px; white-space: nowrap;"> <!-- Inline style used to prevent button text from wrapping -->
-            Select Deposit Amount
-        </button>
+                         <!-- STEP 1: The main button (ID: mainDepositButton). -->
+            <button 
+                type="button" 
+                id="mainDepositButton"
+                class="btn btn-lg btn-primary text-white shadow rounded-pill px-5 py-3 text-truncate" 
+                data-bs-toggle="modal" 
+                data-bs-target="#depositModal"
+                style="min-width: 250px;">
+                Select Deposit Amount
+            </button>
 
-                    <!-- STEP 2: The Deposit Selection Modal (Dialog Box) -->
+                    <!-- STEP 2: The Deposit Selection Modal -->
     <div class="modal fade" id="depositModal" tabindex="-1" aria-labelledby="depositModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content rounded-3 shadow-lg">
-                <div class="modal-header bg-success text-white rounded-top">
-                    <h1 class="modal-title fs-5 fw-bold" id="depositModalLabel">Select the Amount You Wish to Deposit</h1>
+            <div class="modal-content rounded-3">
+                <div class="modal-header bg-primary text-white">
+                    <h1 class="modal-title fs-5 fw-bold" id="depositModalLabel">Select Deposit Amount</h1>
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body p-4">
                     
-                    <p class="text-secondary mb-3 fw-bold">💰 Select Deposit Amount:</p>
+                    <p class="text-dark mb-3 fw-bold">💰 Select Deposit Amount:</p>
 
                     <form id="depositForm" class="text-start">
-                        <!-- Checkboxes for Amounts using Bootstrap classes -->
+                        <!-- Checkboxes for Amounts -->
                         <div class="form-check p-3 border rounded mb-2">
-                            <input class="form-check-input float-none me-3" type="checkbox" data-amount="20" id="amount20">
+                            <input class="form-check-input me-3" type="checkbox" data-amount="20" id="amount20">
                             <label class="form-check-label h5" for="amount20">$20</label>
                         </div>
                         <div class="form-check p-3 border rounded mb-2">
-                            <input class="form-check-input float-none me-3" type="checkbox" data-amount="50" id="amount50">
+                            <input class="form-check-input me-3" type="checkbox" data-amount="50" id="amount50">
                             <label class="form-check-label h5" for="amount50">$50</label>
                         </div>
                         <div class="form-check p-3 border rounded mb-2">
-                            <input class="form-check-input float-none me-3" type="checkbox" data-amount="100" id="amount100">
+                            <input class="form-check-input me-3" type="checkbox" data-amount="100" id="amount100">
                             <label class="form-check-label h5" for="amount100">$100</label>
                         </div>
                         <div class="form-check p-3 border rounded mb-2">
-                            <input class="form-check-input float-none me-3" type="checkbox" data-amount="200" id="amount200">
+                            <input class="form-check-input me-3" type="checkbox" data-amount="200" id="amount200">
                             <label class="form-check-label h5" for="amount200">$200</label>
                         </div>
                         <div class="form-check p-3 border rounded mb-2">
-                            <input class="form-check-input float-none me-3" type="checkbox" data-amount="500" id="amount500">
+                            <input class="form-check-input me-3" type="checkbox" data-amount="500" id="amount500">
                             <label class="form-check-label h5" for="amount500">$500</label>
                         </div>
                     </form>
                     
                 </div>
                 <div class="modal-footer border-top-0 p-3">
-                    <!-- The button to confirm and update the main button -->
-                    <button type="button" class="btn btn-success fw-bold rounded-pill px-4" onclick="handleDepositSelection()">
+                    <!-- The button that triggers the update function -->
+                    <button type="button" id="confirmButton" class="btn btn-primary fw-bold rounded-pill px-4">
                         Confirm Selection
                     </button>
                 </div>
@@ -450,7 +451,6 @@
         </div>
     </div>
     
-
                     
                     <!-- /////////////////// -->
               
@@ -770,67 +770,72 @@
     <!-- ////////////////////////////////////////////////////////////////////////////////////////// -->
 
 
-    <script>
-        // Get the Bootstrap Modal instance and the main button element
-        const depositModalElement = document.getElementById('depositModal');
-        const mainDepositButton = document.getElementById('mainDepositButton');
-        // Initialize the Bootstrap Modal object
-        const depositModal = new bootstrap.Modal(depositModalElement); 
-        const checkboxes = document.querySelectorAll('#depositForm input[type="checkbox"]');
-        
-        // Storage for the user's last selections
-        let selectedAmounts = []; 
+   <script>
+        // Use a DOMContentLoaded listener to ensure all elements and scripts are ready
+        document.addEventListener('DOMContentLoaded', () => {
+            // Element references
+            const depositModalElement = document.getElementById('depositModal');
+            const mainDepositButton = document.getElementById('mainDepositButton');
+            const confirmButton = document.getElementById('confirmButton');
+            const checkboxes = document.querySelectorAll('#depositForm input[type="checkbox"]');
+            
+            // Initialize the Bootstrap Modal object
+            const depositModal = new bootstrap.Modal(depositModalElement); 
+            
+            // Storage for the user's last selections
+            let selectedAmounts = []; 
 
-        /**
-         * Calculates the total selected amount and updates the main button text.
-         */
-        function handleDepositSelection() {
-            let totalAmount = 0;
-            selectedAmounts = []; // Reset the tracker
+            /**
+             * Calculates the total selected amount and updates the main button text.
+             */
+            function handleDepositSelection() {
+                let totalAmount = 0;
+                selectedAmounts = []; // Reset the tracker
 
-            // Iterate through all checkboxes in the form to find checked amounts
-            checkboxes.forEach(checkbox => {
-                if (checkbox.checked) {
-                    const amount = parseInt(checkbox.getAttribute('data-amount'), 10);
-                    totalAmount += amount;
-                    selectedAmounts.push(amount); // Save the selection
+                // 1. Calculate total and save selections
+                checkboxes.forEach(checkbox => {
+                    if (checkbox.checked) {
+                        const amount = parseInt(checkbox.getAttribute('data-amount'), 10);
+                        totalAmount += amount;
+                        selectedAmounts.push(amount); // Save the selection
+                    }
+                });
+
+                // 2. Update the main button text
+                let newButtonText = "";
+                if (totalAmount > 0) {
+                    newButtonText = `Deposit: $${totalAmount.toLocaleString()}`;
+                } else {
+                    newButtonText = `Select Deposit Amount`;
                 }
-            });
 
-            // Update the main button text with the total amount
-            let newButtonText = "";
-            if (totalAmount > 0) {
-                newButtonText = `Deposit: $${totalAmount.toLocaleString()}`;
-            } else {
-                newButtonText = `Select Deposit Amount`;
+                mainDepositButton.innerHTML = newButtonText;
+                
+                // 3. Hide the modal
+                depositModal.hide();
             }
 
-            mainDepositButton.innerHTML = newButtonText;
-            
-            // Hide the modal, making it disappear
-            depositModal.hide();
-        }
+            // Attach event listener to the Confirm button
+            confirmButton.addEventListener('click', handleDepositSelection);
 
-        /**
-         * Event listener to re-check previously selected amounts when the modal opens.
-         * This ensures the user sees their last selection.
-         */
-        depositModalElement.addEventListener('show.bs.modal', function () {
-            // 1. Uncheck all first
-            checkboxes.forEach(checkbox => checkbox.checked = false);
+            /**
+             * Event listener to re-check previously selected amounts when the modal opens.
+             */
+            depositModalElement.addEventListener('show.bs.modal', function () {
+                // 1. Uncheck all first
+                checkboxes.forEach(checkbox => checkbox.checked = false);
 
-            // 2. Re-check amounts that were previously selected
-            selectedAmounts.forEach(amount => {
-                // Find the specific checkbox using its data-amount attribute
-                const checkbox = document.querySelector(`#depositForm input[data-amount="${amount}"]`);
-                if (checkbox) {
-                    checkbox.checked = true;
-                }
+                // 2. Re-check amounts that were previously selected
+                selectedAmounts.forEach(amount => {
+                    const checkbox = document.querySelector(`#depositForm input[data-amount="${amount}"]`);
+                    if (checkbox) {
+                        checkbox.checked = true;
+                    }
+                });
             });
-        });
 
+        });
     </script>
-     
 <!-- ///////////////////////////////////////////////////////////////////////////////////////// -->
  
 
